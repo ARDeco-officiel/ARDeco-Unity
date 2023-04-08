@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4429894779298836407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 382acbafe53d24f4683eaf4213dfbda7,
+        type: 3}
+      propertyPath: m_Name
+      value: IKEA-BILLY_bookcase_combination-3D Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 382acbafe53d24f4683eaf4213dfbda7, type: 3}
+--- !u!1 &3583541513608221414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 382acbafe53d24f4683eaf4213dfbda7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4429894779298836407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-5031042977755876762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583541513608221414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2061.7266, y: 2088.6736, z: 380.24667}
+  m_Center: {x: -5.38969, y: 1010.5054, z: 140.12338}
+--- !u!114 &-5013731199820778523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583541513608221414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9773fa71f7a41174d8fe6e354731d8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planeDetectionMode: 1
+  _enbleDragFeature: 1
+  _enableRotateFeature: 1
+  _rotateFactor: 750
+  _enableScaleFeature: 1
+  _enableARQualityControl: 1
+  _scaleFactor: 400
+  _enableShadowPlane: 1
+  _shadowPlane: {fileID: 0}
+  _enableTouchIndicator: 1
+  _touchIndicator: {fileID: 4542212312934817459, guid: d4f72ad4ce6eb914caef05719de23292,
+    type: 3}
+  _scalePersentageIndicator: {fileID: 0}

@@ -1,0 +1,32 @@
+# material "Verre"
+newmtl 84a392b9_5386_4136_a4fe_7edbcc07e937
+illum 1
+Ka 0 0 0
+Kd 0.454902 0.380392 0.313726
+Ks 0 0 0
+Tf 1 1 1
+d 0.121387
+Tr 0.878613
+
+# material "Default Material"
+newmtl Default_Material
+illum 1
+Ka 0.792157 0.211765 0.0627451
+Kd 1 0 0
+Ks 0 0 0
+Tf 1 1 1
+d 1
+Tr 0
+
+# material "Black metal"
+newmtl c5bf5e2f_809c_4167_8a0a_57dee12ccb44
+illum 1
+Ka 0 0 0
+Kd 0.0588235 0.0588235 0.0588235
+Ks 1 1 1
+Tf 1 1 1
+d 1
+Tr 0
+Ns 0.225
+
+
