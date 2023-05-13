@@ -20,7 +20,7 @@ public class SpawningObjectDetails : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Enter rotate factor")]
-    int _rotateFactor = 750;
+    public int _rotateFactor = 300;
 
     [SerializeField]
     [Tooltip("Remove tick if you dont need Scaling feature")]
@@ -68,9 +68,9 @@ public class SpawningObjectDetails : MonoBehaviour
 
     private Quaternion _initialPlacedRotation;
 
-    private bool _isRotateLock = false;
+    public bool _isRotateLock = false;
 
-    private bool _isMovingLock = false;
+    public bool _isMovingLock = false;
 
     public string name = "unnamed object";
 

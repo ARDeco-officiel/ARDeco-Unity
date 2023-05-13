@@ -69,8 +69,11 @@ public class ScaleRotateHandler : MonoBehaviour
 
     public Texture2D texture;
     public GameObject test;
+    public GameObject buttonRotation;
 
+    private bool isTouchingButton = false;
 
+    private float timeButtonTouched = 0;
     //Rotating variables
 
     /// <summary>
@@ -107,12 +110,10 @@ public class ScaleRotateHandler : MonoBehaviour
     bool isScalingEnabled = true;
     
     private GameObject _lastObjectTouched = null;
-
+    
     // Update is called once per frames
     void Update()
     {
-        if (_lastObjectTouched != null)
-            Debug.Log(_lastObjectTouched.GetComponent<SpawningObjectDetails>().name);
         if (TouchIndicatorHandler.hitObject != null)
         {
                 InitialScaleOfGameObject = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
@@ -211,11 +212,19 @@ public class ScaleRotateHandler : MonoBehaviour
                 }
             }
             _lastObjectTouched = TouchIndicatorHandler.hitObject;
+            if (!_lastObjectTouched.GetComponent<SpawningObjectDetails>()._isRotateLock)
+                buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 180);
+            else
+                buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            if (Input.touchCount >= 1)
+      /*      if (Input.touchCount >=  1)
+            {
+                buttonRotation.SetActive(false);
                 _lastObjectTouched = null;
+            }*/
+
             isScalling = false;
             isRotating = false;
             calledForRotating = false;
@@ -244,7 +253,27 @@ public class ScaleRotateHandler : MonoBehaviour
     /// </summary>
     /// <param name="current"></param>
     /// <returns></returns>
-    /// 
+    ///
+    ///
+    public void changeRotationState()
+    {
+        if (_lastObjectTouched != null)
+        {
+            if (_lastObjectTouched.GetComponent<SpawningObjectDetails>()._rotateFactor == 0)
+                _lastObjectTouched.GetComponent<SpawningObjectDetails>()._rotateFactor = 300;
+            else
+                _lastObjectTouched.GetComponent<SpawningObjectDetails>()._rotateFactor = 0;
+        }
+        Debug.Log("Quaternion " + buttonRotation.GetComponent<RectTransform>().rotation.x + " " + buttonRotation.GetComponent<RectTransform>().rotation.y + " " + buttonRotation.GetComponent<RectTransform>().rotation.z);
+        if (buttonRotation.GetComponent<RectTransform>().rotation.z == 0)
+        {
+            buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 180);
+        }
+        else
+        {
+            buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
     void CheckScaling()
     {
         if ((Math.Abs(currentDistance - InitialDistance) < 40) && !calledForScalling)
