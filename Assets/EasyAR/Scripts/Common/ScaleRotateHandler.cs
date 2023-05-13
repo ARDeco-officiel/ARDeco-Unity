@@ -264,15 +264,6 @@ public class ScaleRotateHandler : MonoBehaviour
             else
                 _lastObjectTouched.GetComponent<SpawningObjectDetails>()._rotateFactor = 0;
         }
-        Debug.Log("Quaternion " + buttonRotation.GetComponent<RectTransform>().rotation.x + " " + buttonRotation.GetComponent<RectTransform>().rotation.y + " " + buttonRotation.GetComponent<RectTransform>().rotation.z);
-        if (buttonRotation.GetComponent<RectTransform>().rotation.z == 0)
-        {
-            buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 180);
-        }
-        else
-        {
-            buttonRotation.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
-        }
     }
     void CheckScaling()
     {

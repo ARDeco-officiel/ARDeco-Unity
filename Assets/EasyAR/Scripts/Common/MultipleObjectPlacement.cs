@@ -159,6 +159,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// </summary>
     bool wentToScale = false;
 
+    public GameObject moveButton;
+
 
     /// <summary>
     /// Access shadow plane
@@ -227,6 +229,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// AR Plane Manager Reference
     /// </summary>
     ARPlaneManager aRPlaneManager;
+    
+    private GameObject _lastObjectTouched = null;
 
 
     void Start()
@@ -314,6 +318,8 @@ public class MultipleObjectPlacement : MonoBehaviour
         //Finding the Dragging position 
         if (TouchIndicatorHandler.isTouchedTheObject && (Input.touchCount < 2) && !gotMultipleTouchs)
         {
+            Debug.Log("Dragging Object at speed " + spawnedObject.GetComponent<SpawningObjectDetails>()._speedFactor);
+            _lastObjectTouched = TouchIndicatorHandler.hitObject;
             if (!TryGetTouchPosition(out Vector2 touchPosition))
                 return;
 
@@ -324,7 +330,7 @@ public class MultipleObjectPlacement : MonoBehaviour
                     var hitPose = s_Hits[0].pose;
                     if (TouchIndicatorHandler.hitObject != null &&
                     (PlaneRecognizor(s_Hits[0].trackable.transform) == TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() ||
-                    spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() == "Everything"))
+                    spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() == "Everything") && spawnedObject.GetComponent<SpawningObjectDetails>()._speedFactor > 10)
                     {
                         if(TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().enbleDragFeature)
                             TouchIndicatorHandler.hitObject.transform.position = hitPose.position;
@@ -341,6 +347,19 @@ public class MultipleObjectPlacement : MonoBehaviour
         MultipleTouchHandler();
         freezePositionWhenRotate();
         SendObjectToDetectedPosition();
+    }
+
+    public void EditSpeedState()
+    {
+        Debug.Log("Touched button");
+        if (_lastObjectTouched.GetComponent<SpawningObjectDetails>()._speedFactor >= 50)
+        {
+            _lastObjectTouched.GetComponent<SpawningObjectDetails>()._speedFactor = 0;
+        }
+        else
+        {
+            _lastObjectTouched.GetComponent<SpawningObjectDetails>()._speedFactor = 100;
+        }
     }
 
     private void GetWallPlacement(ARRaycastHit _planeHit, out Quaternion orientation, out Quaternion zUp)

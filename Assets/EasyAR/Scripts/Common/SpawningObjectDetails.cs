@@ -21,6 +21,10 @@ public class SpawningObjectDetails : MonoBehaviour
     [SerializeField]
     [Tooltip("Enter rotate factor")]
     public int _rotateFactor = 300;
+    
+    [SerializeField]
+    [Tooltip("Enter rotate factor")]
+    public int _speedFactor = 0;
 
     [SerializeField]
     [Tooltip("Remove tick if you dont need Scaling feature")]
