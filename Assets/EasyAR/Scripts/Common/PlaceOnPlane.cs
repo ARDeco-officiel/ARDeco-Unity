@@ -63,7 +63,7 @@ public class PlaceOnPlane : MonoBehaviour
 
     /// <summary>
     /// Time to delay the object appear infront of the camera
-    /// </summary>
+    /// </summarys> 
     float time = 0;
 
     /// <summary>
