@@ -54,7 +54,7 @@ public class SpawningObjectDetails : MonoBehaviour
     [Tooltip("Drag and drop Scale perceantage here")]
     private GameObject _scalePersentageIndicator;
 
-   
+
 
     private Vector3 _initialScale = new Vector3(0, 0, 0);
 
@@ -67,6 +67,12 @@ public class SpawningObjectDetails : MonoBehaviour
     private Quaternion _initialRotation;
 
     private Quaternion _initialPlacedRotation;
+
+    private bool _isRotateLock = false;
+
+    private bool _isMovingLock = false;
+
+    public string name = "unnamed object";
 
 
     public bool enableTouchIndicator

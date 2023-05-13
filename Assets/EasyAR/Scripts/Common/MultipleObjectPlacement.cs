@@ -38,6 +38,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// Spawning object in the AR view
     /// </summary>
     public static GameObject spawnedObject;
+    
     /// <summary>
     /// Max value for keep the object within the clipping values
     /// </summary>

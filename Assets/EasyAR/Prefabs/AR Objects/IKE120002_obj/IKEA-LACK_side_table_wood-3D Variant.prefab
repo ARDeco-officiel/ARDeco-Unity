@@ -178,6 +178,7 @@ MonoBehaviour:
     type: 3}
   _scalePersentageIndicator: {fileID: 2779201514272753015, guid: 1e3e7c5fd35bf4f4b8a4fe246d38241c,
     type: 3}
+  name: IKEA Lack side table
 --- !u!1 &5158853114878580816
 GameObject:
   m_ObjectHideFlags: 0

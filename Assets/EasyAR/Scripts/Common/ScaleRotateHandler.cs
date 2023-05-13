@@ -105,16 +105,16 @@ public class ScaleRotateHandler : MonoBehaviour
 
     bool isRotationEnabled = true;
     bool isScalingEnabled = true;
-
+    
+    private GameObject _lastObjectTouched = null;
 
     // Update is called once per frames
     void Update()
     {
-
+        if (_lastObjectTouched != null)
+            Debug.Log(_lastObjectTouched.GetComponent<SpawningObjectDetails>().name);
         if (TouchIndicatorHandler.hitObject != null)
         {
-            
-                
                 InitialScaleOfGameObject = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
                 scaleFactor = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scaleFactor;
                 MinimumValue = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale*0.4f;
@@ -124,12 +124,12 @@ public class ScaleRotateHandler : MonoBehaviour
                 isRotationEnabled = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().enableRotateFeature;
                 isScalingEnabled = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().enableScaleFeature;
                 limitScale(MinimumValue, MaximumValue);
-            
+                
                 if (Input.touchCount == 0)
-            {
-                isScalling = false;
-                isRotating = false;
-            }
+                {
+                    isScalling = false;
+                    isRotating = false;
+                }
             if (Input.touchCount > 1)
             {
                 if (Input.GetTouch(1).phase == TouchPhase.Began)
@@ -210,10 +210,12 @@ public class ScaleRotateHandler : MonoBehaviour
                     currentRotation = 0;
                 }
             }
+            _lastObjectTouched = TouchIndicatorHandler.hitObject;
         }
         else
         {
-
+            if (Input.touchCount >= 1)
+                _lastObjectTouched = null;
             isScalling = false;
             isRotating = false;
             calledForRotating = false;
