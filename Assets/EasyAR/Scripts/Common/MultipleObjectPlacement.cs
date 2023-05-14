@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 
 
 /// <summary>
@@ -232,6 +233,13 @@ public class MultipleObjectPlacement : MonoBehaviour
     
     private GameObject _lastObjectTouched = null;
 
+    public Text totalPriceText;
+    public float totalPrice = 0;
+
+    public Text maxPriceText;
+    public float maxPrice = 2500;
+
+    public GameObject leftPanel;
 
     void Start()
     {
@@ -242,6 +250,8 @@ public class MultipleObjectPlacement : MonoBehaviour
         scanSurface = GameObject.FindWithTag("ScanSurfaceAnim");
         notification = GameObject.FindWithTag("NotificationPanel");
         scanSurface.SetActive(true);
+        totalPriceText.text = totalPrice.ToString("F2");
+        maxPriceText.text = maxPrice.ToString("F2");
     }
     void Update()
     {
@@ -343,7 +353,6 @@ public class MultipleObjectPlacement : MonoBehaviour
         {
             TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.rotation = Quaternion.Euler(ArCamera.transform.rotation.eulerAngles.x, ArCamera.transform.rotation.eulerAngles.y, 0);
         }
-
         MultipleTouchHandler();
         freezePositionWhenRotate();
         SendObjectToDetectedPosition();
@@ -591,9 +600,38 @@ public class MultipleObjectPlacement : MonoBehaviour
         initialScale = spawnedObject.transform.localScale;
         spawnedObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.localScale = spawnedObject.GetComponent<Collider>().bounds.size * 0.0015f;
         spawnedObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.position = new Vector3(0, spawnedObject.GetComponent<Collider>().bounds.size.y * 1.2f, 0);
+        spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice = (spawnedObject.GetComponent<SpawningObjectDetails>().priceValue + spawnedObject.GetComponent<SpawningObjectDetails>().deliveryPrice) + (spawnedObject.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5;
+        if (totalPrice + spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice > maxPrice)
+        {
+            Destroy(spawnedObject);
+            return;
+        }
+        totalPrice += spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice;
+        totalPriceText.text = totalPrice.ToString("F2");
         spawnedObject.SetActive(false);
     }
 
+    public void movePanel(GameObject panel)
+    {
+        Vector3 pos = panel.GetComponent<RectTransform>().position;
+        if (pos.x < 450) // & active panel
+        {
+            panel.GetComponent<RectTransform>().position = new Vector3(450, pos.y, pos.z);
+        }
+        else
+        {
+            panel.GetComponent<RectTransform>().position = new Vector3(-850, pos.y, pos.z);
+        }
+    }
+    
+    public void EditMaxPrice(float value)
+    {
+        if (maxPrice + value < totalPrice)
+            return;
+        maxPrice += value;
+        maxPriceText.text = maxPrice.ToString("F2");
+    }
+    
     /// <summary>
     /// Detect the ray hit plane type
     /// </summary>
