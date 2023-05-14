@@ -167,6 +167,7 @@ MonoBehaviour:
   _enbleDragFeature: 1
   _enableRotateFeature: 1
   _rotateFactor: 750
+  _speedFactor: 100
   _enableScaleFeature: 1
   _enableARQualityControl: 1
   _scaleFactor: 400
@@ -178,6 +179,11 @@ MonoBehaviour:
     type: 3}
   _scalePersentageIndicator: {fileID: 2779201514272753015, guid: 1e3e7c5fd35bf4f4b8a4fe246d38241c,
     type: 3}
+  priceValue: 69
+  deliveryPrice: 12
+  totalPrice: 0
+  _isRotateLock: 0
+  _isMovingLock: 0
   name: IKEA Lack side table
 --- !u!1 &5158853114878580816
 GameObject:

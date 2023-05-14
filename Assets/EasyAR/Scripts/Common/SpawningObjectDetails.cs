@@ -23,8 +23,8 @@ public class SpawningObjectDetails : MonoBehaviour
     public int _rotateFactor = 300;
     
     [SerializeField]
-    [Tooltip("Enter rotate factor")]
-    public int _speedFactor = 0;
+    [Tooltip("Enter speed factor")]
+    public int _speedFactor = 100;
 
     [SerializeField]
     [Tooltip("Remove tick if you dont need Scaling feature")]
@@ -58,7 +58,12 @@ public class SpawningObjectDetails : MonoBehaviour
     [Tooltip("Drag and drop Scale perceantage here")]
     private GameObject _scalePersentageIndicator;
 
+    [Tooltip("Set the price of your object here")]
+    public float priceValue = 0;
 
+    public float deliveryPrice = 0;
+
+    public float totalPrice = 0;
 
     private Vector3 _initialScale = new Vector3(0, 0, 0);
 

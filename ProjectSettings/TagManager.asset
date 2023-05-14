@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TouchIndicator
+  - ScalePercentage
+  - NotificationPanel
+  - ScanSurfaceAnim
+  - DetectionText
+  - ShadowPlane
+  - PizzaToppingArea
   layers:
   - Default
   - TransparentFX
@@ -11,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - UIpanel
   - 
   - 
   - 
