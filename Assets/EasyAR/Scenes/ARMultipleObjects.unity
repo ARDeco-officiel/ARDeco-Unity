@@ -345,7 +345,7 @@ MonoBehaviour:
   totalPrice: 0
   maxPriceText: {fileID: 332601640}
   maxPrice: 2500
-  leftPanel: {fileID: 167301504}
+  obj: {fileID: 1302485984}
 --- !u!114 &97902989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.2, y: -20.4}
+  m_AnchoredPosition: {x: -20.200012, y: -20.400024}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134957435
@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 167301507}
   - component: {fileID: 167301506}
   - component: {fileID: 167301505}
+  - component: {fileID: 167301508}
   m_Layer: 6
   m_Name: SliderPanel
   m_TagString: Untagged
@@ -807,14 +808,35 @@ RectTransform:
   - {fileID: 437005080}
   - {fileID: 955139155}
   - {fileID: 134957434}
-  m_Father: {fileID: 334922308}
-  m_RootOrder: 1
+  m_Father: {fileID: 1302485988}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -421, y: 586.0207}
-  m_SizeDelta: {x: 426.2346, y: 923.76}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -821, y: -146.66571}
+  m_SizeDelta: {x: -373.7654, y: -791.61475}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &167301508
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167301504}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!114 &216417975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,7 +1315,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 568383958}
-  - {fileID: 167301507}
   m_Father: {fileID: 1302485988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3189,6 +3210,7 @@ RectTransform:
   - {fileID: 334922308}
   - {fileID: 1778448672}
   - {fileID: 253191567}
+  - {fileID: 167301507}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

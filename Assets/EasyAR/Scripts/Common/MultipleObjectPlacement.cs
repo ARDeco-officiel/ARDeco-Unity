@@ -239,8 +239,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     public Text maxPriceText;
     public float maxPrice = 2500;
 
-    public GameObject leftPanel;
-
+    public GameObject obj;
+    
     void Start()
     {
         InitialData._singleObjectPlacement = false;
@@ -614,9 +614,11 @@ public class MultipleObjectPlacement : MonoBehaviour
     public void movePanel(GameObject panel)
     {
         Vector3 pos = panel.GetComponent<RectTransform>().position;
+        Vector3 canvasPos = obj.GetComponent<RectTransform>().position;
+
         if (pos.x < 450) // & active panel
         {
-            panel.GetComponent<RectTransform>().position = new Vector3(450, pos.y, pos.z);
+            panel.GetComponent<RectTransform>().position = canvasPos;
         }
         else
         {
