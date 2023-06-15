@@ -6,6 +6,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
+using static NetworkManager.ServerStatus;
 
 
 /// <summary>
@@ -240,6 +241,26 @@ public class MultipleObjectPlacement : MonoBehaviour
     public float maxPrice = 2500;
 
     public GameObject obj;
+    /// <summary>
+    /// store the server status
+    /// </summary>
+    public NetworkManager.ServerStatus status;
+
+    /// <summary>
+    /// return an instance of itself
+    /// </summary>
+    public static MultipleObjectPlacement instance;
+
+    /// <summary>
+    /// server pings
+    /// </summary>
+    public double lastping = 5;
+    
+    
+    public void Awake()
+    {
+        instance = this;
+    }
     
     void Start()
     {
@@ -255,6 +276,10 @@ public class MultipleObjectPlacement : MonoBehaviour
     }
     void Update()
     {
+        if (Time.time - lastping >= 5)
+        {
+            StartCoroutine(NetworkManager.instance.GetServerStatus());
+        }
         if (!TouchIndicatorHandler.isTouchedTheObject)
         {
             Vector3 rayEmitPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
