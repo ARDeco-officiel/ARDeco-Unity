@@ -273,13 +273,17 @@ public class MultipleObjectPlacement : MonoBehaviour
         scanSurface.SetActive(true);
         totalPriceText.text = totalPrice.ToString("F2");
         maxPriceText.text = maxPrice.ToString("F2");
+        StartCoroutine(NetworkManager.instance.GetServerStatus());
     }
     void Update()
     {
         if (Time.time - lastping >= 5)
         {
             StartCoroutine(NetworkManager.instance.GetServerStatus());
+            lastping = Time.time;
         }
+        //status.reachable = true;
+        
         if (!TouchIndicatorHandler.isTouchedTheObject)
         {
             Vector3 rayEmitPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);

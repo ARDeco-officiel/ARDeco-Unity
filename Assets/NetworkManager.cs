@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ using UnityEngine.UIElements;
 public class NetworkManager : MonoBehaviour
 {
 	public static NetworkManager instance;
-    private string ipServer = "149.202.52.148"; // 149.202.52.148 & 127.0.0.1
-    private string portServer = ":8080";
+    private string ipServer = "54.37.14.208"; // 149.202.52.148 & 127.0.0.1
+    private string portServer = ":8000";
 
     public void Awake()
     {
@@ -24,7 +25,7 @@ public class NetworkManager : MonoBehaviour
         public string version;
         public bool reachable;
         public string host;
-        public double last_updtate;
+        public string last_updtate;
     }
     
 /************************************************************ Server Requests ***********************************************************/
@@ -42,7 +43,8 @@ public class NetworkManager : MonoBehaviour
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
 	            MultipleObjectPlacement.instance.status = JsonUtility.FromJson<ServerStatus>(webRequest.downloadHandler.text);
-	            Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                Debug.Log(MultipleObjectPlacement.instance.status.ToString() + " " + MultipleObjectPlacement.instance.status.host.ToString());
+                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
             }
             else
             {
