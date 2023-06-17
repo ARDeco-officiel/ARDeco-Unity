@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LandingPage/Landing.unity
+    guid: f8a901fccaf92ff4b90e39f3733d4272
+  - enabled: 1
+    path: Assets/Scenes/LoginScene/Login.unity
+    guid: ab036f8742d931a4f944a925322af5d4
+  - enabled: 1
+    path: Assets/Scenes/RegisterScene/Register.unity
+    guid: a75f267f096e7b642bb75e3931faff3d
+  - enabled: 0
     path: Assets/EasyAR/Scenes/ARMultipleObjects.unity
     guid: b6038f81d35d3a543b7841519aa8dd7b
+  - enabled: 0
+    path: Assets/Scenes/ChangePasswordScene/ChangePassword.unity
+    guid: 29e741530207d3744a0edeba344a4c56
   - enabled: 0
     path: Assets/EasyAR/Scenes/ARTilling.unity
     guid: d108ae2f0ff58784e99c64fd8451a854

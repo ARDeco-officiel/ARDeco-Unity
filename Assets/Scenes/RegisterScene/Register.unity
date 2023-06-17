@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 40503607}
   - component: {fileID: 40503606}
   - component: {fileID: 40503605}
+  - component: {fileID: 40503608}
   m_Layer: 5
   m_Name: PhoneNumber InputField (TMP) (5)
   m_TagString: Untagged
@@ -523,6 +524,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40503603}
   m_CullTransparentMesh: 1
+--- !u!114 &40503608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40503603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &109312349
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +977,7 @@ GameObject:
   - component: {fileID: 131424780}
   - component: {fileID: 131424779}
   - component: {fileID: 131424778}
+  - component: {fileID: 131424781}
   m_Layer: 5
   m_Name: Register Button
   m_TagString: Untagged
@@ -986,7 +1003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -800}
+  m_AnchoredPosition: {x: -10, y: -750}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &131424778
@@ -1071,6 +1088,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131424776}
   m_CullTransparentMesh: 1
+--- !u!114 &131424781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131424776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &147601611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,6 +2911,7 @@ GameObject:
   - component: {fileID: 1114534984}
   - component: {fileID: 1114534983}
   - component: {fileID: 1114534982}
+  - component: {fileID: 1114534985}
   m_Layer: 5
   m_Name: Country InputField (TMP) (6)
   m_TagString: Untagged
@@ -3043,6 +3076,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114534980}
   m_CullTransparentMesh: 1
+--- !u!114 &1114534985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114534980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1206256186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,6 +3156,7 @@ GameObject:
   - component: {fileID: 1237683397}
   - component: {fileID: 1237683396}
   - component: {fileID: 1237683395}
+  - component: {fileID: 1237683398}
   m_Layer: 5
   m_Name: Firstname InputField (TMP)
   m_TagString: Untagged
@@ -3272,6 +3321,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237683393}
   m_CullTransparentMesh: 1
+--- !u!114 &1237683398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237683393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1348357535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,6 +3401,7 @@ GameObject:
   - component: {fileID: 1423284797}
   - component: {fileID: 1423284796}
   - component: {fileID: 1423284795}
+  - component: {fileID: 1423284798}
   m_Layer: 5
   m_Name: Login Button
   m_TagString: Untagged
@@ -3408,7 +3473,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1423284796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1423284798}
+        m_TargetAssemblyTypeName: LoginButtonScript, Assembly-CSharp
+        m_MethodName: OnLoginButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1423284796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,6 +3524,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423284793}
   m_CullTransparentMesh: 1
+--- !u!114 &1423284798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423284793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ae33b3c64fe3543baa16ea5e72aa82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1463481696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3994,7 @@ GameObject:
   - component: {fileID: 1719326256}
   - component: {fileID: 1719326255}
   - component: {fileID: 1719326254}
+  - component: {fileID: 1719326257}
   m_Layer: 5
   m_Name: Password InputField (TMP) (3)
   m_TagString: Untagged
@@ -4069,6 +4159,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719326252}
   m_CullTransparentMesh: 1
+--- !u!114 &1719326257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719326252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1721610213
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +4412,7 @@ GameObject:
   - component: {fileID: 1764692854}
   - component: {fileID: 1764692853}
   - component: {fileID: 1764692852}
+  - component: {fileID: 1764692855}
   m_Layer: 5
   m_Name: Lastname InputField (TMP) (1)
   m_TagString: Untagged
@@ -4471,6 +4577,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764692850}
   m_CullTransparentMesh: 1
+--- !u!114 &1764692855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764692850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1791370175
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,6 +4927,7 @@ GameObject:
   - component: {fileID: 1919727496}
   - component: {fileID: 1919727495}
   - component: {fileID: 1919727494}
+  - component: {fileID: 1919727497}
   m_Layer: 5
   m_Name: Confirm password InputField (TMP) (4)
   m_TagString: Untagged
@@ -4970,6 +5092,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919727492}
   m_CullTransparentMesh: 1
+--- !u!114 &1919727497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919727492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1964289291
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,6 +5172,7 @@ GameObject:
   - component: {fileID: 1998415712}
   - component: {fileID: 1998415711}
   - component: {fileID: 1998415710}
+  - component: {fileID: 1998415713}
   m_Layer: 5
   m_Name: Email InputField (TMP) (2)
   m_TagString: Untagged
@@ -5199,6 +5337,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998415708}
   m_CullTransparentMesh: 1
+--- !u!114 &1998415713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998415708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2022324144
 GameObject:
   m_ObjectHideFlags: 0
