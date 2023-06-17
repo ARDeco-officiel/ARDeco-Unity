@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class NetworkManager : MonoBehaviour
 {
 	public static NetworkManager instance;
-    private string ipServer = "54.37.14.208"; // 149.202.52.148 & 127.0.0.1
+    private string ipServer = "54.37.14.208"; // 54.37.14.208 & 127.0.0.1
     private string portServer = ":8000";
 
     public void Awake()
@@ -25,7 +25,7 @@ public class NetworkManager : MonoBehaviour
         public string version;
         public bool reachable;
         public string host;
-        public string last_updtate;
+        public double last_update;
     }
     
 /************************************************************ Server Requests ***********************************************************/
@@ -42,8 +42,9 @@ public class NetworkManager : MonoBehaviour
             int page = pages.Length - 1;
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
+                ServerStatus tmp = JsonUtility.FromJson<ServerStatus>(webRequest.downloadHandler.text);
+                Debug.Log(tmp.last_update + tmp.reachable.ToString());
 	            MultipleObjectPlacement.instance.status = JsonUtility.FromJson<ServerStatus>(webRequest.downloadHandler.text);
-                Debug.Log(MultipleObjectPlacement.instance.status.ToString() + " " + MultipleObjectPlacement.instance.status.host.ToString());
                 Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
             }
             else
