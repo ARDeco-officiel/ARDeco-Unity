@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 40503605}
   - component: {fileID: 40503608}
   m_Layer: 5
-  m_Name: PhoneNumber InputField (TMP) (5)
+  m_Name: Phone Number InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,6 +978,7 @@ GameObject:
   - component: {fileID: 131424779}
   - component: {fileID: 131424778}
   - component: {fileID: 131424781}
+  - component: {fileID: 131424782}
   m_Layer: 5
   m_Name: Register Button
   m_TagString: Untagged
@@ -1049,7 +1050,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 131424779}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 131424782}
+        m_TargetAssemblyTypeName: RegisterScript, Assembly-CSharp
+        m_MethodName: OnRegisterButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &131424779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1116,25 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
+--- !u!114 &131424782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131424776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd1046327846e742af6f1c9f2905c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstNameInput: {fileID: 0}
+  lastNameInput: {fileID: 0}
+  emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  confirmPasswordInput: {fileID: 0}
+  phoneNumberInput: {fileID: 0}
+  cityInput: {fileID: 0}
 --- !u!1 &147601611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2945,7 @@ GameObject:
   - component: {fileID: 1114534982}
   - component: {fileID: 1114534985}
   m_Layer: 5
-  m_Name: Country InputField (TMP) (6)
+  m_Name: City InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3158,7 +3190,7 @@ GameObject:
   - component: {fileID: 1237683395}
   - component: {fileID: 1237683398}
   m_Layer: 5
-  m_Name: Firstname InputField (TMP)
+  m_Name: Firstname InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3996,7 +4028,7 @@ GameObject:
   - component: {fileID: 1719326254}
   - component: {fileID: 1719326257}
   m_Layer: 5
-  m_Name: Password InputField (TMP) (3)
+  m_Name: Password InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4414,7 +4446,7 @@ GameObject:
   - component: {fileID: 1764692852}
   - component: {fileID: 1764692855}
   m_Layer: 5
-  m_Name: Lastname InputField (TMP) (1)
+  m_Name: Lastname InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4929,7 +4961,7 @@ GameObject:
   - component: {fileID: 1919727494}
   - component: {fileID: 1919727497}
   m_Layer: 5
-  m_Name: Confirm password InputField (TMP) (4)
+  m_Name: Confirm Password InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5174,7 +5206,7 @@ GameObject:
   - component: {fileID: 1998415710}
   - component: {fileID: 1998415713}
   m_Layer: 5
-  m_Name: Email InputField (TMP) (2)
+  m_Name: Email InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

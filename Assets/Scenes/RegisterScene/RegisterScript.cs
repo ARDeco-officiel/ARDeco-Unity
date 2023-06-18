@@ -31,28 +31,29 @@ public class RegisterScript : MonoBehaviour
 
     public void OnRegisterButtonClick()
     {
-        string firstName = firstnameInput.text;
-        string lastName = lastnameInput.text;
+        string firstName = firstNameInput.text;
+        string lastName = lastNameInput.text;
         string email = emailInput.text;
         string password = passwordInput.text;
         string confirmPassword = confirmPasswordInput.text;
         string phoneNumber = phoneNumberInput.text;
         string city = cityInput.text;
 
-        UnityEngine.Debug.Log("Firstname: " + firstName + ", Lastname: " + lastName + "Email: " + email + ", Password: " + password + "Confirm Password: " + confirmPassword + ", Phone Number: " + phoneNumber + "City: " + city);
-        StartCoroutine(registerRequest(firstName, lastName, email, password, phoneNumber, city));
+        UnityEngine.Debug.Log("Firstname: " + firstName + ", Lastname: " + lastName + ", Email: " + email + ", Password: " + password + ", Confirm Password: " + confirmPassword + ", Phone Number: " + phoneNumber + ", City: " + city);
+        StartCoroutine(registerRequest(firstName, lastName, email, password, confirmPassword, phoneNumber, city));
     }
 
-    public IEnumerator registerRequest(string firstName, string lastName, string email, string password, string phoneNumber, string city)
+    public IEnumerator registerRequest(string firstName, string lastName, string email, string password, string confirmPassword, string phoneNumber, string city)
     {
-        string uri = "http://" + 54.37.14.208 + 8000 + "/register";
+        string uri = "http://54.37.14.208:8000/register";
 
         WWWForm form = new WWWForm();
-        form.AddField("firstname", firstName);
-        form.AddField("lastname", lastName);
+        form.AddField("first_name", firstName);
+        form.AddField("last_name", lastName);
         form.AddField("email", email);
         form.AddField("password", password);
-        form.AddField("phonenumber", phoneNumber);
+        form.AddField("password_confirm", confirmPassword);
+        form.AddField("phone", phoneNumber);
         form.AddField("city", city);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))

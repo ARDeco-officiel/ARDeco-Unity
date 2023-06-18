@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RegisterScene/Register.unity
     guid: a75f267f096e7b642bb75e3931faff3d
-  - enabled: 0
+  - enabled: 1
     path: Assets/EasyAR/Scenes/ARMultipleObjects.unity
     guid: b6038f81d35d3a543b7841519aa8dd7b
   - enabled: 0
