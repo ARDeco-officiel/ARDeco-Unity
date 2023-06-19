@@ -23,15 +23,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProfilScene/Profil.unity
     guid: 3b91ada8b9fec454f977dfdbd4c54ce4
+  - enabled: 1
+    path: Assets/Scenes/ConfidentialityScene/Confidentiality.unity
+    guid: bd49363f910b79940ac0f0dd078ae366
   - enabled: 0
     path: Assets/EasyAR/Scenes/ARTilling.unity
     guid: d108ae2f0ff58784e99c64fd8451a854
   - enabled: 0
     path: Assets/EasyAR/Scenes/ARConfigurator.unity
     guid: 38d21acc7d8da4acd989f4a754957430
-  - enabled: 1
-    path: Assets/Scenes/ConfidentialityScene/Confidentiality.unity
-    guid: bd49363f910b79940ac0f0dd078ae366
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
