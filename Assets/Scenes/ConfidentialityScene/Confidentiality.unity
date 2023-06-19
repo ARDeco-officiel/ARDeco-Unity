@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 1035941070}
   - component: {fileID: 1035941069}
   m_Layer: 5
-  m_Name: Welcome Text
+  m_Name: Privacy Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,8 +585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 630, y: 400}
+  m_AnchoredPosition: {x: 50, y: 130}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035941069
 MonoBehaviour:
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome back !
+  m_text: Privacy & Security !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bfdcaa6e31db8d41ae963ca70ba930f, type: 2}
   m_sharedMaterial: {fileID: 7805667239467904687, guid: 0bfdcaa6e31db8d41ae963ca70ba930f,
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 1682089820}
   - component: {fileID: 1682089819}
   m_Layer: 5
-  m_Name: Login Text
+  m_Name: Download Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -150}
+  m_AnchoredPosition: {x: 50, y: -120}
   m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682089819
@@ -1047,9 +1047,9 @@ GameObject:
   - component: {fileID: 1801629895}
   - component: {fileID: 1801629894}
   - component: {fileID: 1801629893}
-  - component: {fileID: 1801629892}
+  - component: {fileID: 1801629897}
   m_Layer: 5
-  m_Name: Login Button
+  m_Name: Download Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,20 +1076,6 @@ RectTransform:
   m_AnchoredPosition: {x: -10, y: -100}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1801629892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801629890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828bc8c70a341444888a2d0885463735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emailInput: {fileID: 0}
-  passwordInput: {fileID: 0}
 --- !u!114 &1801629893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,9 +1135,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1801629892}
+      - m_Target: {fileID: 1801629890}
         m_TargetAssemblyTypeName: LoginScript, Assembly-CSharp
-        m_MethodName: OnLoginButtonClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1199,3 +1185,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801629890}
   m_CullTransparentMesh: 1
+--- !u!114 &1801629897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801629890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc165fc96ada8647844b896e7ec0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

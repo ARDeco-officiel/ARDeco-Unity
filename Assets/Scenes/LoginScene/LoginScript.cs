@@ -12,6 +12,7 @@ public class LoginScript : MonoBehaviour
 {
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
+    public Color errorColor = Color.red;
 
     private void Start()
     {
@@ -44,6 +45,8 @@ public class LoginScript : MonoBehaviour
             {
                 UnityEngine.Debug.Log("Error on login : " + webRequest.error);
                 UnityEngine.Debug.Log("Response : " + webRequest.downloadHandler.text);
+                emailInput.image.color = errorColor;
+                passwordInput.image.color = errorColor;
             }
             else
             {

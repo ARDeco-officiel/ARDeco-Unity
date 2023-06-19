@@ -3170,8 +3170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828bc8c70a341444888a2d0885463735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emailInput: {fileID: 0}
-  passwordInput: {fileID: 0}
+  emailInput: {fileID: 1407943078}
+  passwordInput: {fileID: 1507262294}
+  errorColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &1933124293
 GameObject:
   m_ObjectHideFlags: 0
