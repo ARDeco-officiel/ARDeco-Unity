@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Android;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 public class DownloadDataScript : MonoBehaviour
 {
@@ -9,8 +11,10 @@ public class DownloadDataScript : MonoBehaviour
         UserData userData = GetUserData();
 
         string jsonData = JsonUtility.ToJson(userData, true);
+        string saveDirectory = Path.Combine(UnityEngine.Application.persistentDataPath, "Downloads");
+        Directory.CreateDirectory(saveDirectory);
 
-        string savePath = Path.Combine(UnityEngine.Application.persistentDataPath, "Downloads/user_data.json");
+        string savePath = Path.Combine(saveDirectory, "user_data.json");
 
         File.WriteAllText(savePath, jsonData);
 
