@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -255,7 +256,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// server pings
     /// </summary>
     public double lastping = 5;
-    
+    private bool collisionDetected = false;
+
     
     public void Awake()
     {
@@ -400,6 +402,13 @@ public class MultipleObjectPlacement : MonoBehaviour
         }
     }
 
+    public void deleteObject()
+    {
+        this.totalPrice -= (_lastObjectTouched.GetComponent<SpawningObjectDetails>().priceValue + _lastObjectTouched.GetComponent<SpawningObjectDetails>().deliveryPrice) + (_lastObjectTouched.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5;
+        this.totalPriceText.text = this.totalPrice.ToString("F2");
+        Destroy(this._lastObjectTouched);
+    }
+
     private void GetWallPlacement(ARRaycastHit _planeHit, out Quaternion orientation, out Quaternion zUp)
     {
         TrackableId planeHit_ID = _planeHit.trackableId;
@@ -507,19 +516,33 @@ public class MultipleObjectPlacement : MonoBehaviour
                 {
                     spawnedObject.GetComponent<SpawningObjectDetails>().shadowPlane.SetActive(false);
                 }
-                if ((Time.time - startTimeLiftDown) > 0.15f)
+
+                if (!collisionDetected)
                 {
-                    if (!startTimeSet) { startTime = Time.time; startTimeSet = true; }
-                    float distCovered = (Time.time - startTime) * speed * 300 * Time.deltaTime;
-                    float fractionOfJourney = distCovered / journeyLength;
-                    spawnedObject.transform.position = Vector3.Lerp(startMarker, endMarker, fractionOfJourney);
-                    if ((int)(spawnedObject.transform.position.magnitude - endMarker.magnitude) == 0)
+                    if ((Time.time - startTimeLiftDown) > 0.15f)
                     {
-                        spawnedObject.transform.position = endMarker;
-                        wentToPosition = false;
-                        startTimeSet = false;
-                        rotate = false;
+                        if (!startTimeSet)
+                        {
+                            startTime = Time.time;
+                            startTimeSet = true;
+                        }
+
+                        float distCovered = (Time.time - startTime) * speed * 300 * Time.deltaTime;
+                        float fractionOfJourney = distCovered / journeyLength;
+                        spawnedObject.transform.position = Vector3.Lerp(startMarker, endMarker, fractionOfJourney);
+                        if ((int)(spawnedObject.transform.position.magnitude - endMarker.magnitude) == 0)
+                        {
+                            spawnedObject.transform.position = endMarker;
+                            wentToPosition = false;
+                            startTimeSet = false;
+                            rotate = false;
+                        }
                     }
+                }
+                else
+                {
+                    spawnedObject.transform.position = initialPosition;
+
                 }
 
             }
@@ -532,6 +555,20 @@ public class MultipleObjectPlacement : MonoBehaviour
        
 
     }
+    
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<BoxCollider>() != null)
+            collisionDetected = true; // Collision detectée, on active le flag.
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<BoxCollider>() != null)
+            collisionDetected = false; // Pas de collision, on désactive le flag.
+    }
+    
 
     /// <summary>
     /// Hide the touch scale Percenntage indicator
@@ -690,5 +727,14 @@ public class MultipleObjectPlacement : MonoBehaviour
         hideIndicator = !hideIndicator;
         canvas.SetActive(!canvas.activeSelf);
         _PointerIndicator.SetActive(!_PointerIndicator.activeSelf);
+    }
+
+    /// <summary>
+    /// get last selected item
+    /// </summary>
+
+    public GameObject getLastItem()
+    {
+        return _lastObjectTouched;
     }
 }

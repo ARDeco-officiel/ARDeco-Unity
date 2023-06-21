@@ -31,7 +31,7 @@ public class ProfileScript : MonoBehaviour
         city.text = "Paris";
     }
 
-    public void ChangeProfileImage()
+  /*  public void ChangeProfileImage()
     {
         string imagePath = OpenFilePicker();
 
@@ -62,7 +62,7 @@ public class ProfileScript : MonoBehaviour
     {
 
         string[] extensions = { "jpg", "jpeg", "png" };
-        string path = UnityEditor.EditorUtility.OpenFilePanel("Sélectionner une image", "", string.Join(",", extensions));
+        string path = UnityEditor.EditorUtility.OpenFilePanel("SÃ©lectionner une image", "", string.Join(",", extensions));
 
         if (!string.IsNullOrEmpty(path))
         {
@@ -70,5 +70,5 @@ public class ProfileScript : MonoBehaviour
         }
 
         return path;
-    }
+    }*/
 }
