@@ -31,16 +31,16 @@ public class ProfileScript : MonoBehaviour
         city.text = "Paris";
     }
 
-    public void ChangeProfileImage()
+    /*public void ChangeProfileImage()
     {
-        string imagePath = OpenFilePicker();
-
-        if (!string.IsNullOrEmpty(imagePath))
+        OpenFilePicker((imagePath) =>
         {
-            PlayerPrefs.SetString("ProfileImagePath", imagePath);
-
-            LoadProfileImage();
-        }
+            if (!string.IsNullOrEmpty(imagePath))
+            {
+                PlayerPrefs.SetString("ProfileImagePath", imagePath);
+                LoadProfileImage();
+            }
+        });
     }
 
     private void LoadProfileImage()
@@ -58,17 +58,22 @@ public class ProfileScript : MonoBehaviour
         }
     }
 
-    private string OpenFilePicker()
+    private void OpenFilePicker(System.Action<string> callback)
     {
+        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 
-        string[] extensions = { "jpg", "jpeg", "png" };
-        string path = UnityEditor.EditorUtility.OpenFilePanel("Sélectionner une image", "", string.Join(",", extensions));
+        AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+        string intentAction = intentClass.GetStatic<string>("ACTION_OPEN_DOCUMENT");
 
-        if (!string.IsNullOrEmpty(path))
-        {
- 
-        }
+        AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentAction);
 
-        return path;
-    }
+        intent.Call<AndroidJavaObject>("setType", "image/*");
+        intent.Call<AndroidJavaObject>("addCategory", intentClass.GetStatic<string>("CATEGORY_OPENABLE"));
+
+        AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intent, "Select Image");
+        AndroidJavaObject resultCallback = new AndroidJavaObject("com.example.FilePickerCallback", new FilePickerCallback(callback));
+
+        currentActivity.Call("startActivityForResult", chooser, 0, resultCallback);
+    }*/
 }

@@ -744,7 +744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Download
+  m_text: Get information
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bfdcaa6e31db8d41ae963ca70ba930f, type: 2}
   m_sharedMaterial: {fileID: 7805667239467904687, guid: 0bfdcaa6e31db8d41ae963ca70ba930f,
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can dowload you information when you click on the button
+  m_text: You can get your information when you click on the button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bfdcaa6e31db8d41ae963ca70ba930f, type: 2}
   m_sharedMaterial: {fileID: 7805667239467904687, guid: 0bfdcaa6e31db8d41ae963ca70ba930f,
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 1801629893}
   - component: {fileID: 1801629897}
   m_Layer: 5
-  m_Name: Download Button
+  m_Name: Send Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,9 +1135,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1801629890}
-        m_TargetAssemblyTypeName: LoginScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1801629897}
+        m_TargetAssemblyTypeName: SendDataScript, Assembly-CSharp
+        m_MethodName: SendEmail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1146,7 +1146,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1801629895
 MonoBehaviour:
   m_ObjectHideFlags: 0
