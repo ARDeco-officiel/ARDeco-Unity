@@ -19,7 +19,7 @@ public class sidePanelScript : MonoBehaviour
         }
         else
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive(true);
         }
     }
 }

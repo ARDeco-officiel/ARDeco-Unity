@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class NetworkManager : MonoBehaviour
 {
 	public static NetworkManager instance;
-    private string ipServer = "54.37.14.208"; // 54.37.14.208 & 127.0.0.1
+    private string ipServer = "api.ardeco.app"; // 54.37.14.208 & 127.0.0.1
     private string portServer = ":8000";
 
     public void Awake()
@@ -32,7 +32,7 @@ public class NetworkManager : MonoBehaviour
 
     public IEnumerator GetServerStatus()
     {
-		string uri = "http://" + ipServer + portServer + "/status";
+		string uri = "https://" + ipServer + "/status";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             // Request and wait for the desired page.

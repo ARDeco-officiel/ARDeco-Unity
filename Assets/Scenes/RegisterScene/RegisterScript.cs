@@ -45,7 +45,7 @@ public class RegisterScript : MonoBehaviour
 
     public IEnumerator registerRequest(string firstName, string lastName, string email, string password, string confirmPassword, string phoneNumber, string city)
     {
-        string uri = "http://54.37.14.208:8000/register";
+        string uri = "https://api.ardeco.app/register";
 
         WWWForm form = new WWWForm();
         form.AddField("first_name", firstName);

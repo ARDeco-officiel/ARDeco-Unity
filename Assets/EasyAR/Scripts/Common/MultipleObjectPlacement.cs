@@ -256,9 +256,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// server pings
     /// </summary>
     public double lastping = 5;
-    private bool collisionDetected = false;
 
-    
     public void Awake()
     {
         instance = this;
@@ -359,7 +357,6 @@ public class MultipleObjectPlacement : MonoBehaviour
         //Finding the Dragging position 
         if (TouchIndicatorHandler.isTouchedTheObject && (Input.touchCount < 2) && !gotMultipleTouchs)
         {
-            Debug.Log("Dragging Object at speed " + spawnedObject.GetComponent<SpawningObjectDetails>()._speedFactor);
             _lastObjectTouched = TouchIndicatorHandler.hitObject;
             if (!TryGetTouchPosition(out Vector2 touchPosition))
                 return;
@@ -404,6 +401,7 @@ public class MultipleObjectPlacement : MonoBehaviour
 
     public void deleteObject()
     {
+        Debug.Log(this._lastObjectTouched + " delete");
         this.totalPrice -= (_lastObjectTouched.GetComponent<SpawningObjectDetails>().priceValue + _lastObjectTouched.GetComponent<SpawningObjectDetails>().deliveryPrice) + (_lastObjectTouched.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5;
         this.totalPriceText.text = this.totalPrice.ToString("F2");
         Destroy(this._lastObjectTouched);
@@ -516,33 +514,19 @@ public class MultipleObjectPlacement : MonoBehaviour
                 {
                     spawnedObject.GetComponent<SpawningObjectDetails>().shadowPlane.SetActive(false);
                 }
-
-                if (!collisionDetected)
+                if ((Time.time - startTimeLiftDown) > 0.15f)
                 {
-                    if ((Time.time - startTimeLiftDown) > 0.15f)
+                    if (!startTimeSet) { startTime = Time.time; startTimeSet = true; }
+                    float distCovered = (Time.time - startTime) * speed * 300 * Time.deltaTime;
+                    float fractionOfJourney = distCovered / journeyLength;
+                    spawnedObject.transform.position = Vector3.Lerp(startMarker, endMarker, fractionOfJourney);
+                    if ((int)(spawnedObject.transform.position.magnitude - endMarker.magnitude) == 0)
                     {
-                        if (!startTimeSet)
-                        {
-                            startTime = Time.time;
-                            startTimeSet = true;
-                        }
-
-                        float distCovered = (Time.time - startTime) * speed * 300 * Time.deltaTime;
-                        float fractionOfJourney = distCovered / journeyLength;
-                        spawnedObject.transform.position = Vector3.Lerp(startMarker, endMarker, fractionOfJourney);
-                        if ((int)(spawnedObject.transform.position.magnitude - endMarker.magnitude) == 0)
-                        {
-                            spawnedObject.transform.position = endMarker;
-                            wentToPosition = false;
-                            startTimeSet = false;
-                            rotate = false;
-                        }
+                        spawnedObject.transform.position = endMarker;
+                        wentToPosition = false;
+                        startTimeSet = false;
+                        rotate = false;
                     }
-                }
-                else
-                {
-                    spawnedObject.transform.position = initialPosition;
-
                 }
 
             }
@@ -555,20 +539,6 @@ public class MultipleObjectPlacement : MonoBehaviour
        
 
     }
-    
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<BoxCollider>() != null)
-            collisionDetected = true; // Collision detectée, on active le flag.
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<BoxCollider>() != null)
-            collisionDetected = false; // Pas de collision, on désactive le flag.
-    }
-    
 
     /// <summary>
     /// Hide the touch scale Percenntage indicator

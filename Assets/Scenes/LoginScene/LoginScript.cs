@@ -30,7 +30,7 @@ public class LoginScript : MonoBehaviour
 
     public IEnumerator loginRequest(string email, string password)
     {
-        string uri = "http://54.37.14.208:8000/login";
+        string uri = "https://api.ardeco.app/login";
 
         WWWForm form = new WWWForm();
         form.AddField("email", email);
