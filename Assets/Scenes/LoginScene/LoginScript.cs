@@ -7,7 +7,6 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-
 public class LoginScript : MonoBehaviour
 {
     public TMP_InputField emailInput;
@@ -47,12 +46,32 @@ public class LoginScript : MonoBehaviour
             }
             else
             {
-                PlayerPrefs.SetString("email", email);
-                PlayerPrefs.SetString("password", password);
+                string jsonResponse = webRequest.downloadHandler.text;
+                LoginResponseData responseData = JsonUtility.FromJson<LoginResponseData>(jsonResponse);
+
+                string jwt = responseData.data.jwt;
+                int userID = responseData.data.userID;
+
+                PlayerPrefs.SetString("jwt", jwt);
+                PlayerPrefs.SetInt("userID", userID);
                 UnityEngine.Debug.Log("Login successful!");
                 UnityEngine.Debug.Log("Response : " + webRequest.downloadHandler.text);
                 SceneManager.LoadScene("ARMultipleObjects");
             }
         }
     }
+}
+
+// Créez une classe pour mapper les données de la réponse JSON
+[System.Serializable]
+public class LoginResponseData
+{
+    public Data data;
+}
+
+[System.Serializable]
+public class Data
+{
+    public string jwt;
+    public int userID;
 }

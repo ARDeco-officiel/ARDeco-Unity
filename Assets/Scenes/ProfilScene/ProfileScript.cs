@@ -3,10 +3,10 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using System.Collections.Generic;
 
 public class ProfileScript : MonoBehaviour
 {
-    public UnityEngine.UI.Image profileImage;
     public TMP_InputField firstName;
     public TMP_InputField lastName;
     public TMP_InputField emailInput;
@@ -15,21 +15,26 @@ public class ProfileScript : MonoBehaviour
 
     private void Start()
     {
-        string email = PlayerPrefs.GetString("email");
-        string password = PlayerPrefs.GetString("password");
+        string jwt = PlayerPrefs.GetString("jwt");
+        int userID = PlayerPrefs.GetInt("userID");
         // Appelez la fonction de récupération du profil lorsque la scène démarre
-        StartCoroutine(GetProfileRequest(email, password));
+        StartCoroutine(GetProfileRequest(jwt, userID.ToString()));
     }
 
-    public IEnumerator GetProfileRequest(string email, string password)
+    public IEnumerator GetProfileRequest(string jwt, string userID)
     {
-        string uri = "https://api.ardeco.app/user"; // Remplacez par l'URL de votre endpoint de récupération de profil
-        WWWForm form = new WWWForm();
-        form.AddField("email", email);
-        form.AddField("password", password);
+        string uri = "https://api.ardeco.app/user/" + userID; // Remplacez par l'URL de votre endpoint de récupération de profil
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Authorization", "Bearer " + jwt);
 
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri)) // Utilisez Get pour récupérer le profil
         {
+            // Ajoutez les headers à la requête
+            foreach (var header in headers)
+            {
+                webRequest.SetRequestHeader(header.Key, header.Value);
+            }
+
             yield return webRequest.SendWebRequest();
 
             if (webRequest.isNetworkError || webRequest.isHttpError)
@@ -47,11 +52,17 @@ public class ProfileScript : MonoBehaviour
                 ProfileData profileData = JsonUtility.FromJson<ProfileData>(jsonResponse);
 
                 // Mettez à jour les champs de texte avec les données du profil
-                firstName.text = profileData.firstName;
-                lastName.text = profileData.lastName;
+                firstName.text = profileData.firstname;
+                lastName.text = profileData.lastname;
                 emailInput.text = profileData.email;
-                phoneNumber.text = profileData.phoneNumber;
+                phoneNumber.text = profileData.phone;
                 city.text = profileData.city;
+                firstName.interactable = false;
+                lastName.interactable = false;
+                emailInput.interactable = false;
+                phoneNumber.interactable = false;
+                city.interactable = false;
+                Debug.Log("Prénom : " + profileData.firstname);
             }
         }
     }
@@ -61,10 +72,10 @@ public class ProfileScript : MonoBehaviour
 [System.Serializable]
 public class ProfileData
 {
-    public string firstName;
-    public string lastName;
+    public string firstname;
+    public string lastname;
     public string email;
-    public string phoneNumber;
+    public string phone;
     public string city;
 }
     /*public void ChangeProfileImage()

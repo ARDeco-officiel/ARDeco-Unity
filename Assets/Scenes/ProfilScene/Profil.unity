@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 115669238}
   - component: {fileID: 115669240}
   - component: {fileID: 115669239}
+  - component: {fileID: 115669241}
   m_Layer: 5
   m_Name: profileImage
   m_TagString: Untagged
@@ -525,6 +526,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115669237}
   m_CullTransparentMesh: 1
+--- !u!114 &115669241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115669237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2690367d2ef704484d27647f80ef25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstName: {fileID: 1425260116}
+  lastName: {fileID: 858819718}
+  emailInput: {fileID: 2039851346}
+  phoneNumber: {fileID: 855952233}
+  city: {fileID: 606603620}
 --- !u!1 &230366650
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,11 +595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2690367d2ef704484d27647f80ef25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profileImage: {fileID: 115669239}
-  firstName: {fileID: 1425260116}
-  lastName: {fileID: 858819718}
-  emailInput: {fileID: 2039851346}
-  phoneNumber: {fileID: 855952233}
+  firstName: {fileID: 0}
+  lastName: {fileID: 0}
+  emailInput: {fileID: 0}
+  phoneNumber: {fileID: 0}
   city: {fileID: 606603620}
 --- !u!114 &230366653
 MonoBehaviour:
@@ -1879,7 +1896,7 @@ GameObject:
   - component: {fileID: 606603620}
   - component: {fileID: 606603619}
   m_Layer: 5
-  m_Name: City InputField
+  m_Name: city
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,7 +1977,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 606603621}
   m_TextViewport: {fileID: 1204021681}
   m_TextComponent: {fileID: 1033019075}
@@ -2283,7 +2300,7 @@ GameObject:
   - component: {fileID: 855952233}
   - component: {fileID: 855952232}
   m_Layer: 5
-  m_Name: Phone Number InputField
+  m_Name: phoneNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2364,7 +2381,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 855952234}
   m_TextViewport: {fileID: 1459856359}
   m_TextComponent: {fileID: 233177013}
@@ -2475,7 +2492,7 @@ GameObject:
   - component: {fileID: 858819718}
   - component: {fileID: 858819717}
   m_Layer: 5
-  m_Name: Lastname InputField
+  m_Name: lastName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2556,7 +2573,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 858819719}
   m_TextViewport: {fileID: 1731956475}
   m_TextComponent: {fileID: 382089506}
@@ -3386,7 +3403,7 @@ GameObject:
   - component: {fileID: 1425260116}
   - component: {fileID: 1425260115}
   m_Layer: 5
-  m_Name: Firstname InputField
+  m_Name: firstName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3467,7 +3484,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1425260117}
   m_TextViewport: {fileID: 1670406709}
   m_TextComponent: {fileID: 337161470}
@@ -5155,6 +5172,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973638142}
   m_CullTransparentMesh: 1
+--- !u!1 &2006669775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006669777}
+  - component: {fileID: 2006669776}
+  m_Layer: 0
+  m_Name: profil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2006669776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006669775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2690367d2ef704484d27647f80ef25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstName: {fileID: 1425260116}
+  lastName: {fileID: 858819718}
+  emailInput: {fileID: 2039851346}
+  phoneNumber: {fileID: 855952233}
+  city: {fileID: 606603620}
+--- !u!4 &2006669777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006669775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2039851343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5235,7 @@ GameObject:
   - component: {fileID: 2039851346}
   - component: {fileID: 2039851345}
   m_Layer: 5
-  m_Name: Email InputField
+  m_Name: emailInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5250,7 +5316,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2039851347}
   m_TextViewport: {fileID: 953526145}
   m_TextComponent: {fileID: 1973638144}
