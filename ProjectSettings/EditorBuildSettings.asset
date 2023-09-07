@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConfidentialityScene/Confidentiality.unity
     guid: bd49363f910b79940ac0f0dd078ae366
+  - enabled: 1
+    path: Assets/Scenes/Settings/Settings.unity
+    guid: 5dc9941b1ed78ce49b32ab604658f7a2
+  - enabled: 1
+    path: Assets/Scenes/PrivacyPolicyScene/PrivacyPolicy.unity
+    guid: 0fa6abb9469cb9443bd7807a053a1404
+  - enabled: 1
+    path: Assets/Scenes/AboutUsScene/AboutUs.unity
+    guid: f591c9b5099aa2543a6a0afd533ccbef
   - enabled: 0
     path: Assets/EasyAR/Scenes/ARTilling.unity
     guid: d108ae2f0ff58784e99c64fd8451a854

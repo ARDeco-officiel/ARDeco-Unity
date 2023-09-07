@@ -2859,10 +2859,9 @@ GameObject:
   - component: {fileID: 614898097}
   - component: {fileID: 614898096}
   - component: {fileID: 614898095}
-  - component: {fileID: 614898094}
-  - component: {fileID: 614898093}
+  - component: {fileID: 614898099}
   m_Layer: 5
-  m_Name: Profil Button
+  m_Name: Settings Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2883,35 +2882,11 @@ RectTransform:
   m_Father: {fileID: 1302485988}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 640}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 200, y: -71}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &614898093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614898091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96fad835355c244c8a87f15464496ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &614898094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614898091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011dad4765ef45042860840802d9b6cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &614898095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2971,9 +2946,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 614898093}
-        m_TargetAssemblyTypeName: GoToProfilScript, Assembly-CSharp
-        m_MethodName: OnProfilButtonClick
+      - m_Target: {fileID: 614898099}
+        m_TargetAssemblyTypeName: GoToSettingsScript, Assembly-CSharp
+        m_MethodName: OnSettingsButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3003,7 +2978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ea851b1c7a3a29540b5ba55f8ec571fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36fb9d9b02d27094b81e18bf866d1c1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3021,6 +2996,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614898091}
   m_CullTransparentMesh: 1
+--- !u!114 &614898099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614898091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96fad835355c244c8a87f15464496ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675818603
 GameObject:
   m_ObjectHideFlags: 0

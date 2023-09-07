@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class ChangePasswordScript : MonoBehaviour
 {
@@ -13,58 +15,85 @@ public class ChangePasswordScript : MonoBehaviour
 
     public void ChangePassword()
     {
-        // Vérifier si les champs sont vides
+        // VÃ©rifier si les champs sont vides
         if (string.IsNullOrEmpty(currentPasswordInput.text) ||
             string.IsNullOrEmpty(newPasswordInput.text) ||
             string.IsNullOrEmpty(confirmPasswordInput.text))
         {
-            errorText.text = "Veuillez remplir tous les champs";
-            errorText.color = Color.red;
-            errorText.gameObject.SetActive(true);
+            ShowErrorMessage("Veuillez remplir tous les champs");
             return;
         }
 
-        // Vérifier si les mots de passe correspondent
+        // VÃ©rifier si les mots de passe correspondent
         if (newPasswordInput.text != confirmPasswordInput.text)
         {
-            errorText.text = "Les mots de passe ne correspondent pas";
-            errorText.color = Color.red;
-            errorText.gameObject.SetActive(true);
+            ShowErrorMessage("Les mots de passe ne correspondent pas");
             return;
         }
 
-        // Vérifier si le mot de passe actuel est correct
+        // VÃ©rifier si le mot de passe actuel est correct
         if (!CheckCurrentPassword(currentPasswordInput.text))
         {
-            errorText.text = "Mot de passe actuel incorrect";
-            errorText.color = Color.red;
-            errorText.gameObject.SetActive(true);
+            ShowErrorMessage("Mot de passe actuel incorrect");
             return;
         }
 
-        // Mettre à jour le mot de passe dans la base de données
-        UpdatePassword(newPasswordInput.text);
-
-        // Réinitialiser les champs et afficher un message de succès
-        currentPasswordInput.text = string.Empty;
-        newPasswordInput.text = string.Empty;
-        confirmPasswordInput.text = string.Empty;
-        errorText.text = "Mot de passe changé avec succès";
-        errorText.color = Color.green;
-        errorText.gameObject.SetActive(true);
+        // Appeler la mÃ©thode ChangePasswordRequest pour mettre Ã  jour le mot de passe
+        StartCoroutine(ChangePasswordRequest(newPasswordInput.text));
     }
 
     private bool CheckCurrentPassword(string currentPassword)
     {
-        // Logique pour vérifier si le mot de passe actuel est correct
-        // Vous devez implémenter cette logique en fonction de votre système de base de données ou d'authentification
-        // Cette méthode doit retourner true si le mot de passe est correct, sinon false
-        return true; // Remplacer par votre logique de vérification du mot de passe actuel
+        // ImplÃ©mentez ici la logique pour vÃ©rifier si le mot de passe actuel est correct
+        // Vous pouvez utiliser une approche similaire Ã  ce que vous avez dans votre mÃ©thode de connexion (loginRequest)
+        // Cela dÃ©pendra de votre systÃ¨me d'authentification
+        // Cette mÃ©thode doit retourner true si le mot de passe est correct, sinon false
+        return true; // Remplacer par votre logique de vÃ©rification du mot de passe actuel
     }
 
-    private void UpdatePassword(string newPassword)
+    private IEnumerator ChangePasswordRequest(string newPassword)
     {
-        // Logique pour mettre à jour le mot de passe dans la base de données
-        // Vous devez implémenter cette logique en fonction de votre système de base de données ou d'authentification
+        string email = PlayerPrefs.GetString("email"); // RÃ©cupÃ©rez l'email de PlayerPrefs
+
+        string uri = "https://api.ardeco.app/changepassword"; // Remplacez par l'URL de votre endpoint de changement de mot de passe
+
+        WWWForm form = new WWWForm();
+        form.AddField("email", email);
+        form.AddField("newPassword", newPassword);
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                ShowErrorMessage("Erreur lors du changement de mot de passe : " + webRequest.error);
+            }
+            else
+            {
+                // RÃ©initialisez les champs et affichez un message de succÃ¨s
+                currentPasswordInput.text = string.Empty;
+                newPasswordInput.text = string.Empty;
+                confirmPasswordInput.text = string.Empty;
+                ShowSuccessMessage("Mot de passe changÃ© avec succÃ¨s");
+
+                UnityEngine.Debug.Log("Changement de mot de passe rÃ©ussi!");
+                UnityEngine.Debug.Log("RÃ©ponse : " + webRequest.downloadHandler.text);
+            }
+        }
+    }
+
+    private void ShowErrorMessage(string message)
+    {
+        errorText.text = message;
+        errorText.color = Color.red;
+        errorText.gameObject.SetActive(true);
+    }
+
+    private void ShowSuccessMessage(string message)
+    {
+        errorText.text = message;
+        errorText.color = Color.green;
+        errorText.gameObject.SetActive(true);
     }
 }

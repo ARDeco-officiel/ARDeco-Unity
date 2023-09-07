@@ -54,10 +54,10 @@ extern void DoubleTap_Start_mAD3E9AFE7375DDBC9154B1FE0EE61A4AA6A647F9 (void);
 extern void DoubleTap_Update_mCA3187C84F4D5F91EA168F3E412050AEC52B1FEB (void);
 // 0x00000015 System.Void DoubleTap::.ctor()
 extern void DoubleTap__ctor_m015A35F3C01328564D370BFED3A94337A476CB9A (void);
-// 0x00000016 System.Void GoToProfilScript::OnProfilButtonClick()
-extern void GoToProfilScript_OnProfilButtonClick_mD23BC459FAE31D665D15F5ED33CA5F1FFD2152B3 (void);
-// 0x00000017 System.Void GoToProfilScript::.ctor()
-extern void GoToProfilScript__ctor_mA7C3E8CE17A4B2407617C5561D6A6611D13BAEA8 (void);
+// 0x00000016 System.Void GoToSettingsScript::OnSettingsButtonClick()
+extern void GoToSettingsScript_OnSettingsButtonClick_m156FAAE490BB5CEF6817529EF4FCF37E13BA6B12 (void);
+// 0x00000017 System.Void GoToSettingsScript::.ctor()
+extern void GoToSettingsScript__ctor_m97DCA0774328484C7F387599FD30B67438688F1F (void);
 // 0x00000018 System.Void InitialData::ShowPrefabInARView(UnityEngine.GameObject)
 extern void InitialData_ShowPrefabInARView_m3CF7F030D2D10A09D40F3390CAC6B91C6FC6592A (void);
 // 0x00000019 System.Void InitialData::ARConfigurator(UnityEngine.GameObject)
@@ -590,109 +590,123 @@ extern void ChangePasswordScript_CheckCurrentPassword_mF4D5A02ED1A331BE482660396
 extern void ChangePasswordScript_UpdatePassword_m86AB873A42B275D8FEF658463EFB315CFB58F548 (void);
 // 0x00000121 System.Void ChangePasswordScript::.ctor()
 extern void ChangePasswordScript__ctor_mFAF6315AC4294AE446664604B8ACD09993ADE306 (void);
-// 0x00000122 System.Void SendDataScript::SendEmail()
-extern void SendDataScript_SendEmail_m80D5FD2E4AEC35707DDE7E2D6780B40FF634AC1D (void);
-// 0x00000123 System.Void SendDataScript::.ctor()
-extern void SendDataScript__ctor_m1CA51EADDA1B99EE788D05F9B752E972C46EFF9B (void);
-// 0x00000124 System.Void LoginButtonScript::OnLoginButtonClick()
+// 0x00000122 System.Void UserInfoDownloader::OnDownloadButtonClicked()
+extern void UserInfoDownloader_OnDownloadButtonClicked_m8A1A1FBBF0141D69BDBE79E35519D36253FBAF38 (void);
+// 0x00000123 System.String UserInfoDownloader::GenerateUserInfo()
+extern void UserInfoDownloader_GenerateUserInfo_m1095C6A83CF451C7F2A2864BCA500760285B0996 (void);
+// 0x00000124 System.Void UserInfoDownloader::.ctor()
+extern void UserInfoDownloader__ctor_mB4DC2F3F201B3F89B6DCAE90BD309FD4C0C0505D (void);
+// 0x00000125 System.Void LoginButtonScript::OnLoginButtonClick()
 extern void LoginButtonScript_OnLoginButtonClick_m6D932A25BFD2AAEA39D893A9ABD4F6CCEFCE8692 (void);
-// 0x00000125 System.Void LoginButtonScript::.ctor()
+// 0x00000126 System.Void LoginButtonScript::.ctor()
 extern void LoginButtonScript__ctor_m21C3B748FF83127A6880CBE3E5BDD0BDBDBD93E0 (void);
-// 0x00000126 System.Void RegisterButtonScript::OnRegisterButtonClick()
+// 0x00000127 System.Void RegisterButtonScript::OnRegisterButtonClick()
 extern void RegisterButtonScript_OnRegisterButtonClick_m174591CBB05C19E7A8343997538727FBCD515560 (void);
-// 0x00000127 System.Void RegisterButtonScript::.ctor()
+// 0x00000128 System.Void RegisterButtonScript::.ctor()
 extern void RegisterButtonScript__ctor_m6B0694C58EC270BFA360AED78B4BC175C60FF93D (void);
-// 0x00000128 System.Void LoginScript::Start()
+// 0x00000129 System.Void LoginScript::Start()
 extern void LoginScript_Start_m0C3E4E3171CF5EFD14C73EA726AEFCE725AE81F6 (void);
-// 0x00000129 System.Void LoginScript::OnLoginButtonClick()
+// 0x0000012A System.Void LoginScript::OnLoginButtonClick()
 extern void LoginScript_OnLoginButtonClick_mF5D4588229667C80A4CF4E537F83456E1439E0D9 (void);
-// 0x0000012A System.Collections.IEnumerator LoginScript::loginRequest(System.String,System.String)
+// 0x0000012B System.Collections.IEnumerator LoginScript::loginRequest(System.String,System.String)
 extern void LoginScript_loginRequest_m089C29B9EA78AD84809268FAB6D55FF718B7255F (void);
-// 0x0000012B System.Void LoginScript::.ctor()
+// 0x0000012C System.Void LoginScript::.ctor()
 extern void LoginScript__ctor_m0F9765D44929962E69F72ED37EF62BED31883D6D (void);
-// 0x0000012C System.Void LoginScript/<loginRequest>d__4::.ctor(System.Int32)
+// 0x0000012D System.Void LoginScript/<loginRequest>d__4::.ctor(System.Int32)
 extern void U3CloginRequestU3Ed__4__ctor_mE6B688271708C8B7832E9E2FC1DE4FABBB178301 (void);
-// 0x0000012D System.Void LoginScript/<loginRequest>d__4::System.IDisposable.Dispose()
+// 0x0000012E System.Void LoginScript/<loginRequest>d__4::System.IDisposable.Dispose()
 extern void U3CloginRequestU3Ed__4_System_IDisposable_Dispose_mAF5A391F7CB6CE794ADA5097EA1A8B8FFE2C1226 (void);
-// 0x0000012E System.Boolean LoginScript/<loginRequest>d__4::MoveNext()
+// 0x0000012F System.Boolean LoginScript/<loginRequest>d__4::MoveNext()
 extern void U3CloginRequestU3Ed__4_MoveNext_mC8FB3D9D68D0671FB8D6AD906AA98865BD02613A (void);
-// 0x0000012F System.Void LoginScript/<loginRequest>d__4::<>m__Finally1()
+// 0x00000130 System.Void LoginScript/<loginRequest>d__4::<>m__Finally1()
 extern void U3CloginRequestU3Ed__4_U3CU3Em__Finally1_mE312BD30E70B1759D6951FBACABCD65F9E357181 (void);
-// 0x00000130 System.Object LoginScript/<loginRequest>d__4::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+// 0x00000131 System.Object LoginScript/<loginRequest>d__4::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
 extern void U3CloginRequestU3Ed__4_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mF1DD422AA8CF7D72AB1BE5115F83D7D665173A57 (void);
-// 0x00000131 System.Void LoginScript/<loginRequest>d__4::System.Collections.IEnumerator.Reset()
+// 0x00000132 System.Void LoginScript/<loginRequest>d__4::System.Collections.IEnumerator.Reset()
 extern void U3CloginRequestU3Ed__4_System_Collections_IEnumerator_Reset_m84C1F406EA38E0957DD2CE8075C388D7180D5E0C (void);
-// 0x00000132 System.Object LoginScript/<loginRequest>d__4::System.Collections.IEnumerator.get_Current()
+// 0x00000133 System.Object LoginScript/<loginRequest>d__4::System.Collections.IEnumerator.get_Current()
 extern void U3CloginRequestU3Ed__4_System_Collections_IEnumerator_get_Current_mC9C1A8ACEA3DDBD41FBB1CA1ECB6D70F1073FC4B (void);
-// 0x00000133 System.Void BackToARScript::OnBackButtonClick()
+// 0x00000134 System.Void BackToARScript::OnBackButtonClick()
 extern void BackToARScript_OnBackButtonClick_mC67CCBF027C89E7557D90C313C7C0F27FC0ECFB9 (void);
-// 0x00000134 System.Void BackToARScript::.ctor()
+// 0x00000135 System.Void BackToARScript::.ctor()
 extern void BackToARScript__ctor_mB9416D1CC68FBA45FCE4B44F838993ACD28149DA (void);
-// 0x00000135 System.Void BackToConfidentialityScript::OnConfidentialityButtonClick()
+// 0x00000136 System.Void BackToConfidentialityScript::OnConfidentialityButtonClick()
 extern void BackToConfidentialityScript_OnConfidentialityButtonClick_m8F66F30CC48E1493150EE297C7F33CC957ED2F79 (void);
-// 0x00000136 System.Void BackToConfidentialityScript::.ctor()
+// 0x00000137 System.Void BackToConfidentialityScript::.ctor()
 extern void BackToConfidentialityScript__ctor_m372FB5CA48C08E345A88F0C9DB849D536F3C5AC0 (void);
-// 0x00000137 System.Void BackToLandingScript::OnDeconnectionButtonClick()
+// 0x00000138 System.Void BackToLandingScript::OnDeconnectionButtonClick()
 extern void BackToLandingScript_OnDeconnectionButtonClick_mB160B145BE88599F2653AACDDD4A58D4502DF387 (void);
-// 0x00000138 System.Void BackToLandingScript::.ctor()
+// 0x00000139 System.Void BackToLandingScript::.ctor()
 extern void BackToLandingScript__ctor_m1D2BA4E4EA78D1CCE175A9A1A63D3E3E00335E75 (void);
-// 0x00000139 System.Void ButtonChangePasswordScript::OnChangePasswordClick()
+// 0x0000013A System.Void ButtonChangePasswordScript::OnChangePasswordClick()
 extern void ButtonChangePasswordScript_OnChangePasswordClick_m137896FC99CA816C69667C5AC3C6303CA709A140 (void);
-// 0x0000013A System.Void ButtonChangePasswordScript::.ctor()
+// 0x0000013B System.Void ButtonChangePasswordScript::.ctor()
 extern void ButtonChangePasswordScript__ctor_m917259C29ADD116AFE42CC6736BB891357389DD8 (void);
-// 0x0000013B System.Void ProfileScript::Start()
+// 0x0000013C System.Void ProfileScript::Start()
 extern void ProfileScript_Start_m222BAF57BA47F74A43FB49BBDA254D84DF6E8888 (void);
-// 0x0000013C System.Void ProfileScript::.ctor()
+// 0x0000013D System.Void ProfileScript::.ctor()
 extern void ProfileScript__ctor_m686E85115EFAA0903A8E00F1AA399425DC092743 (void);
-// 0x0000013D System.Void RegisterScript::Start()
+// 0x0000013E System.Void RegisterScript::Start()
 extern void RegisterScript_Start_m536981AE2AC9913448D5E2CCD39F20F85A181332 (void);
-// 0x0000013E System.Void RegisterScript::OnRegisterButtonClick()
+// 0x0000013F System.Void RegisterScript::OnRegisterButtonClick()
 extern void RegisterScript_OnRegisterButtonClick_m6F969526C9F81EFC65BFA90FCC941DBB1D919D3C (void);
-// 0x0000013F System.Collections.IEnumerator RegisterScript::registerRequest(System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+// 0x00000140 System.Collections.IEnumerator RegisterScript::registerRequest(System.String,System.String,System.String,System.String,System.String,System.String,System.String)
 extern void RegisterScript_registerRequest_m3FEA438D1867A31768A6FD2DC0A571B3D1E3DB44 (void);
-// 0x00000140 System.Void RegisterScript::.ctor()
+// 0x00000141 System.Void RegisterScript::.ctor()
 extern void RegisterScript__ctor_mAD54D23A0C3CD887A1CC907C8DAF0256FAB70BFD (void);
-// 0x00000141 System.Void RegisterScript/<registerRequest>d__9::.ctor(System.Int32)
+// 0x00000142 System.Void RegisterScript/<registerRequest>d__9::.ctor(System.Int32)
 extern void U3CregisterRequestU3Ed__9__ctor_m156FA8F97137DBE35308194E0127CDFF3EC2FA1D (void);
-// 0x00000142 System.Void RegisterScript/<registerRequest>d__9::System.IDisposable.Dispose()
+// 0x00000143 System.Void RegisterScript/<registerRequest>d__9::System.IDisposable.Dispose()
 extern void U3CregisterRequestU3Ed__9_System_IDisposable_Dispose_m94B162E2D8EB33888A2AB95E8CFE3E39AA2B5E5F (void);
-// 0x00000143 System.Boolean RegisterScript/<registerRequest>d__9::MoveNext()
+// 0x00000144 System.Boolean RegisterScript/<registerRequest>d__9::MoveNext()
 extern void U3CregisterRequestU3Ed__9_MoveNext_m36ED08B05E80590EF662F5E07AFD2532E20536C5 (void);
-// 0x00000144 System.Void RegisterScript/<registerRequest>d__9::<>m__Finally1()
+// 0x00000145 System.Void RegisterScript/<registerRequest>d__9::<>m__Finally1()
 extern void U3CregisterRequestU3Ed__9_U3CU3Em__Finally1_m8D294EDFCB1DDC9E6435D19F86A4C09488DCBBB2 (void);
-// 0x00000145 System.Object RegisterScript/<registerRequest>d__9::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+// 0x00000146 System.Object RegisterScript/<registerRequest>d__9::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
 extern void U3CregisterRequestU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m0033FE2EAC92BADE600D58B885C84DCB030CE3D8 (void);
-// 0x00000146 System.Void RegisterScript/<registerRequest>d__9::System.Collections.IEnumerator.Reset()
+// 0x00000147 System.Void RegisterScript/<registerRequest>d__9::System.Collections.IEnumerator.Reset()
 extern void U3CregisterRequestU3Ed__9_System_Collections_IEnumerator_Reset_mCD65A86933FC4A4654517AC32515CCEE76FDD02E (void);
-// 0x00000147 System.Object RegisterScript/<registerRequest>d__9::System.Collections.IEnumerator.get_Current()
+// 0x00000148 System.Object RegisterScript/<registerRequest>d__9::System.Collections.IEnumerator.get_Current()
 extern void U3CregisterRequestU3Ed__9_System_Collections_IEnumerator_get_Current_m60F654F95893A61FDD62E8CE83AA8F5DECE26D2F (void);
-// 0x00000148 System.Void ServerInfoScript::Update()
+// 0x00000149 System.Void BackToAboutUsScript::AboutUsButtonClick()
+extern void BackToAboutUsScript_AboutUsButtonClick_m842FB21377D7DF5C690EFD32FB5789234E858786 (void);
+// 0x0000014A System.Void BackToAboutUsScript::.ctor()
+extern void BackToAboutUsScript__ctor_m5074C1331BCAAAA7FF0D188E2DBCCECF5CE0A94A (void);
+// 0x0000014B System.Void BackToPPScript::PPButtonClick()
+extern void BackToPPScript_PPButtonClick_mBD98D32D597E3FC2FC8E82EFAA0294C5B286CF3C (void);
+// 0x0000014C System.Void BackToPPScript::.ctor()
+extern void BackToPPScript__ctor_mBAA933917867ED1B139A09C99A4D5077D62C21C7 (void);
+// 0x0000014D System.Void BackToSettingsScript::SettingsButtonClick()
+extern void BackToSettingsScript_SettingsButtonClick_m92170828A1202FAB6B899458E02DBE8E4D3614AD (void);
+// 0x0000014E System.Void BackToSettingsScript::.ctor()
+extern void BackToSettingsScript__ctor_m14D15FFEA1B67A4635733FCEDC8886140AEBA468 (void);
+// 0x0000014F System.Void ServerInfoScript::Update()
 extern void ServerInfoScript_Update_mCD74DB4024B71EFB310A837D19403676A6283A3C (void);
-// 0x00000149 System.Void ServerInfoScript::updateServerInfo()
+// 0x00000150 System.Void ServerInfoScript::updateServerInfo()
 extern void ServerInfoScript_updateServerInfo_mED4211304D955694533B753FA24D1292F1DEBB94 (void);
-// 0x0000014A System.Void ServerInfoScript::onCloseServerPanel(TMPro.TMP_Text)
+// 0x00000151 System.Void ServerInfoScript::onCloseServerPanel(TMPro.TMP_Text)
 extern void ServerInfoScript_onCloseServerPanel_mB4FE6A1AECC6E56DA6F66088D24FCEA9BB0AA063 (void);
-// 0x0000014B System.Void ServerInfoScript::.ctor()
+// 0x00000152 System.Void ServerInfoScript::.ctor()
 extern void ServerInfoScript__ctor_m95A606F60526B55758196EFC58FDBBCB2E4EF5B2 (void);
-// 0x0000014C System.Single UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::get_featheringWidth()
+// 0x00000153 System.Single UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::get_featheringWidth()
 extern void ARFeatheredPlaneMeshVisualizer_get_featheringWidth_m2945B61548EEE9250BE692F8592A6176D8BA7A2A (void);
-// 0x0000014D System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::set_featheringWidth(System.Single)
+// 0x00000154 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::set_featheringWidth(System.Single)
 extern void ARFeatheredPlaneMeshVisualizer_set_featheringWidth_mF695F727A4B05DB7F8236445865092203FDE5639 (void);
-// 0x0000014E System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::Awake()
+// 0x00000155 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::Awake()
 extern void ARFeatheredPlaneMeshVisualizer_Awake_mAE8DB3C77C9418A1972DF38B0A9EB5EF978A41C1 (void);
-// 0x0000014F System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::OnEnable()
+// 0x00000156 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::OnEnable()
 extern void ARFeatheredPlaneMeshVisualizer_OnEnable_mFDE5CAE08F9A2A5FD0B0CADACB35C90E1A8C9990 (void);
-// 0x00000150 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::OnDisable()
+// 0x00000157 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::OnDisable()
 extern void ARFeatheredPlaneMeshVisualizer_OnDisable_mEFB59B42F3EBD943D3DD11D07F489F13DFC715F9 (void);
-// 0x00000151 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::ARPlane_boundaryUpdated(UnityEngine.XR.ARFoundation.ARPlaneBoundaryChangedEventArgs)
+// 0x00000158 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::ARPlane_boundaryUpdated(UnityEngine.XR.ARFoundation.ARPlaneBoundaryChangedEventArgs)
 extern void ARFeatheredPlaneMeshVisualizer_ARPlane_boundaryUpdated_m7D4228920DB050CA200942FB953F4727DB19E2BA (void);
-// 0x00000152 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::GenerateBoundaryUVs(UnityEngine.Mesh)
+// 0x00000159 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::GenerateBoundaryUVs(UnityEngine.Mesh)
 extern void ARFeatheredPlaneMeshVisualizer_GenerateBoundaryUVs_mBE84E3CEBD2C9EF15B5F498FF4CDF7E1EF5DD205 (void);
-// 0x00000153 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::.ctor()
+// 0x0000015A System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::.ctor()
 extern void ARFeatheredPlaneMeshVisualizer__ctor_m0553A1CAC9A932F42C3B0B8966F010964A2A3CAC (void);
-// 0x00000154 System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::.cctor()
+// 0x0000015B System.Void UnityEngine.XR.ARFoundation.Samples.ARFeatheredPlaneMeshVisualizer::.cctor()
 extern void ARFeatheredPlaneMeshVisualizer__cctor_m48377EA229FE49C0705EFED67F49E7A82CB5BD1A (void);
-static Il2CppMethodPointer s_methodPointers[340] = 
+static Il2CppMethodPointer s_methodPointers[347] = 
 {
 	ARCameraMatcher_OnEnable_mFAA342D287D7C6BE01BFE632B64EBF180A13667C,
 	ARCameraMatcher_OnPreRender_m2ACBF7A4D32AE9494AC007CE0B9151F17DD73526,
@@ -715,8 +729,8 @@ static Il2CppMethodPointer s_methodPointers[340] =
 	DoubleTap_Start_mAD3E9AFE7375DDBC9154B1FE0EE61A4AA6A647F9,
 	DoubleTap_Update_mCA3187C84F4D5F91EA168F3E412050AEC52B1FEB,
 	DoubleTap__ctor_m015A35F3C01328564D370BFED3A94337A476CB9A,
-	GoToProfilScript_OnProfilButtonClick_mD23BC459FAE31D665D15F5ED33CA5F1FFD2152B3,
-	GoToProfilScript__ctor_mA7C3E8CE17A4B2407617C5561D6A6611D13BAEA8,
+	GoToSettingsScript_OnSettingsButtonClick_m156FAAE490BB5CEF6817529EF4FCF37E13BA6B12,
+	GoToSettingsScript__ctor_m97DCA0774328484C7F387599FD30B67438688F1F,
 	InitialData_ShowPrefabInARView_m3CF7F030D2D10A09D40F3390CAC6B91C6FC6592A,
 	InitialData_ARConfigurator_mF2B882CD61E5CC0E78CD43D5AFEB32556AA4905C,
 	InitialData__ctor_m7BF891D33D11A09B110789D08056F23D863BF269,
@@ -983,8 +997,9 @@ static Il2CppMethodPointer s_methodPointers[340] =
 	ChangePasswordScript_CheckCurrentPassword_mF4D5A02ED1A331BE48266039693F9EEDFBB8E8D1,
 	ChangePasswordScript_UpdatePassword_m86AB873A42B275D8FEF658463EFB315CFB58F548,
 	ChangePasswordScript__ctor_mFAF6315AC4294AE446664604B8ACD09993ADE306,
-	SendDataScript_SendEmail_m80D5FD2E4AEC35707DDE7E2D6780B40FF634AC1D,
-	SendDataScript__ctor_m1CA51EADDA1B99EE788D05F9B752E972C46EFF9B,
+	UserInfoDownloader_OnDownloadButtonClicked_m8A1A1FBBF0141D69BDBE79E35519D36253FBAF38,
+	UserInfoDownloader_GenerateUserInfo_m1095C6A83CF451C7F2A2864BCA500760285B0996,
+	UserInfoDownloader__ctor_mB4DC2F3F201B3F89B6DCAE90BD309FD4C0C0505D,
 	LoginButtonScript_OnLoginButtonClick_m6D932A25BFD2AAEA39D893A9ABD4F6CCEFCE8692,
 	LoginButtonScript__ctor_m21C3B748FF83127A6880CBE3E5BDD0BDBDBD93E0,
 	RegisterButtonScript_OnRegisterButtonClick_m174591CBB05C19E7A8343997538727FBCD515560,
@@ -1021,6 +1036,12 @@ static Il2CppMethodPointer s_methodPointers[340] =
 	U3CregisterRequestU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m0033FE2EAC92BADE600D58B885C84DCB030CE3D8,
 	U3CregisterRequestU3Ed__9_System_Collections_IEnumerator_Reset_mCD65A86933FC4A4654517AC32515CCEE76FDD02E,
 	U3CregisterRequestU3Ed__9_System_Collections_IEnumerator_get_Current_m60F654F95893A61FDD62E8CE83AA8F5DECE26D2F,
+	BackToAboutUsScript_AboutUsButtonClick_m842FB21377D7DF5C690EFD32FB5789234E858786,
+	BackToAboutUsScript__ctor_m5074C1331BCAAAA7FF0D188E2DBCCECF5CE0A94A,
+	BackToPPScript_PPButtonClick_mBD98D32D597E3FC2FC8E82EFAA0294C5B286CF3C,
+	BackToPPScript__ctor_mBAA933917867ED1B139A09C99A4D5077D62C21C7,
+	BackToSettingsScript_SettingsButtonClick_m92170828A1202FAB6B899458E02DBE8E4D3614AD,
+	BackToSettingsScript__ctor_m14D15FFEA1B67A4635733FCEDC8886140AEBA468,
 	ServerInfoScript_Update_mCD74DB4024B71EFB310A837D19403676A6283A3C,
 	ServerInfoScript_updateServerInfo_mED4211304D955694533B753FA24D1292F1DEBB94,
 	ServerInfoScript_onCloseServerPanel_mB4FE6A1AECC6E56DA6F66088D24FCEA9BB0AA063,
@@ -1035,354 +1056,361 @@ static Il2CppMethodPointer s_methodPointers[340] =
 	ARFeatheredPlaneMeshVisualizer__ctor_m0553A1CAC9A932F42C3B0B8966F010964A2A3CAC,
 	ARFeatheredPlaneMeshVisualizer__cctor_m48377EA229FE49C0705EFED67F49E7A82CB5BD1A,
 };
-static const int32_t s_InvokerIndices[340] = 
+static const int32_t s_InvokerIndices[347] = 
 {
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4267,
-	5359,
-	5466,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4357,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	1064,
-	5466,
-	2885,
-	5466,
-	8680,
-	8496,
-	8680,
-	8610,
-	8680,
-	5466,
-	8680,
-	4357,
-	4357,
-	4392,
-	3810,
-	5466,
-	5466,
-	8680,
-	5466,
-	1064,
-	5466,
-	5466,
-	2885,
-	5466,
-	8680,
-	8496,
-	8680,
-	8680,
-	8610,
-	5466,
-	5466,
-	8680,
-	4357,
-	5466,
-	8680,
-	5466,
-	3020,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4268,
+	5360,
+	5467,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4358,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	1065,
+	5467,
+	2886,
+	5467,
+	8681,
+	8497,
+	8681,
+	8611,
+	8681,
+	5467,
+	8681,
+	4358,
+	4358,
+	4393,
+	3811,
+	5467,
+	5467,
+	8681,
+	5467,
+	1065,
+	5467,
+	5467,
+	2886,
+	5467,
+	8681,
+	8497,
+	8681,
+	8681,
+	8611,
+	5467,
+	5467,
+	8681,
+	4358,
+	5467,
+	8681,
+	5467,
+	3021,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	3891,
+	4393,
+	2397,
+	3891,
+	4393,
+	1770,
+	5467,
+	8681,
+	5467,
+	5360,
+	8681,
+	8681,
+	8681,
+	8681,
+	5467,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	5467,
+	5467,
+	4268,
+	5467,
+	5467,
+	5271,
+	5271,
+	5271,
+	5271,
+	5271,
+	5271,
+	5332,
+	5332,
+	5376,
+	4372,
+	5376,
+	4372,
+	5459,
+	4443,
+	5459,
+	4443,
+	5459,
+	4443,
+	5459,
+	4443,
+	5332,
+	4332,
+	5360,
+	4358,
+	5360,
+	4358,
+	5360,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4358,
+	4358,
+	3811,
+	3811,
+	5467,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	5467,
+	2397,
+	5467,
+	5467,
+	5467,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5360,
+	5467,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	5467,
+	4358,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	4332,
+	5467,
+	5271,
+	5360,
+	5467,
+	5360,
+	5467,
+	4358,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4332,
+	5467,
+	5467,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4358,
+	4393,
+	4393,
+	4393,
+	5467,
+	5467,
+	5467,
+	5467,
+	4332,
+	4358,
 	3890,
-	4392,
-	2396,
-	3890,
-	4392,
-	1769,
-	5466,
-	8680,
-	5466,
-	5359,
-	8680,
-	8680,
-	8680,
-	8680,
-	5466,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	5466,
-	5466,
-	4267,
-	5466,
-	5466,
-	5270,
-	5270,
-	5270,
-	5270,
-	5270,
-	5270,
-	5331,
-	5331,
-	5375,
-	4371,
-	5375,
-	4371,
-	5458,
-	4442,
-	5458,
-	4442,
-	5458,
-	4442,
-	5458,
-	4442,
-	5331,
-	4331,
-	5359,
-	4357,
-	5359,
-	4357,
-	5359,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4357,
-	4357,
-	3810,
-	3810,
-	5466,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	5466,
-	2396,
-	5466,
-	5466,
-	5466,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5359,
-	5466,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	5466,
-	4357,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5359,
-	5466,
-	5466,
-	5466,
-	4331,
-	5466,
-	5270,
-	5359,
-	5466,
-	5359,
-	5466,
-	4357,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4331,
-	5466,
-	5466,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	4357,
-	4392,
-	4392,
-	4392,
-	5466,
-	5466,
-	5466,
-	5466,
-	4331,
-	4357,
-	3889,
-	5466,
-	4357,
-	5359,
-	5401,
+	5467,
+	4358,
+	5360,
+	5402,
 	215,
 	445,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5359,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	8680,
-	5401,
-	4392,
-	5466,
-	5466,
-	5466,
-	4243,
-	4357,
-	5466,
-	8680,
-	5466,
-	5359,
-	5466,
-	5466,
-	4331,
-	5466,
-	5270,
-	5466,
-	5359,
-	5466,
-	5359,
-	5466,
-	5466,
-	5466,
-	3020,
-	4357,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	1738,
-	5466,
-	4331,
-	5466,
-	5270,
-	5466,
-	5359,
-	5466,
-	5359,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
-	5466,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5360,
+	4358,
+	5467,
+	5467,
+	5467,
+	5467,
+	8681,
+	5402,
+	4393,
+	5467,
+	5467,
+	5467,
+	4244,
+	4358,
+	5467,
+	8681,
+	5467,
+	5360,
+	5467,
+	5467,
+	4332,
+	5467,
+	5271,
+	5467,
+	5360,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	3021,
+	4358,
+	5467,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	1739,
+	5467,
+	4332,
+	5467,
+	5271,
+	5467,
+	5360,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
 	105,
-	5466,
-	4331,
-	5466,
-	5270,
-	5466,
-	5359,
-	5466,
-	5359,
-	5466,
-	5466,
-	4357,
-	5466,
-	5401,
-	4392,
-	5466,
-	5466,
-	5466,
-	4243,
-	4357,
-	5466,
-	8680,
+	5467,
+	4332,
+	5467,
+	5271,
+	5467,
+	5360,
+	5467,
+	5360,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	5467,
+	4358,
+	5467,
+	5402,
+	4393,
+	5467,
+	5467,
+	5467,
+	4244,
+	4358,
+	5467,
+	8681,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	340,
+	347,
 	s_methodPointers,
 	0,
 	NULL,
