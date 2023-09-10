@@ -31,38 +31,38 @@ public class ChangePasswordScript : MonoBehaviour
             return;
         }
 
-        // Vérifier si le mot de passe actuel est correct
-        if (!CheckCurrentPassword(currentPasswordInput.text))
+        // Simuler la vérification du mot de passe actuel
+        if (!SimulateCheckCurrentPassword(currentPasswordInput.text))
         {
             ShowErrorMessage("Mot de passe actuel incorrect");
             return;
         }
 
-        // Appeler la méthode ChangePasswordRequest pour mettre à jour le mot de passe
-        StartCoroutine(ChangePasswordRequest(newPasswordInput.text));
+        // Appeler la méthode de changement de mot de passe
+        StartCoroutine(ChangePasswordRequest(PlayerPrefs.GetString("jwt"), newPasswordInput.text));
     }
 
-    private bool CheckCurrentPassword(string currentPassword)
+    // Simulation de la vérification du mot de passe actuel
+    private bool SimulateCheckCurrentPassword(string currentPassword)
     {
-        // Implémentez ici la logique pour vérifier si le mot de passe actuel est correct
-        // Vous pouvez utiliser une approche similaire à ce que vous avez dans votre méthode de connexion (loginRequest)
-        // Cela dépendra de votre système d'authentification
-        // Cette méthode doit retourner true si le mot de passe est correct, sinon false
-        return true; // Remplacer par votre logique de vérification du mot de passe actuel
+        // Remplacez ceci par votre propre logique de vérification du mot de passe actuel côté serveur
+        // Pour la simulation, nous utilisons un mot de passe fictif
+        string simulatedCurrentPassword = "motdepasse123";
+        return currentPassword == simulatedCurrentPassword;
     }
 
-    private IEnumerator ChangePasswordRequest(string newPassword)
+    private IEnumerator ChangePasswordRequest(string jwt, string newPassword)
     {
-        string email = PlayerPrefs.GetString("email"); // Récupérez l'email de PlayerPrefs
-
-        string uri = "https://api.ardeco.app/changepassword"; // Remplacez par l'URL de votre endpoint de changement de mot de passe
+        string uri = "https://votre-api.com/changepassword"; // Remplacez par l'URL de votre endpoint de changement de mot de passe
 
         WWWForm form = new WWWForm();
-        form.AddField("email", email);
         form.AddField("newPassword", newPassword);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))
         {
+            // Ajoutez le JWT aux headers de la requête
+            webRequest.SetRequestHeader("Authorization", "Bearer " + jwt);
+
             yield return webRequest.SendWebRequest();
 
             if (webRequest.isNetworkError || webRequest.isHttpError)
