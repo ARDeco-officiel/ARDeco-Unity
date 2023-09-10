@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 229357583}
   - component: {fileID: 229357582}
   - component: {fileID: 229357581}
+  - component: {fileID: 229357584}
   m_Layer: 5
   m_Name: Button  Support
   m_TagString: Untagged
@@ -581,9 +582,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BackToProfileScript, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+      - m_Target: {fileID: 229357584}
+        m_TargetAssemblyTypeName: BackToHelpAndSupport, Assembly-CSharp
+        m_MethodName: HelpAndSupportButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -631,6 +632,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229357577}
   m_CullTransparentMesh: 1
+--- !u!114 &229357584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229357577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36de7e75a2d7aca4faa0d6281c884eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253288949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1815,7 @@ GameObject:
   - component: {fileID: 520769732}
   - component: {fileID: 520769731}
   - component: {fileID: 520769730}
+  - component: {fileID: 520769733}
   m_Layer: 5
   m_Name: Button Updates
   m_TagString: Untagged
@@ -1876,9 +1890,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BackToProfileScript, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+      - m_Target: {fileID: 520769733}
+        m_TargetAssemblyTypeName: BackToUpdates, Assembly-CSharp
+        m_MethodName: UpdatesButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1926,6 +1940,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520769726}
   m_CullTransparentMesh: 1
+--- !u!114 &520769733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520769726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c8abd23fcc61147b7410b9e1794d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &615146472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2100,7 @@ GameObject:
   - component: {fileID: 645019854}
   - component: {fileID: 645019853}
   - component: {fileID: 645019852}
+  - component: {fileID: 645019855}
   m_Layer: 5
   m_Name: Button Sounds
   m_TagString: Untagged
@@ -2148,9 +2175,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BackToProfileScript, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+      - m_Target: {fileID: 645019855}
+        m_TargetAssemblyTypeName: BackToSounds, Assembly-CSharp
+        m_MethodName: SoundsButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2198,6 +2225,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645019848}
   m_CullTransparentMesh: 1
+--- !u!114 &645019855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645019848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18758f977a0eab9488f3f2ba6ff2e713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685783182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +2855,7 @@ GameObject:
   - component: {fileID: 1113503198}
   - component: {fileID: 1113503197}
   - component: {fileID: 1113503196}
+  - component: {fileID: 1113503199}
   m_Layer: 5
   m_Name: Button Language
   m_TagString: Untagged
@@ -2890,9 +2930,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BackToProfileScript, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+      - m_Target: {fileID: 1113503199}
+        m_TargetAssemblyTypeName: BackToLanguage, Assembly-CSharp
+        m_MethodName: LanguageButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2940,6 +2980,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113503192}
   m_CullTransparentMesh: 1
+--- !u!114 &1113503199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113503192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330b79873154e0441a67f570f436abcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1330388493
 GameObject:
   m_ObjectHideFlags: 0

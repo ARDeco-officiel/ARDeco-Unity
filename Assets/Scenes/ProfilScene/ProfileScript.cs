@@ -72,6 +72,7 @@ public class ProfileScript : MonoBehaviour
 [System.Serializable]
 public class ProfileData
 {
+    public string id;
     public string firstname;
     public string lastname;
     public string email;
