@@ -256,6 +256,10 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// </summary>
     public double lastping = 5;
     
+    public GameObject catalogue;
+
+    public GameObject infoPage;
+    public GameObject infoButton;
     
     public void Awake()
     {
@@ -286,6 +290,15 @@ public class MultipleObjectPlacement : MonoBehaviour
         
         if (!TouchIndicatorHandler.isTouchedTheObject)
         {
+            if (_lastObjectTouched != null) {
+                if (infoButton.activeSelf == false) {
+                    infoButton.SetActive(true);
+                    setInfoItemValues(_lastObjectTouched);
+                }
+            }
+            else
+                infoButton.SetActive(false);
+
             Vector3 rayEmitPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
             if (m_RaycastManager.Raycast(rayEmitPosition, s_Hits, TrackableType.PlaneWithinPolygon))
             {             
@@ -623,6 +636,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// <param name="go"></param>
     public void spawnObject(GameObject go)
     {
+        this.catalogue.SetActive(false);    
         iscalledToSpawn = true;
         isObjectPlaced = false;
         spawnedObject = Instantiate(go);
@@ -637,8 +651,11 @@ public class MultipleObjectPlacement : MonoBehaviour
         }
         totalPrice += spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice;
         totalPriceText.text = totalPrice.ToString("F2");
+//        setInfoItemValues(spawnedObject.)
         spawnedObject.SetActive(false);
+        catalogue.SetActive(false);
     }
+
 
     public void movePanel(GameObject panel)
     {
@@ -691,4 +708,21 @@ public class MultipleObjectPlacement : MonoBehaviour
         canvas.SetActive(!canvas.activeSelf);
         _PointerIndicator.SetActive(!_PointerIndicator.activeSelf);
     }
+
+    public void setInfoItemValues(GameObject objectToCheck) {
+        string name = objectToCheck.GetComponent<SpawningObjectDetails>().name;
+        string dimensions = objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.x.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.y.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.z.ToString()+"cm";
+        string brand = objectToCheck.GetComponent<SpawningObjectDetails>().brand;
+        string price = ((objectToCheck.GetComponent<SpawningObjectDetails>().priceValue + objectToCheck.GetComponent<SpawningObjectDetails>().deliveryPrice) + (objectToCheck.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5).ToString() + "€ frais de livraison inclus";
+    
+        catalogue.SetActive(false);
+        infoPage.SetActive(true);
+        infoPage.GetComponent<infoItem>().name.text = name;
+        infoPage.GetComponent<infoItem>().dimensions.text = dimensions;
+        infoPage.GetComponent<infoItem>().brand.text = brand;
+        infoPage.GetComponent<infoItem>().price.text = price;
+        infoPage.GetComponent<infoItem>().miniature.GetComponent<Image>().sprite = objectToCheck.GetComponent<SpawningObjectDetails>().miniature;
+      // double price = furniture.GetComponent<SpawningObjectDetails>().totalPrice();
+    }
+
 }

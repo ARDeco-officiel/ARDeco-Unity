@@ -9,6 +9,24 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: 01___Default
     second: {fileID: 2100000, guid: 5c3aab7e3ea2f554780a3bae91475413, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01___Default1
+    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01___Default2
+    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01___Default4
+    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+      type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,13 +8,13 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Line001Mat
-    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+    second: {fileID: 8338915016550702131, guid: f8595c946af99a94ea2f2b08ada31869,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rectangle001Mat
-    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+    second: {fileID: 8338915016550702131, guid: f8595c946af99a94ea2f2b08ada31869,
       type: 3}
   - first:
       type: UnityEngine:Material
@@ -62,7 +62,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rectangle009Mat
-    second: {fileID: -7974662883447924875, guid: bd27352bc1127414ca9f7192c06d625b,
+    second: {fileID: 8338915016550702131, guid: f8595c946af99a94ea2f2b08ada31869,
       type: 3}
   - first:
       type: UnityEngine:Material

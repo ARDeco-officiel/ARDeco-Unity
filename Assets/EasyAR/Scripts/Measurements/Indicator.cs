@@ -30,7 +30,7 @@ public class Indicator : MonoBehaviour
         {
             inrange = true;
             StartCoroutine(moveToPoint(other));
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
         }
     }
 

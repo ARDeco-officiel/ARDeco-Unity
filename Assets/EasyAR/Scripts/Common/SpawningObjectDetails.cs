@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 
 public class SpawningObjectDetails : MonoBehaviour
 {
@@ -64,6 +65,12 @@ public class SpawningObjectDetails : MonoBehaviour
     public float deliveryPrice = 0;
 
     public float totalPrice = 0;
+
+    public Vector3 dimensions = new Vector3(0, 0, 0);
+
+    public string brand = "not branded";
+
+    public Sprite miniature;
 
     private Vector3 _initialScale = new Vector3(0, 0, 0);
 

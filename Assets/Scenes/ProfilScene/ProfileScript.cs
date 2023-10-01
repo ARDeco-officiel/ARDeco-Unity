@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 public class ProfileScript : MonoBehaviour
 {
-    public TMP_InputField firstName;
-    public TMP_InputField lastName;
-    public TMP_InputField emailInput;
-    public TMP_InputField phoneNumber;
-    public TMP_InputField city;
+    public TMP_Text firstName;
+    public TMP_Text lastName;
+    public TMP_Text emailInput;
+    public TMP_Text phoneNumber;
+    public TMP_Text city;
 
     private void Start()
     {
@@ -49,20 +49,16 @@ public class ProfileScript : MonoBehaviour
 
                 // Parsez la réponse JSON pour extraire les données du profil
                 string jsonResponse = webRequest.downloadHandler.text;
-                ProfileData profileData = JsonUtility.FromJson<ProfileData>(jsonResponse);
+                ResponseData responseData = JsonUtility.FromJson<ResponseData>(jsonResponse);
+
 
                 // Mettez à jour les champs de texte avec les données du profil
-                firstName.text = profileData.firstname;
-                lastName.text = profileData.lastname;
-                emailInput.text = profileData.email;
-                phoneNumber.text = profileData.phone;
-                city.text = profileData.city;
-                firstName.interactable = false;
-                lastName.interactable = false;
-                emailInput.interactable = false;
-                phoneNumber.interactable = false;
-                city.interactable = false;
-                Debug.Log("Prénom : " + profileData.firstname);
+                firstName.text = responseData.data.firstname;
+                lastName.text = responseData.data.lastname;
+                emailInput.text = responseData.data.email;
+                phoneNumber.text = responseData.data.phone;
+                city.text = responseData.data.city;
+                Debug.Log("Prénom : " + responseData.data.firstname);
             }
         }
     }
@@ -78,6 +74,15 @@ public class ProfileData
     public string email;
     public string phone;
     public string city;
+}
+
+[System.Serializable]
+public class ResponseData
+{
+    public string status;
+    public int code;
+    public string description;
+    public ProfileData data;
 }
     /*public void ChangeProfileImage()
     {

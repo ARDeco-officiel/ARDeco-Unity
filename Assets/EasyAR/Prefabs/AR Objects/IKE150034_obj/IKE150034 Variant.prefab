@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4089947352319662534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f8595c946af99a94ea2f2b08ada31869,
+        type: 3}
+      propertyPath: m_Name
+      value: IKE150034 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f8595c946af99a94ea2f2b08ada31869, type: 3}
+--- !u!1 &3747840016745571479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f8595c946af99a94ea2f2b08ada31869,
+    type: 3}
+  m_PrefabInstance: {fileID: 4089947352319662534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7703305538600526564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747840016745571479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9773fa71f7a41174d8fe6e354731d8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planeDetectionMode: 1
+  _enbleDragFeature: 1
+  _enableRotateFeature: 1
+  _rotateFactor: 300
+  _speedFactor: 100
+  _enableScaleFeature: 1
+  _enableARQualityControl: 1
+  _scaleFactor: 400
+  _enableShadowPlane: 1
+  _shadowPlane: {fileID: 8661306295542033094, guid: 621940813a210594baea85c2ba31eebd,
+    type: 3}
+  _enableTouchIndicator: 1
+  _touchIndicator: {fileID: 4542212312934817459, guid: d4f72ad4ce6eb914caef05719de23292,
+    type: 3}
+  _scalePersentageIndicator: {fileID: 0}
+  priceValue: 150
+  deliveryPrice: 12
+  totalPrice: 162
+  dimensions: {x: 0, y: 0, z: 0}
+  brand: Ikea
+  miniature: {fileID: 21300000, guid: 899752763282e9247a4bbcf4993104c3, type: 3}
+  _isRotateLock: 0
+  _isMovingLock: 0
+  name: Ikea 150034
