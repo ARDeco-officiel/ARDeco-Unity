@@ -4126,8 +4126,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1820562434}
-        m_TargetAssemblyTypeName: BackToPPScript, Assembly-CSharp
-        m_MethodName: PPButtonClick
+        m_TargetAssemblyTypeName: BackToSecurity, Assembly-CSharp
+        m_MethodName: SecurityButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4184,7 +4184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1820562427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2c2c2c4e0e11d45806ba3b05be1198, type: 3}
+  m_Script: {fileID: 11500000, guid: f3aa935ef3b35bc4daa2bb94fdc0cc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1828006337

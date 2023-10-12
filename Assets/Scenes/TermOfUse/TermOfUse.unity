@@ -199,45 +199,71 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Derni\xE8re mise \xE0 jour : [07/09/2023]\r\n\r\nVeuillez lire attentivement
-    ces termes d'utilisation avant d'utiliser l'application mobile ARDeco. En utilisant
-    l'Application, vous acceptez ces Conditions et vous vous engagez \xE0 les respecter.\nSi
-    vous n'acceptez pas ces Conditions, veuillez ne pas utiliser l'Application.\r\n\r\nAcceptation
-    des Conditions\r\nEn utilisant l'Application, vous acceptez d'\xEAtre li\xE9
-    par ces Conditions. Si vous ne pouvez pas accepter ces Conditions, vous ne devez
-    pas utiliser l'Application.\r\n\r\nUtilisation de l'Application\r\nVous pouvez
-    utiliser l'Application \xE0 des fins personnelles et non commerciales. Vous ne
-    pouvez pas utiliser l'Application de mani\xE8re contraire aux lois et r\xE9glementations
-    applicables.\r\n\r\nContenu de l'Utilisateur\r\nVous pouvez soumettre du contenu,
-    y compris des images et des informations, \xE0 travers l'Application (\"Contenu
-    de l'Utilisateur\"). Vous conservez tous les droits sur votre Contenu de l'Utilisateur,
-    mais en soumettant du Contenu de l'Utilisateur, vous accordez \xE0 ARDeco une
-    licence non exclusive, mondiale, libre de redevances pour utiliser, afficher,
-    reproduire et distribuer votre Contenu de l'Utilisateur dans le but de fournir
-    et d'am\xE9liorer l'Application.\r\n\r\nProtection des Donn\xE9es Personnelles\r\nARDeco
-    collecte, stocke et traite vos donn\xE9es personnelles conform\xE9ment \xE0 sa
-    Politique de Confidentialit\xE9. En utilisant l'Application, vous consentez \xE0
-    la collecte et au traitement de vos donn\xE9es personnelles par ARDeco.\r\n\r\nPropri\xE9t\xE9
-    Intellectuelle\r\nL'Application, y compris son contenu, ses marques de commerce,
-    ses logos, et ses \xE9l\xE9ments visuels et sonores, sont la propri\xE9t\xE9
-    exclusive d'ARDeco ou de ses conc\xE9dants de licence. Vous ne pouvez pas utiliser,
-    copier, reproduire, distribuer ou cr\xE9er des \u0153uvres d\xE9riv\xE9es \xE0
-    partir de l'Application sans l'autorisation \xE9crite pr\xE9alable d'ARDeco.\r\n\r\nLimitations
-    de Responsabilit\xE9\r\nARDeco ne garantit pas que l'Application sera exempte
-    d'erreurs ou de pannes. ARDeco ne peut \xEAtre tenu responsable des dommages
-    directs, indirects, sp\xE9ciaux, cons\xE9cutifs ou punitifs d\xE9coulant de l'utilisation
-    ou de l'impossibilit\xE9 d'utiliser l'Application.\r\n\r\nModification des Conditions\r\nARDeco
-    se r\xE9serve le droit de modifier ces Conditions \xE0 tout moment. Les modifications
-    seront effectives d\xE8s leur publication dans l'Application. Il est de votre
-    responsabilit\xE9 de consulter r\xE9guli\xE8rement ces Conditions pour rester
-    inform\xE9 des mises \xE0 jour.\r\n\r\nR\xE9siliation\r\nARDeco peut r\xE9silier
-    ou suspendre votre acc\xE8s \xE0 l'Application \xE0 tout moment, avec ou sans
-    motif. En cas de r\xE9siliation, ces Conditions resteront en vigueur.\r\n\r\nLoi
-    Applicable\r\nCes Conditions sont r\xE9gies par les lois de [votre pays ou r\xE9gion].
-    Tout litige d\xE9coulant de ces Conditions sera soumis \xE0 la juridiction exclusive
-    des tribunaux de [votre ville ou r\xE9gion].\r\n\r\nSi vous avez des questions
-    ou des pr\xE9occupations concernant ces Conditions, veuillez nous contacter \xE0
-    ardeco.officiel@gmail.com."
+  m_text: 'Application Update - Version 1.1.0
+
+    
+
+    Dear User,
+
+    
+
+    We
+    are excited to introduce the latest update to our mobile application. This version
+    brings enhanced features for an even better user experience. Here''s what''s
+    new:
+
+    
+
+    1. Profile Editing:
+
+    Now, you have complete control over
+    your profile. Customize your information, update your profile picture, and modify
+    your preferences with ease. Click on "Edit Profile" to get started.
+
+    
+
+    2.
+    Profile Viewing:
+
+    Want to see what your profile looks like to other users?
+    Discover your profile as it appears to others with a single click. Access "Profil"
+    to view it.
+
+    
+
+    3. Account Deletion:
+
+    We understand that sometimes
+    you may decide to stop using our application. You can now delete your account
+    directly from the app. Go to the account settings and choose "Delete Account"
+    to follow the process.
+
+    
+
+    4. Easy Log Out:
+
+    You no longer need
+    to worry about staying logged in if you want to log out. Simply tap the button
+    "Log Out" in the main menu to exit your session in an instant.
+
+    
+
+    We
+    hope these new features enhance your experience and give you more control over
+    your profile. If you have any feedback or questions, please feel free to contact
+    us through the "Contact Us" option in the settings.
+
+    
+
+    Thank you for
+    using our application, and stay tuned for more exciting updates in the future!
+
+    
+
+    Best
+    Regards,
+
+    The Application Team'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f731acf2d48837439a168d6bafcebe5, type: 2}
   m_sharedMaterial: {fileID: -6556532141246297456, guid: 3f731acf2d48837439a168d6bafcebe5,
@@ -350,7 +376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 3050}
+  m_AnchoredPosition: {x: -180, y: 1600}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403805318
@@ -880,7 +906,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 471754278}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.29090866
+  m_Size: 0.5189175
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
