@@ -1,151 +1,89 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System.Collections;
 using TMPro;
-using System.Collections.Generic;
-
 public class EditProfilScript : MonoBehaviour
 {
-    public TMP_InputField firstName;
-    public TMP_InputField lastName;
-    public TMP_InputField emailInput;
-    public TMP_InputField phoneNumber;
-    public TMP_InputField city;
-    public Button editButton; // Bouton "Modifier le profil"
-    public Button saveButton; // Bouton "Enregistrer" (initialement désactivé)
+    public TMP_InputField firstNameField;
+    public TMP_InputField lastNameField;
+    public TMP_InputField emailField;
+    public TMP_InputField phoneNumberField;
+    public TMP_InputField cityField;
 
-    private string originalFirstName;
-    private string originalLastName;
-    private string originalEmail;
-    private string originalPhoneNumber;
-    private string originalCity;
+    public Button editProfileButton;
+    private bool isEditing = false;
+
+    private string initialFirstName;
+    private string initialLastName;
+    private string initialEmail;
+    private string initialPhoneNumber;
+    private string initialCity;
 
     private void Start()
     {
-        string jwt = PlayerPrefs.GetString("jwt");
-        int userID = PlayerPrefs.GetInt("userID");
-
-        // Appelez la fonction de récupération du profil lorsque la scène démarre
-        StartCoroutine(GetProfileRequest(jwt, userID.ToString()));
-
-        // Associez la fonction EditProfile au bouton "Modifier le profil"
-        editButton.onClick.AddListener(EditProfile);
-        // Associez la fonction SaveProfile au bouton "Enregistrer" (initialement désactivé)
-        saveButton.onClick.AddListener(SaveProfile);
+        // Sauvegardez les valeurs initiales des champs
+        initialFirstName = firstNameField.text;
+        initialLastName = lastNameField.text;
+        initialEmail = emailField.text;
+        initialPhoneNumber = phoneNumberField.text;
+        initialCity = cityField.text;
+        DisableEditing();
     }
 
-    public IEnumerator GetProfileRequest(string jwt, string userID)
+    public void ToggleEditMode()
     {
-        string uri = "https://api.ardeco.app/user/" + userID;
-        Dictionary<string, string> headers = new Dictionary<string, string>();
-        headers.Add("Authorization", "Bearer " + jwt);
+        isEditing = !isEditing; // Inversez le mode d'édition
 
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        // Changer le texte du bouton en conséquence
+        if (isEditing)
         {
-            foreach (var header in headers)
-            {
-                webRequest.SetRequestHeader(header.Key, header.Value);
-            }
-
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.isNetworkError || webRequest.isHttpError)
-            {
-                Debug.LogError("Erreur lors de la récupération du profil : " + webRequest.error);
-                Debug.LogError("Réponse : " + webRequest.downloadHandler.text);
-            }
-            else
-            {
-                Debug.Log("Récupération du profil réussie!");
-                Debug.Log("Réponse : " + webRequest.downloadHandler.text);
-
-                string jsonResponse = webRequest.downloadHandler.text;
-                ProfileData profileData = JsonUtility.FromJson<ProfileData>(jsonResponse);
-
-                // Mettez à jour les champs de texte avec les données du profil
-                originalFirstName = profileData.firstname;
-                originalLastName = profileData.lastname;
-                originalEmail = profileData.email;
-                originalPhoneNumber = profileData.phone;
-                originalCity = profileData.city;
-
-                firstName.text = originalFirstName;
-                lastName.text = originalLastName;
-                emailInput.text = originalEmail;
-                phoneNumber.text = originalPhoneNumber;
-                city.text = originalCity;
-
-                // Désactivez l'interactivité des champs de texte
-                DisableTextFields();
-            }
+            editProfileButton.GetComponentInChildren<TMP_Text>().text = "Confirmer";
+            EnableEditing();
+        }
+        else
+        {
+            editProfileButton.GetComponentInChildren<TMP_Text>().text = "Edit Profil";
+            DisableEditing();
+            SaveChanges(); // Sauvegardez les modifications lorsque vous appuyez sur "Confirmer"
         }
     }
-
-    public void EditProfile()
+    private void EnableEditing()
     {
-        // Activez l'interactivité des champs de texte pour permettre l'édition
-        EnableTextFields();
-
-        // Activez le bouton "Enregistrer"
-        saveButton.gameObject.SetActive(true);
-
-        // Désactivez le bouton "Modifier le profil" pour éviter d'appuyer dessus pendant l'édition
-        editButton.interactable = false;
+        firstNameField.interactable = true;
+        lastNameField.interactable = true;
+        emailField.interactable = true;
+        phoneNumberField.interactable = true;
+        cityField.interactable = true;
     }
 
-    public void SaveProfile()
+    private void DisableEditing()
     {
-        // Récupérez les données modifiées des champs de texte
-        string newFirstName = firstName.text;
-        string newLastName = lastName.text;
-        string newEmail = emailInput.text;
-        string newPhoneNumber = phoneNumber.text;
-        string newCity = city.text;
-
-        // Simulez l'envoi des modifications au serveur (affichez-les dans la console pour le moment)
-        Debug.Log("Envoi des modifications au serveur...");
-        Debug.Log("Nouveau prénom : " + newFirstName);
-        Debug.Log("Nouveau nom de famille : " + newLastName);
-        // ... (autres données)
-
-        // Désactivez l'interactivité des champs de texte après l'envoi réussi
-        DisableTextFields();
-
-        // Désactivez le bouton "Enregistrer" après l'envoi réussi
-        saveButton.gameObject.SetActive(false);
-
-        // Réactivez le bouton "Modifier le profil"
-        editButton.interactable = true;
+        firstNameField.interactable = false;
+        lastNameField.interactable = false;
+        emailField.interactable = false;
+        phoneNumberField.interactable = false;
+        cityField.interactable = false;
     }
-
-    private void DisableTextFields()
+    public void SaveChanges()
     {
-        firstName.interactable = false;
-        lastName.interactable = false;
-        emailInput.interactable = false;
-        phoneNumber.interactable = false;
-        city.interactable = false;
-    }
+        // Récupérez les nouvelles valeurs des champs de texte
+        string newFirstName = firstNameField.text;
+        string newLastName = lastNameField.text;
+        string newEmail = emailField.text;
+        string newPhoneNumber = phoneNumberField.text;
+        string newCity = cityField.text;
+        firstNameField.interactable = false;
+        lastNameField.interactable = false;
+        emailField.interactable = false;
+        phoneNumberField.interactable = false;
+        cityField.interactable = false;
 
-    private void EnableTextFields()
-    {
-        firstName.interactable = true;
-        lastName.interactable = true;
-        emailInput.interactable = true;
-        phoneNumber.interactable = true;
-        city.interactable = true;
+        PlayerPrefs.SetString("FirstName", newFirstName);
+        PlayerPrefs.SetString("LastName", newLastName);
+        PlayerPrefs.SetString("Email", newEmail);
+        PlayerPrefs.SetString("PhoneNumber", newPhoneNumber);
+        PlayerPrefs.SetString("City", newCity);
+        PlayerPrefs.Save();
+        Debug.Log("Modifications enregistrées!");
     }
-}
-
-// Créez une classe pour mapper les données du profil depuis la réponse JSON
-[System.Serializable]
-public class ProfileData
-{
-    public string id;
-    public string firstname;
-    public string lastname;
-    public string email;
-    public string phone;
-    public string city;
 }

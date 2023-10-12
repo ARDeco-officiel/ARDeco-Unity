@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 public class ProfileScript : MonoBehaviour
 {
-    public TMP_Text firstName;
-    public TMP_Text lastName;
-    public TMP_Text emailInput;
-    public TMP_Text phoneNumber;
-    public TMP_Text city;
+    public TMP_InputField firstNameField;
+    public TMP_InputField lastNameField;
+    public TMP_InputField emailField;
+    public TMP_InputField phoneNumberField;
+    public TMP_InputField cityField;
 
     private void Start()
     {
@@ -19,6 +19,11 @@ public class ProfileScript : MonoBehaviour
         int userID = PlayerPrefs.GetInt("userID");
         // Appelez la fonction de récupération du profil lorsque la scène démarre
         StartCoroutine(GetProfileRequest(jwt, userID.ToString()));
+        firstNameField.interactable = false;
+        lastNameField.interactable = false;
+        emailField.interactable = false;
+        phoneNumberField.interactable = false;
+        cityField.interactable = false;
     }
 
     public IEnumerator GetProfileRequest(string jwt, string userID)
@@ -45,44 +50,41 @@ public class ProfileScript : MonoBehaviour
             else
             {
                 Debug.Log("Récupération du profil réussie!");
-                Debug.Log("Réponse : " + webRequest.downloadHandler.text);
 
                 // Parsez la réponse JSON pour extraire les données du profil
                 string jsonResponse = webRequest.downloadHandler.text;
                 ResponseData responseData = JsonUtility.FromJson<ResponseData>(jsonResponse);
 
-
                 // Mettez à jour les champs de texte avec les données du profil
-                firstName.text = responseData.data.firstname;
-                lastName.text = responseData.data.lastname;
-                emailInput.text = responseData.data.email;
-                phoneNumber.text = responseData.data.phone;
-                city.text = responseData.data.city;
-                Debug.Log("Prénom : " + responseData.data.firstname);
+                firstNameField.text = responseData.data.firstname;
+                lastNameField.text = responseData.data.lastname;
+                emailField.text = responseData.data.email;
+                phoneNumberField.text = responseData.data.phone;
+                cityField.text = responseData.data.city;
             }
         }
     }
-}
 
-// Créez une classe pour mapper les données du profil depuis la réponse JSON
-[System.Serializable]
-public class ProfileData
-{
-    public string id;
-    public string firstname;
-    public string lastname;
-    public string email;
-    public string phone;
-    public string city;
-}
+    // Créez une classe pour mapper les données du profil depuis la réponse JSON
+    [System.Serializable]
+    public class ProfileData
+    {
+        public string id;
+        public string firstname;
+        public string lastname;
+        public string email;
+        public string phone;
+        public string city;
+    }
 
-[System.Serializable]
-public class ResponseData
-{
-    public string status;
-    public int code;
-    public string description;
-    public ProfileData data;
+    [System.Serializable]
+    public class ResponseData
+    {
+        public string status;
+        public int code;
+        public string description;
+        public ProfileData data;
+    }
 }
     /*public void ChangeProfileImage()
     {
