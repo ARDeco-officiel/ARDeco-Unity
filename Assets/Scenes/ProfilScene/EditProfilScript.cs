@@ -78,13 +78,6 @@ public class EditProfilScript : MonoBehaviour
         phoneNumberField.interactable = false;
         cityField.interactable = false;
 
-        // Validez les données si nécessaire
-        // Assurez-vous que les données sont correctes avant de les enregistrer.
-
-        // Enregistrez les modifications dans le profil de l'utilisateur ou dans votre source de données
-        // Vous pouvez utiliser PlayerPrefs ou une autre méthode de stockage de données.
-
-        // Exemple d'utilisation de PlayerPrefs :
         PlayerPrefs.SetString("FirstName", newFirstName);
         PlayerPrefs.SetString("LastName", newLastName);
         PlayerPrefs.SetString("Email", newEmail);
@@ -93,5 +86,4 @@ public class EditProfilScript : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Modifications enregistrées!");
     }
-
 }
