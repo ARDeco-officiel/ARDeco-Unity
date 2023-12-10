@@ -70,7 +70,7 @@ MonoBehaviour:
   miniature: {fileID: 21300000, guid: 603ab589c0f6de44f9676530260b2f87, type: 3}
   _isRotateLock: 0
   _isMovingLock: 0
-  name: IKEA Poang Armchair
+  name: Chaise Ikea
 --- !u!65 &8611920763981310155
 BoxCollider:
   m_ObjectHideFlags: 0

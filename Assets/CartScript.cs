@@ -25,6 +25,6 @@ public class CartScript : MonoBehaviour
     public void setCartItemInfo(TMP_Text qte) {
         Qte.text = "Qte: " + qte.text;
         Brand.text = "Ikea";
-        Price.text = "138€";
+        Price.text = "130€";
     }
 }

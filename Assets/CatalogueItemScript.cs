@@ -13,7 +13,6 @@ public class CatalogueItemScript : MonoBehaviour
     [System.Serializable]
     public struct itemStruct
     {
-        public TMP_Text Name;
         public TMP_Text Qte;
         public TMP_Text Price;
         public Sprite Thumbnail;
@@ -21,6 +20,9 @@ public class CatalogueItemScript : MonoBehaviour
 
     public GameObject itemPrefab;
     public Transform list;
+    public TMP_Text Name;
+    public TMP_Text BrandName;
+    public TMP_Text Price;
     int i = 0;
 
     void Start()
@@ -40,5 +42,6 @@ public class CatalogueItemScript : MonoBehaviour
         Debug.Log(qty + " test ");
         GameObject newItem = Instantiate(itemPrefab, list);
         newItem.GetComponent<CartScript>().setCartItemInfo(Quantity);
+        newItem.GetComponent<CartScript>().name = Name.text;
     }
 }

@@ -2012,6 +2012,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 8215549617360118889, guid: 6517876361c04b14d851c052ea7fe7ce,
     type: 3}
   list: {fileID: 0}
+  Name: {fileID: 5130975237991649428}
 --- !u!1 &8477938486408246292
 GameObject:
   m_ObjectHideFlags: 0

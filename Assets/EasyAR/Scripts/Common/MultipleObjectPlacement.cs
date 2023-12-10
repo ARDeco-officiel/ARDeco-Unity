@@ -565,6 +565,10 @@ public class MultipleObjectPlacement : MonoBehaviour
         TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Percentage + "%";
     }
 
+    public void destroyObject() {
+        Destroy(_lastObjectTouched);
+    }
+
 
     /// <summary>
     /// Hide the touch indicator gameobject
@@ -714,15 +718,38 @@ public class MultipleObjectPlacement : MonoBehaviour
         string dimensions = objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.x.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.y.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.z.ToString()+"cm";
         string brand = objectToCheck.GetComponent<SpawningObjectDetails>().brand;
         string price = ((objectToCheck.GetComponent<SpawningObjectDetails>().priceValue + objectToCheck.GetComponent<SpawningObjectDetails>().deliveryPrice) + (objectToCheck.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5).ToString() + "€ frais de livraison inclus";
-    
+        
         catalogue.SetActive(false);
         infoPage.SetActive(true);
-        infoPage.GetComponent<infoItem>().name.text = name;
-        infoPage.GetComponent<infoItem>().dimensions.text = dimensions;
-        infoPage.GetComponent<infoItem>().brand.text = brand;
-        infoPage.GetComponent<infoItem>().price.text = price;
+        StartCoroutine(NetworkManager.instance.GetCatalogue());
         infoPage.GetComponent<infoItem>().miniature.GetComponent<Image>().sprite = objectToCheck.GetComponent<SpawningObjectDetails>().miniature;
       // double price = furniture.GetComponent<SpawningObjectDetails>().totalPrice();
+    }
+
+    public void UpdateCatalogue() {
+        CatalogueScript.instance.ClearList();
+        StartCoroutine(CatalogueScript.instance.CreateItemsWithFilters());
+    }
+
+    public void callOpenCatalogue() {
+        StartCoroutine(LoadAndOpenCatalogue());
+    }
+
+    public IEnumerator LoadAndOpenCatalogue() 
+    {
+        GameObject newItem;
+
+        yield return StartCoroutine(NetworkManager.instance.GetCatalogue());
+        catalogue.SetActive(true);
+        CatalogueScript catalogueScript = catalogue.GetComponent<CatalogueScript>();
+        catalogueScript.ClearList();
+        NetworkManager.instance.allCatalog.ForEach((item) =>
+        {
+            newItem = Instantiate(catalogueScript.Prefab, catalogueScript.listView);
+            newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
+            newItem.GetComponent<CatalogueItemScript>().list = catalogueScript.cartList;
+        });
+
     }
 
 }
