@@ -37,7 +37,6 @@ public class CatalogueItemScript : MonoBehaviour
     }
 
     public void addItemToCart(TMP_Text Quantity) {
-        itemStruct test;
         int qty = int.Parse(Quantity.text);
         Debug.Log(qty + " test ");
         GameObject newItem = Instantiate(itemPrefab, list);
