@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+
 
 public class NetworkManager : MonoBehaviour
 {
@@ -57,6 +60,13 @@ public class NetworkManager : MonoBehaviour
 
     public List<Furniture> filteredCatalog = new List<Furniture>();
     public List<Furniture> allCatalog = new List<Furniture>();
+    public TMP_Text priceFilter;
+    public TMP_Text styleFilter;
+    public TMP_Text roomFilter;
+ //   public GameObject typeFilter;
+  //  public GameObject brandFilter;
+
+
 
 
 /************************************************************ Server Requests ***********************************************************/
@@ -123,9 +133,18 @@ public class NetworkManager : MonoBehaviour
     }
 
     public IEnumerator ApplyFilter() {
-        int LimitPrice = 1500;
-        string style = "industrial";
-        string room = "bedroom";
+        string LimitPrice = priceFilter.text;
+        int LimitPriceInt;
+        if (LimitPrice == "Pas de limite de prix") {
+            LimitPriceInt = 10000000;
+            
+        } else {
+            LimitPrice = LimitPrice.Replace(" ", "");
+            LimitPrice = LimitPrice.Replace("€", "");
+            LimitPriceInt = Int32.Parse(LimitPrice);
+        }
+        string style = styleFilter.text.ToLower();
+        string room = roomFilter.text.ToLower();
         int brandID = 1;
         int BestScore = 0;
 
@@ -148,23 +167,24 @@ public class NetworkManager : MonoBehaviour
                 {
                     int score = 0;
                     Debug.Log("Name: " + furniture.name);
-                    Debug.Log("Price: " + furniture.price);
+                    Debug.Log("Price: " + furniture.price + " Limit: " + LimitPriceInt);
                     Debug.Log("Style: " + furniture.styles);
                     Debug.Log("Room: " + furniture.rooms);
                     Debug.Log("Brand: " + furniture.company);
     
             
-                    if (furniture.price <= LimitPrice) score++;
-                    if (furniture.rooms.Contains(room)) score++;
-                    if (furniture.styles.Contains(style)) score++;
+                    if (furniture.price <= LimitPriceInt) score++;
+                    if (furniture.rooms.ToLower().Contains(room)) score++;
+                    if (furniture.styles.ToLower().Contains(style)) score++;
                     if (furniture.company == brandID) score++;
                     Debug.Log("Score for " + furniture.name + " : " + score);
                     if (score > BestScore) {
                         filteredCatalog.Clear();
                         filteredCatalog.Add(furniture);
                         BestScore = score;
-                    } else if (score == BestScore) {
-                        filteredCatalog.Append(furniture);
+                    } else if (score == BestScore) { 
+                        Debug.Log("Same score for " + furniture.name + " : " + score);
+                        filteredCatalog.Add(furniture);
                     }
                 }
                 foreach(Furniture furniture2 in filteredCatalog)

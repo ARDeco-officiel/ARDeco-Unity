@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 931404558401463210}
   - component: {fileID: 4213617835268335031}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Thumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 8653914877921370204}
   - component: {fileID: 1635637008351338350}
   m_Layer: 0
-  m_Name: Image (2)
+  m_Name: TryAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102900000, guid: b6038f81d35d3a543b7841519aa8dd7b, type: 3}
+      - m_Target: {fileID: 11500000, guid: 07591fee5c5d68a4c88dca9b7173953d, type: 3}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 740293088290061868}
   - component: {fileID: 594093835324561564}
   m_Layer: 0
-  m_Name: Image (1)
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1598,7 +1598,7 @@ GameObject:
   - component: {fileID: 1757722306632295288}
   - component: {fileID: 7086169974817578373}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: AddToCart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,8 +2011,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8215549617360118889, guid: 6517876361c04b14d851c052ea7fe7ce,
     type: 3}
+  Model3d: {fileID: 0}
   list: {fileID: 0}
   Name: {fileID: 5130975237991649428}
+  BrandName: {fileID: 0}
+  Price: {fileID: 0}
 --- !u!1 &8477938486408246292
 GameObject:
   m_ObjectHideFlags: 0

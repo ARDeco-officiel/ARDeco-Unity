@@ -58,9 +58,6 @@ public class CatalogueScript : MonoBehaviour
 
         // Attendre la fin de la coroutine ApplyFilter
         yield return StartCoroutine(NetworkManager.instance.ApplyFilter());
-
-        Debug.Log(NetworkManager.instance.filteredCatalog.Count + " test ");
-
         NetworkManager.instance.filteredCatalog.ForEach((item) =>
         {
             newItem = Instantiate(Prefab, listView);

@@ -822,6 +822,11 @@ MonoBehaviour:
   catalogue: {fileID: 208231984}
   infoPage: {fileID: 210873828}
   infoButton: {fileID: 1423084049}
+  ModelsList:
+  - {fileID: 1373516835604484882, guid: 68df6fe4e9bab8f47a077d272e84dc13, type: 3}
+  - {fileID: 4603629608157381920, guid: 0b6a1178c64a76248a896821f9aacabf, type: 3}
+  mainButtons: {fileID: 1302485984}
+  scanText: {fileID: 409764274}
 --- !u!114 &97902989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,6 +899,9 @@ MonoBehaviour:
   infoPage: {fileID: 210873828}
   filteredCatalog: []
   allCatalog: []
+  priceFilter: {fileID: 95201806}
+  styleFilter: {fileID: 1211023614}
+  roomFilter: {fileID: 660075407}
 --- !u!1 &104340923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3628,11 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 8400000, guid: dcfe45a4e50817d4dab8b4681b6bd995, type: 2}
+    - target: {fileID: 3440359222497996399, guid: d4b9ba6a10dbb6147b17c16676603db2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3440359222656579113, guid: d4b9ba6a10dbb6147b17c16676603db2,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -3735,6 +3748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ARSceneHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3440359223876185112, guid: d4b9ba6a10dbb6147b17c16676603db2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3440359223876185113, guid: d4b9ba6a10dbb6147b17c16676603db2,
         type: 3}
@@ -4111,6 +4129,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &409764274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3440359222497996399, guid: d4b9ba6a10dbb6147b17c16676603db2,
+    type: 3}
+  m_PrefabInstance: {fileID: 386177451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &437005080 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4817621745293065952, guid: 167edc440a0d70142a799c97c227822c,
@@ -9673,7 +9697,7 @@ GameObject:
   - component: {fileID: 1302485986}
   - component: {fileID: 1302485985}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: mainButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10794,6 +10818,12 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 6ee2044d0a3722b4cb786fb6fadbda94, type: 3}
+    - target: {fileID: 1635637008351338350, guid: 109a956fc2045cd4eb8452516bb6afbc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 102900000, guid: b6038f81d35d3a543b7841519aa8dd7b,
+        type: 3}
     - target: {fileID: 2473849251194716522, guid: 109a956fc2045cd4eb8452516bb6afbc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -11213,13 +11243,13 @@ MonoBehaviour:
     m_Options:
     - m_Text: Tous les styles
       m_Image: {fileID: 0}
-    - m_Text: "Mediteran\xE9en"
+    - m_Text: Classic
       m_Image: {fileID: 0}
     - m_Text: Scandinave
       m_Image: {fileID: 0}
-    - m_Text: Industriel
+    - m_Text: Industrial
       m_Image: {fileID: 0}
-    - m_Text: Contemporain
+    - m_Text: Metal
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14227,13 +14257,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 208231991}
-        m_TargetAssemblyTypeName: CatalogueScript, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 2
+      - m_Target: {fileID: 97902988}
+        m_TargetAssemblyTypeName: MultipleObjectPlacement, Assembly-CSharp
+        m_MethodName: closeCatalogue
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 208231984}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14565,13 +14595,13 @@ MonoBehaviour:
     m_Options:
     - m_Text: "Toutes pi\xE8ces"
       m_Image: {fileID: 0}
-    - m_Text: Salon
+    - m_Text: Living room
       m_Image: {fileID: 0}
-    - m_Text: Cuisine
+    - m_Text: Kitchen
       m_Image: {fileID: 0}
-    - m_Text: Chambre
+    - m_Text: Bedroom
       m_Image: {fileID: 0}
-    - m_Text: Salle de bain
+    - m_Text: Bathroom
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

@@ -257,9 +257,12 @@ public class MultipleObjectPlacement : MonoBehaviour
     public double lastping = 5;
     
     public GameObject catalogue;
-
     public GameObject infoPage;
     public GameObject infoButton;
+    public List<GameObject> ModelsList;
+    
+    public GameObject mainButtons;
+    public GameObject scanText;
     
     public void Awake()
     {
@@ -640,7 +643,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// <param name="go"></param>
     public void spawnObject(GameObject go)
     {
-        this.catalogue.SetActive(false);    
+        Debug.Log("Spawn object");
+        this.catalogue.SetActive(false);
         iscalledToSpawn = true;
         isObjectPlaced = false;
         spawnedObject = Instantiate(go);
@@ -734,6 +738,13 @@ public class MultipleObjectPlacement : MonoBehaviour
     public void callOpenCatalogue() {
         StartCoroutine(LoadAndOpenCatalogue());
     }
+    
+    public void closeCatalogue() {
+        catalogue.SetActive(false);
+        mainButtons.SetActive(true);    
+        scanText.SetActive(true);
+
+    }
 
     public IEnumerator LoadAndOpenCatalogue() 
     {
@@ -748,8 +759,16 @@ public class MultipleObjectPlacement : MonoBehaviour
             newItem = Instantiate(catalogueScript.Prefab, catalogueScript.listView);
             newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
             newItem.GetComponent<CatalogueItemScript>().list = catalogueScript.cartList;
+            GameObject TryAR = newItem.transform.Find("TryAR").gameObject;
+            Button TryARButton = TryAR.GetComponent<Button>();
+            TryARButton.onClick.AddListener(() => {
+                mainButtons.SetActive(true);
+                scanText.SetActive(true);
+                spawnObject(ModelsList[Random.Range(0, ModelsList.Count)]);
+            });
         });
-
+        mainButtons.SetActive(false);
+        scanText.SetActive(false);
     }
 
 }
