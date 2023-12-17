@@ -27,7 +27,6 @@ public class CatalogueItemScript : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -40,7 +39,6 @@ public class CatalogueItemScript : MonoBehaviour
         int qty = int.Parse(Quantity.text);
         Debug.Log(qty + " test ");
         GameObject newItem = Instantiate(itemPrefab, list);
-        newItem.GetComponent<CartScript>().setCartItemInfo(Quantity);
-        newItem.GetComponent<CartScript>().name = Name.text;
+        newItem.GetComponent<CartScript>().setCartItemInfo(Quantity, Name, Price);
     }
 }

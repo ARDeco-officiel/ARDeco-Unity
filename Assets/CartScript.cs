@@ -22,9 +22,9 @@ public class CartScript : MonoBehaviour
         
     }
 
-    public void setCartItemInfo(TMP_Text qte) {
+    public void setCartItemInfo(TMP_Text qte, TMP_Text name, TMP_Text price) {
         Qte.text = "Qte: " + qte.text;
-        Brand.text = "Ikea";
-        Price.text = "130€";
+        Name.text = name.text;
+        Price.text = price.text;
     }
 }

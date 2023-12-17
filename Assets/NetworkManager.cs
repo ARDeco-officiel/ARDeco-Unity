@@ -63,6 +63,7 @@ public class NetworkManager : MonoBehaviour
     public TMP_Text priceFilter;
     public TMP_Text styleFilter;
     public TMP_Text roomFilter;
+    public TMP_Text ColorFilter;
  //   public GameObject typeFilter;
   //  public GameObject brandFilter;
 
@@ -145,6 +146,7 @@ public class NetworkManager : MonoBehaviour
         }
         string style = styleFilter.text.ToLower();
         string room = roomFilter.text.ToLower();
+        string color = ColorFilter.text.ToLower();
         int brandID = 1;
         int BestScore = 0;
 
@@ -176,6 +178,7 @@ public class NetworkManager : MonoBehaviour
                     if (furniture.price <= LimitPriceInt) score++;
                     if (furniture.rooms.ToLower().Contains(room)) score++;
                     if (furniture.styles.ToLower().Contains(style)) score++;
+                    if (furniture.colors.ToLower().Contains(color)) score++;
                     if (furniture.company == brandID) score++;
                     Debug.Log("Score for " + furniture.name + " : " + score);
                     if (score > BestScore) {

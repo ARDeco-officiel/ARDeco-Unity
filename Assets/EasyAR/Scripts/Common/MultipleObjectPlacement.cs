@@ -260,6 +260,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     public GameObject infoPage;
     public GameObject infoButton;
     public List<GameObject> ModelsList;
+    public List<Texture> TexturesList;
     
     public GameObject mainButtons;
     public GameObject scanText;
@@ -634,7 +635,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// </summary>
     public static void resetToInitialScale()
     {
-        TouchIndicatorHandler.hitObject.transform.localScale = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
+            TouchIndicatorHandler.hitObject.transform.localScale = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
     }
 
     /// <summary>
@@ -758,13 +759,28 @@ public class MultipleObjectPlacement : MonoBehaviour
         {
             newItem = Instantiate(catalogueScript.Prefab, catalogueScript.listView);
             newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
+            newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString() + "€";
+            newItem.GetComponent<CatalogueItemScript>().BrandName.text = item.company_name;
             newItem.GetComponent<CatalogueItemScript>().list = catalogueScript.cartList;
+
+            Transform thumbnailTransform = newItem.transform.Find("Thumbnail");
+            int randomItem = Random.Range(0, TexturesList.Count);
+            if (thumbnailTransform != null)
+            {
+                RawImage thumbnailImage = thumbnailTransform.GetComponent<RawImage>();
+                if (thumbnailImage != null)
+                {
+                    thumbnailImage.texture = TexturesList[randomItem];
+                }
+            }
+
+
             GameObject TryAR = newItem.transform.Find("TryAR").gameObject;
             Button TryARButton = TryAR.GetComponent<Button>();
             TryARButton.onClick.AddListener(() => {
                 mainButtons.SetActive(true);
                 scanText.SetActive(true);
-                spawnObject(ModelsList[Random.Range(0, ModelsList.Count)]);
+                spawnObject(ModelsList[randomItem]);
             });
         });
         mainButtons.SetActive(false);
