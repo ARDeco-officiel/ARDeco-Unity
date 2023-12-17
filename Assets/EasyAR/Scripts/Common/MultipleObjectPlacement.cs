@@ -257,9 +257,13 @@ public class MultipleObjectPlacement : MonoBehaviour
     public double lastping = 5;
     
     public GameObject catalogue;
-
     public GameObject infoPage;
     public GameObject infoButton;
+    public List<GameObject> ModelsList;
+    public List<Texture> TexturesList;
+    
+    public GameObject mainButtons;
+    public GameObject scanText;
     
     public void Awake()
     {
@@ -565,6 +569,10 @@ public class MultipleObjectPlacement : MonoBehaviour
         TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Percentage + "%";
     }
 
+    public void destroyObject() {
+        Destroy(_lastObjectTouched);
+    }
+
 
     /// <summary>
     /// Hide the touch indicator gameobject
@@ -627,7 +635,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// </summary>
     public static void resetToInitialScale()
     {
-        TouchIndicatorHandler.hitObject.transform.localScale = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
+            TouchIndicatorHandler.hitObject.transform.localScale = TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().initialScale;
     }
 
     /// <summary>
@@ -636,7 +644,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// <param name="go"></param>
     public void spawnObject(GameObject go)
     {
-        this.catalogue.SetActive(false);    
+        Debug.Log("Spawn object");
+        this.catalogue.SetActive(false);
         iscalledToSpawn = true;
         isObjectPlaced = false;
         spawnedObject = Instantiate(go);
@@ -714,15 +723,68 @@ public class MultipleObjectPlacement : MonoBehaviour
         string dimensions = objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.x.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.y.ToString()+"x"+objectToCheck.GetComponent<SpawningObjectDetails>().dimensions.z.ToString()+"cm";
         string brand = objectToCheck.GetComponent<SpawningObjectDetails>().brand;
         string price = ((objectToCheck.GetComponent<SpawningObjectDetails>().priceValue + objectToCheck.GetComponent<SpawningObjectDetails>().deliveryPrice) + (objectToCheck.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5).ToString() + "€ frais de livraison inclus";
-    
+        
         catalogue.SetActive(false);
         infoPage.SetActive(true);
-        infoPage.GetComponent<infoItem>().name.text = name;
-        infoPage.GetComponent<infoItem>().dimensions.text = dimensions;
-        infoPage.GetComponent<infoItem>().brand.text = brand;
-        infoPage.GetComponent<infoItem>().price.text = price;
+        StartCoroutine(NetworkManager.instance.GetCatalogue());
         infoPage.GetComponent<infoItem>().miniature.GetComponent<Image>().sprite = objectToCheck.GetComponent<SpawningObjectDetails>().miniature;
       // double price = furniture.GetComponent<SpawningObjectDetails>().totalPrice();
+    }
+
+    public void UpdateCatalogue() {
+        CatalogueScript.instance.ClearList();
+        StartCoroutine(CatalogueScript.instance.CreateItemsWithFilters());
+    }
+
+    public void callOpenCatalogue() {
+        StartCoroutine(LoadAndOpenCatalogue());
+    }
+    
+    public void closeCatalogue() {
+        catalogue.SetActive(false);
+        mainButtons.SetActive(true);    
+        scanText.SetActive(true);
+
+    }
+
+    public IEnumerator LoadAndOpenCatalogue() 
+    {
+        GameObject newItem;
+
+        yield return StartCoroutine(NetworkManager.instance.GetCatalogue());
+        catalogue.SetActive(true);
+        CatalogueScript catalogueScript = catalogue.GetComponent<CatalogueScript>();
+        catalogueScript.ClearList();
+        NetworkManager.instance.allCatalog.ForEach((item) =>
+        {
+            newItem = Instantiate(catalogueScript.Prefab, catalogueScript.listView);
+            newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
+            newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString() + "€";
+            newItem.GetComponent<CatalogueItemScript>().BrandName.text = item.company_name;
+            newItem.GetComponent<CatalogueItemScript>().list = catalogueScript.cartList;
+
+            Transform thumbnailTransform = newItem.transform.Find("Thumbnail");
+            int randomItem = Random.Range(0, TexturesList.Count);
+            if (thumbnailTransform != null)
+            {
+                RawImage thumbnailImage = thumbnailTransform.GetComponent<RawImage>();
+                if (thumbnailImage != null)
+                {
+                    thumbnailImage.texture = TexturesList[randomItem];
+                }
+            }
+
+
+            GameObject TryAR = newItem.transform.Find("TryAR").gameObject;
+            Button TryARButton = TryAR.GetComponent<Button>();
+            TryARButton.onClick.AddListener(() => {
+                mainButtons.SetActive(true);
+                scanText.SetActive(true);
+                spawnObject(ModelsList[randomItem]);
+            });
+        });
+        mainButtons.SetActive(false);
+        scanText.SetActive(false);
     }
 
 }

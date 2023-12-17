@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LandingPage/Landing.unity
     guid: f8a901fccaf92ff4b90e39f3733d4272
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoginScene/Login.unity
     guid: ab036f8742d931a4f944a925322af5d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RegisterScene/Register.unity
     guid: a75f267f096e7b642bb75e3931faff3d
   - enabled: 1
