@@ -1,14 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ChangePasswordScript : MonoBehaviour
 {
-    public TMP_InputField currentPasswordInput;
     public TMP_InputField newPasswordInput;
     public TMP_InputField confirmPasswordInput;
     public TextMeshProUGUI errorText;
@@ -16,8 +12,7 @@ public class ChangePasswordScript : MonoBehaviour
     public void ChangePassword()
     {
         // Vérifier si les champs sont vides
-        if (string.IsNullOrEmpty(currentPasswordInput.text) ||
-            string.IsNullOrEmpty(newPasswordInput.text) ||
+        if (string.IsNullOrEmpty(newPasswordInput.text) ||
             string.IsNullOrEmpty(confirmPasswordInput.text))
         {
             ShowErrorMessage("Veuillez remplir tous les champs");
@@ -31,55 +26,47 @@ public class ChangePasswordScript : MonoBehaviour
             return;
         }
 
-        // Simuler la vérification du mot de passe actuel
-        if (!SimulateCheckCurrentPassword(currentPasswordInput.text))
-        {
-            ShowErrorMessage("Mot de passe actuel incorrect");
-            return;
-        }
-
         // Appeler la méthode de changement de mot de passe
-        StartCoroutine(ChangePasswordRequest(PlayerPrefs.GetString("jwt"), newPasswordInput.text));
+        StartCoroutine(ChangePasswordRequest(newPasswordInput.text));
+    }
+    
+    [System.Serializable]
+    public class ChangePasswordData
+    {
+        public string password;
     }
 
-    // Simulation de la vérification du mot de passe actuel
-    private bool SimulateCheckCurrentPassword(string currentPassword)
+    IEnumerator ChangePasswordRequest(string newPassword)
     {
-        // Remplacez ceci par votre propre logique de vérification du mot de passe actuel côté serveur
-        // Pour la simulation, nous utilisons un mot de passe fictif
-        string simulatedCurrentPassword = "motdepasse123";
-        return currentPassword == simulatedCurrentPassword;
-    }
-
-    private IEnumerator ChangePasswordRequest(string jwt, string newPassword)
-    {
-        string uri = "https://votre-api.com/changepassword"; // Remplacez par l'URL de votre endpoint de changement de mot de passe
-
-        WWWForm form = new WWWForm();
-        form.AddField("newPassword", newPassword);
-
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))
+        // Créer un objet JSON pour contenir le nouveau mot de passe
+        int userID = PlayerPrefs.GetInt("userID");
+        string uri = "https://api.ardeco.app/user/" + userID;
+        ChangePasswordData requestData = new ChangePasswordData
         {
-            // Ajoutez le JWT aux headers de la requête
-            webRequest.SetRequestHeader("Authorization", "Bearer " + jwt);
+            password = newPassword
+        };
+        string jsonRequestBody = JsonUtility.ToJson(requestData);
 
-            yield return webRequest.SendWebRequest();
+        // Créer la requête PUT avec UnityWebRequest
+        UnityWebRequest request = UnityWebRequest.Put(uri, jsonRequestBody);
 
-            if (webRequest.isNetworkError || webRequest.isHttpError)
-            {
-                ShowErrorMessage("Erreur lors du changement de mot de passe : " + webRequest.error);
-            }
-            else
-            {
-                // Réinitialisez les champs et affichez un message de succès
-                currentPasswordInput.text = string.Empty;
-                newPasswordInput.text = string.Empty;
-                confirmPasswordInput.text = string.Empty;
-                ShowSuccessMessage("Mot de passe changé avec succès");
+        // Spécifier le type de contenu JSON
+        request.SetRequestHeader("Content-Type", "application/json");
 
-                UnityEngine.Debug.Log("Changement de mot de passe réussi!");
-                UnityEngine.Debug.Log("Réponse : " + webRequest.downloadHandler.text);
-            }
+        // Envoyer la requête
+        yield return request.SendWebRequest();
+        Debug.Log("JSON Request Body: " + jsonRequestBody);
+        Debug.LogError("Réponse du serveur : " + request.downloadHandler.text);
+        // Vérifier s'il y a des erreurs
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            ShowSuccessMessage("Mot de passe changé avec succès!");
+            Debug.Log("Mot de passe changé avec succès!");
+        }
+        else
+        {
+            ShowErrorMessage("Erreur lors du changement de mot de passe");
+            Debug.LogError("Erreur lors du changement de mot de passe: " + request.error);
         }
     }
 
