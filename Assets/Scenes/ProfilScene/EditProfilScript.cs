@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
+using System.Collections;
+
 public class EditProfilScript : MonoBehaviour
 {
     public TMP_InputField firstNameField;
@@ -21,7 +23,7 @@ public class EditProfilScript : MonoBehaviour
 
     private void Start()
     {
-        // Sauvegardez les valeurs initiales des champs
+        // Sauvegarde les valeurs initiales des champs
         initialFirstName = firstNameField.text;
         initialLastName = lastNameField.text;
         initialEmail = emailField.text;
@@ -44,9 +46,10 @@ public class EditProfilScript : MonoBehaviour
         {
             editProfileButton.GetComponentInChildren<TMP_Text>().text = "Edit Profil";
             DisableEditing();
-            SaveChanges(); // Sauvegardez les modifications lorsque vous appuyez sur "Confirmer"
+            SaveChanges(); // Sauvegarde les modifications lorsque vous appuyez sur "Confirmer"
         }
     }
+
     private void EnableEditing()
     {
         firstNameField.interactable = true;
@@ -64,26 +67,65 @@ public class EditProfilScript : MonoBehaviour
         phoneNumberField.interactable = false;
         cityField.interactable = false;
     }
+
     public void SaveChanges()
     {
-        // Récupérez les nouvelles valeurs des champs de texte
+        // Récupére les nouvelles valeurs des champs de texte
         string newFirstName = firstNameField.text;
         string newLastName = lastNameField.text;
         string newEmail = emailField.text;
         string newPhoneNumber = phoneNumberField.text;
         string newCity = cityField.text;
-        firstNameField.interactable = false;
-        lastNameField.interactable = false;
-        emailField.interactable = false;
-        phoneNumberField.interactable = false;
-        cityField.interactable = false;
 
-        PlayerPrefs.SetString("FirstName", newFirstName);
-        PlayerPrefs.SetString("LastName", newLastName);
-        PlayerPrefs.SetString("Email", newEmail);
-        PlayerPrefs.SetString("PhoneNumber", newPhoneNumber);
-        PlayerPrefs.SetString("City", newCity);
-        PlayerPrefs.Save();
-        Debug.Log("Modifications enregistrées!");
+        StartCoroutine(SendProfileChanges(newFirstName, newLastName, newEmail, newPhoneNumber, newCity));
+    }
+
+    private IEnumerator SendProfileChanges(string newFirstName, string newLastName, string newEmail, string newPhoneNumber, string newCity)
+    {
+        int userID = PlayerPrefs.GetInt("userID");
+        string apiUrl = $"https://api.ardeco.app/user/{userID}";
+
+        // Prépare les données à envoyer sous forme de chaîne JSON
+        string jsonData = JsonUtility.ToJson(new UserProfileData(newFirstName, newLastName, newEmail, newPhoneNumber, newCity));
+
+        // Envoyez la requête PUT
+        using (UnityWebRequest webRequest = UnityWebRequest.Put(apiUrl, jsonData))
+        {
+            string jwt = PlayerPrefs.GetString("jwt");
+            webRequest.method = "PUT";
+            webRequest.SetRequestHeader("Authorization", "Bearer " + jwt);
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError || webRequest.isHttpError)
+            {
+                Debug.LogError($"Erreur lors de la modification du profil (code {webRequest.responseCode}): {webRequest.error}");
+                Debug.LogError($"Réponse : {webRequest.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.Log("Modifications du profil enregistrées avec succès!");
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class UserProfileData
+    {
+        public string first_name;
+        public string last_name;
+        public string email;
+        public string phone;
+        public string city;
+
+        public UserProfileData(string firstName, string lastName, string email, string phone, string city)
+        {
+            this.first_name = firstName;
+            this.last_name = lastName;
+            this.email = email;
+            this.phone = phone;
+            this.city = city;
+        }
     }
 }

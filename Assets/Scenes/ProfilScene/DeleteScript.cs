@@ -21,7 +21,7 @@ public class DeleteScript : MonoBehaviour
         int userID = PlayerPrefs.GetInt("userID");
 
         // URL de l'endpoint de suppression du profil (à adapter à votre API)
-        string deleteUri = "https://api.ardeco.app/user/" + userID;
+        string deleteUri = "https://api.ardeco.app/close";
 
         // En-tête avec le jeton JWT
         Dictionary<string, string> headers = new Dictionary<string, string>();
@@ -32,8 +32,10 @@ public class DeleteScript : MonoBehaviour
 
     private IEnumerator DeleteProfileRequest(string uri, Dictionary<string, string> headers)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Delete(uri))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
+            webRequest.method = UnityWebRequest.kHttpVerbGET; // Définissez la méthode GET
+
             // Ajoutez les en-têtes à la requête
             foreach (var header in headers)
             {
@@ -44,20 +46,20 @@ public class DeleteScript : MonoBehaviour
 
             if (webRequest.isNetworkError || webRequest.isHttpError)
             {
-                Debug.LogError("Erreur lors de la suppression du profil : " + webRequest.error);
-                Debug.LogError("Réponse : " + webRequest.downloadHandler.text);
+                Debug.LogError($"Erreur lors de la suppression du profil (code {webRequest.responseCode}): {webRequest.error}");
+                Debug.LogError($"Réponse : {webRequest.downloadHandler.text}");
             }
             else
             {
                 Debug.Log("Suppression du profil réussie!");
-                Debug.Log("Réponse : " + webRequest.downloadHandler.text);
+                Debug.Log($"Réponse : {webRequest.downloadHandler.text}");
 
                 // Effacez les données de l'utilisateur de PlayerPrefs
                 PlayerPrefs.DeleteKey("jwt");
                 PlayerPrefs.DeleteKey("userID");
 
                 // Chargez une autre scène ou effectuez une autre action (par exemple, revenir à l'écran de connexion)
-                SceneManager.LoadScene("LoginScene");
+                SceneManager.LoadScene("Login");
             }
         }
     }
