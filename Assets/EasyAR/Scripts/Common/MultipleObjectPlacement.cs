@@ -780,11 +780,38 @@ public class MultipleObjectPlacement : MonoBehaviour
             TryARButton.onClick.AddListener(() => {
                 mainButtons.SetActive(true);
                 scanText.SetActive(true);
-                spawnObject(ModelsList[randomItem]);
+                spawnObject(ModelsList[0]);
             });
         });
         mainButtons.SetActive(false);
         scanText.SetActive(false);
+    }
+
+    public void changeMaterials() {
+    // Obtenez des indices aléatoires pour les matériaux principal et secondaire
+    int randomMatPrincipal = Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipal.Count);
+    int randomMatSecondaire = Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matSecondary.Count);
+
+    // Obtenez les listes d'indices pour les matériaux principal et secondaire
+    List<int> matPrincipalIndex = spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipalIndex;
+    List<int> matSecondaireIndex = spawnedObject.GetComponent<SpawningObjectDetails>().matSecondaryIndex;
+
+    // Parcourez chaque enfant de l'objet
+    foreach (Transform child in spawnedObject.transform)
+    {
+        Renderer childRenderer = child.GetComponent<Renderer>();
+        if (childRenderer != null)
+        {
+            if (matPrincipalIndex.Contains(child.GetSiblingIndex()))
+            {
+                childRenderer.material = spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipal[randomMatPrincipal];
+            }
+            else if (matSecondaireIndex.Contains(child.GetSiblingIndex()))
+            {
+                childRenderer.material = spawnedObject.GetComponent<SpawningObjectDetails>().matSecondary[randomMatSecondaire];
+            }
+        }
+    }
     }
 
 }

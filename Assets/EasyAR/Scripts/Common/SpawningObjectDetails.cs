@@ -90,6 +90,14 @@ public class SpawningObjectDetails : MonoBehaviour
 
     public string name = "unnamed object";
 
+    public List<Material> matPrincipal = new List<Material>();
+
+    public List<Material> matSecondary = new List<Material>();
+
+    public List<int> matPrincipalIndex = new List<int>();
+
+    public List<int> matSecondaryIndex = new List<int>();
+
 
     public bool enableTouchIndicator
     {
