@@ -7,6 +7,7 @@ using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
 using static NetworkManager.ServerStatus;
+using System;
 
 
 /// <summary>
@@ -232,7 +233,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// </summary>
     ARPlaneManager aRPlaneManager;
     
-    private GameObject _lastObjectTouched = null;
+    public GameObject _lastObjectTouched = null;
 
     public Text totalPriceText;
     public float totalPrice = 0;
@@ -279,8 +280,8 @@ public class MultipleObjectPlacement : MonoBehaviour
         scanSurface = GameObject.FindWithTag("ScanSurfaceAnim");
         notification = GameObject.FindWithTag("NotificationPanel");
         scanSurface.SetActive(true);
-        totalPriceText.text = totalPrice.ToString("F2");
-        maxPriceText.text = maxPrice.ToString("F2");
+//        totalPriceText.text = totalPrice.ToString("F2");
+  //      maxPriceText.text = maxPrice.ToString("F2");
         StartCoroutine(NetworkManager.instance.GetServerStatus());
     }
     void Update()
@@ -642,7 +643,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// Instabciate the choosed object to spawn
     /// </summary>
     /// <param name="go"></param>
-    public void spawnObject(GameObject go)
+    public void spawnObject(GameObject go, int price, int id, string color, string style, string room)
     {
         Debug.Log("Spawn object");
         this.catalogue.SetActive(false);
@@ -653,6 +654,12 @@ public class MultipleObjectPlacement : MonoBehaviour
         spawnedObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.localScale = spawnedObject.GetComponent<Collider>().bounds.size * 0.0015f;
         spawnedObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.position = new Vector3(0, spawnedObject.GetComponent<Collider>().bounds.size.y * 1.2f, 0);
         spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice = (spawnedObject.GetComponent<SpawningObjectDetails>().priceValue + spawnedObject.GetComponent<SpawningObjectDetails>().deliveryPrice) + (spawnedObject.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5;
+        spawnedObject.GetComponent<SpawningObjectDetails>().price = price;
+        spawnedObject.GetComponent<SpawningObjectDetails>().id = id;
+        spawnedObject.GetComponent<SpawningObjectDetails>().color = color;
+        spawnedObject.GetComponent<SpawningObjectDetails>().style = style;
+        spawnedObject.GetComponent<SpawningObjectDetails>().room = room;
+    
         if (totalPrice + spawnedObject.GetComponent<SpawningObjectDetails>().totalPrice > maxPrice)
         {
             Destroy(spawnedObject);
@@ -665,6 +672,26 @@ public class MultipleObjectPlacement : MonoBehaviour
         catalogue.SetActive(false);
     }
 
+//copy _lastObjectTouched position to spawn a new object
+    public void spawnAtPosition(GameObject go, int price, int id, string color, string style, string room) {
+        if (_lastObjectTouched != null) {
+            //create new object at _lastObjectTouched position
+            GameObject newObject = Instantiate(go);
+            newObject.transform.position = _lastObjectTouched.transform.position;
+            newObject.transform.rotation = _lastObjectTouched.transform.rotation;
+            newObject.transform.localScale = _lastObjectTouched.transform.localScale;
+            newObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.localScale = newObject.GetComponent<Collider>().bounds.size * 0.0015f;
+            newObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.position = new Vector3(0, newObject.GetComponent<Collider>().bounds.size.y * 1.2f, 0);
+            newObject.GetComponent<SpawningObjectDetails>().totalPrice = (newObject.GetComponent<SpawningObjectDetails>().priceValue + newObject.GetComponent<SpawningObjectDetails>().deliveryPrice) + (newObject.GetComponent<SpawningObjectDetails>().priceValue / 100) * 5;
+            newObject.GetComponent<SpawningObjectDetails>().price = price;
+            newObject.GetComponent<SpawningObjectDetails>().id = id;
+            newObject.GetComponent<SpawningObjectDetails>().color = color;
+            newObject.GetComponent<SpawningObjectDetails>().style = style;
+            newObject.GetComponent<SpawningObjectDetails>().room = room;
+            Destroy(_lastObjectTouched);
+            _lastObjectTouched = newObject;
+        }
+    }
 
     public void movePanel(GameObject panel)
     {
@@ -762,9 +789,14 @@ public class MultipleObjectPlacement : MonoBehaviour
             newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString() + "€";
             newItem.GetComponent<CatalogueItemScript>().BrandName.text = item.company_name;
             newItem.GetComponent<CatalogueItemScript>().list = catalogueScript.cartList;
+            newItem.GetComponent<CatalogueItemScript>().id = item.id;
+            newItem.GetComponent<CatalogueItemScript>().color = item.colors;
+            newItem.GetComponent<CatalogueItemScript>().style = item.styles;
+            newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
+
 
             Transform thumbnailTransform = newItem.transform.Find("Thumbnail");
-            int randomItem = Random.Range(0, TexturesList.Count);
+            int randomItem = UnityEngine.Random.Range(0, TexturesList.Count);
             if (thumbnailTransform != null)
             {
                 RawImage thumbnailImage = thumbnailTransform.GetComponent<RawImage>();
@@ -780,23 +812,21 @@ public class MultipleObjectPlacement : MonoBehaviour
             TryARButton.onClick.AddListener(() => {
                 mainButtons.SetActive(true);
                 scanText.SetActive(true);
-                spawnObject(ModelsList[0]);
+                spawnObject(ModelsList[randomItem], Convert.ToInt32(item.price), item.id, item.colors, item.styles, item.rooms);
             });
         });
         mainButtons.SetActive(false);
         scanText.SetActive(false);
     }
 
-    public void changeMaterials() {
-    // Obtenez des indices aléatoires pour les matériaux principal et secondaire
-    int randomMatPrincipal = Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipal.Count);
-    int randomMatSecondaire = Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matSecondary.Count);
 
-    // Obtenez les listes d'indices pour les matériaux principal et secondaire
+    public void changeMaterials() {
+    int randomMatPrincipal = UnityEngine.Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipal.Count);
+    int randomMatSecondaire = UnityEngine.Random.Range(0, spawnedObject.GetComponent<SpawningObjectDetails>().matSecondary.Count);
+
     List<int> matPrincipalIndex = spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipalIndex;
     List<int> matSecondaireIndex = spawnedObject.GetComponent<SpawningObjectDetails>().matSecondaryIndex;
 
-    // Parcourez chaque enfant de l'objet
     foreach (Transform child in spawnedObject.transform)
     {
         Renderer childRenderer = child.GetComponent<Renderer>();
@@ -805,6 +835,7 @@ public class MultipleObjectPlacement : MonoBehaviour
             if (matPrincipalIndex.Contains(child.GetSiblingIndex()))
             {
                 childRenderer.material = spawnedObject.GetComponent<SpawningObjectDetails>().matPrincipal[randomMatPrincipal];
+                spawnedObject.GetComponent<SpawningObjectDetails>().indexMatPrincipal = randomMatPrincipal;
             }
             else if (matSecondaireIndex.Contains(child.GetSiblingIndex()))
             {

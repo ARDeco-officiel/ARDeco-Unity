@@ -9,6 +9,8 @@ public class CartScript : MonoBehaviour
     public TMP_Text Name;
     public TMP_Text Brand;
     public TMP_Text Price;
+
+    public TMP_Text Material;
     public Sprite Thumbnail;
     // Start is called before the first frame update
     void Start()
@@ -22,9 +24,10 @@ public class CartScript : MonoBehaviour
         
     }
 
-    public void setCartItemInfo(TMP_Text qte, TMP_Text name, TMP_Text price) {
+    public void setCartItemInfo(TMP_Text qte, TMP_Text name, TMP_Text price, TMP_Text material) {
         Qte.text = "Qte: " + qte.text;
         Name.text = name.text;
         Price.text = price.text;
+        Material.text = material.text;
     }
 }

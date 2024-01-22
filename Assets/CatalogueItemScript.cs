@@ -23,6 +23,14 @@ public class CatalogueItemScript : MonoBehaviour
     public TMP_Text Name;
     public TMP_Text BrandName;
     public TMP_Text Price;
+
+    public TMP_Text Material;
+
+    public int id;
+    public int price;
+    public string room;
+    public string style;
+    public string color;
     int i = 0;
 
     void Start()
@@ -39,6 +47,6 @@ public class CatalogueItemScript : MonoBehaviour
         int qty = int.Parse(Quantity.text);
         Debug.Log(qty + " test ");
         GameObject newItem = Instantiate(itemPrefab, list);
-        newItem.GetComponent<CartScript>().setCartItemInfo(Quantity, Name, Price);
+        newItem.GetComponent<CartScript>().setCartItemInfo(Quantity, Name, Price, Material);
     }
 }

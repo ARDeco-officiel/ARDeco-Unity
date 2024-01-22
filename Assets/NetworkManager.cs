@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class NetworkManager : MonoBehaviour
@@ -39,23 +40,47 @@ public class NetworkManager : MonoBehaviour
         public Furniture[] items;
     }
 
-    [System.Serializable]
+        
+    [Serializable]
     public class Furniture
     {
         public int id;
         public string name;
-        public int price;
+        public float price;
         public string styles;
         public string rooms;
-        public int width;
-        public int height;
-        public int depth;
+        public float width;
+        public float height;
+        public float depth;
         public string colors;
         public string object_id;
-        public string model_id;
+        public int model_id;
         public bool active;
         public int company;
         public string company_name;
+    }
+
+    [Serializable]
+    public class Response
+    {
+        public string status;
+        public int code;
+        public string description;
+        public List<Furniture> data;
+    }
+
+    [Serializable]
+    public class RootObject
+    {
+        public Response response;
+    }
+
+    public class ObjectDetails
+    {
+        public int price;
+        public string color;
+        public string room;
+        public string style;
     }
 
     public List<Furniture> filteredCatalog = new List<Furniture>();
@@ -107,16 +132,19 @@ public class NetworkManager : MonoBehaviour
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
-            if (webRequest.result == UnityWebRequest.Result.Success)
-            {
-                
-                string tmp = "\"items:\"" + webRequest.downloadHandler.text;
-                FurnitureWrapper furnitureWrapper = JsonUtility.FromJson<FurnitureWrapper>("{\"items\":" + webRequest.downloadHandler.text + "}");
-                allCatalog = furnitureWrapper.items.ToList();
-                Furniture[] furnitureArray = furnitureWrapper.items;
+        if (webRequest.result == UnityWebRequest.Result.Success)
+        {
+            string jsonResponse = webRequest.downloadHandler.text;
+    Debug.Log("JSON Response: " + jsonResponse);
+            Response rootObject = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
 
-                foreach(Furniture furniture in furnitureArray)
+            if (rootObject != null && rootObject != null && rootObject.data != null)
+            {
+                Furniture[] furnitureArray = rootObject.data.ToArray();
+                allCatalog = rootObject.data;
+                foreach (Furniture furniture in furnitureArray)
                 {
+
                     Debug.Log("Name: " + furniture.name);
                 }
                 infoPage.GetComponent<infoItem>().name.text = furnitureArray[0].name;
@@ -124,11 +152,14 @@ public class NetworkManager : MonoBehaviour
                 infoPage.GetComponent<infoItem>().brand.text = furnitureArray[0].company_name;
                 infoPage.GetComponent<infoItem>().price.text = furnitureArray[0].price.ToString();
                 
+            } else {
+                Debug.LogError("rootObject, rootObject.response, or rootObject.response.data is null");
             }
-            else
-            {
-                Debug.Log(webRequest.error);
-                Debug.Log("Error on Get Catalog : " + webRequest.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError(webRequest.error);
+            Debug.LogError("Error on Get Catalog : " + webRequest.downloadHandler.text);
             }
         }
     }
@@ -161,9 +192,10 @@ public class NetworkManager : MonoBehaviour
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
                 
-                string tmp = "\"items:\"" + webRequest.downloadHandler.text;
-                FurnitureWrapper furnitureWrapper = JsonUtility.FromJson<FurnitureWrapper>("{\"items\":" + webRequest.downloadHandler.text + "}");
-                Furniture[] furnitureArray = furnitureWrapper.items;
+//                FurnitureWrapper furnitureWrapper = JsonUtility.FromJson<FurnitureWrapper>("{\"items\":" + webRequest.downloadHandler.text + "}");
+                Response rootObject = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+
+                Furniture[] furnitureArray = rootObject.data.ToArray();
 
                 foreach(Furniture furniture in furnitureArray)
                 {
@@ -194,6 +226,58 @@ public class NetworkManager : MonoBehaviour
                 {
                     Debug.Log("Name selected : " + furniture2.name);
                 }
+            }
+            else
+            {
+                Debug.Log(webRequest.error);
+                Debug.Log("Error on Get Catalog : " + webRequest.downloadHandler.text);
+            }
+        }
+    }
+
+    public void callOpenCatalogueWithFilters() {
+        StartCoroutine(ApplyFilterforChangement());
+    }     
+    public IEnumerator ApplyFilterforChangement() {
+        
+        int BestScore = 0;
+
+        string uri = "https://" + ipServer + portServer + "/catalog";
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                Response rootObject = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                Furniture[] furnitureArray = rootObject.data.ToArray();
+                foreach(Furniture furniture in furnitureArray)
+                {
+                    int score = 0;
+                    if (furniture.id == MultipleObjectPlacement.instance._lastObjectTouched.GetComponent<SpawningObjectDetails>().id) score = -1000000;
+                    if (furniture.price <= MultipleObjectPlacement.instance._lastObjectTouched.GetComponent<SpawningObjectDetails>().price) score++;
+                    if (furniture.rooms.ToLower().Contains(MultipleObjectPlacement.instance._lastObjectTouched.GetComponent<SpawningObjectDetails>().room)) score++;
+                    if (furniture.styles.ToLower().Contains(MultipleObjectPlacement.instance._lastObjectTouched.GetComponent<SpawningObjectDetails>().style)) score++;
+                    if (furniture.colors.ToLower().Contains(MultipleObjectPlacement.instance._lastObjectTouched.GetComponent<SpawningObjectDetails>().color)) score++;
+                    Debug.Log("Score for " + furniture.name + " : " + score);
+                    if (score > BestScore) {
+                        filteredCatalog.Clear();
+                        filteredCatalog.Add(furniture);
+                        BestScore = score;
+                    } else if (score == BestScore) { 
+                        Debug.Log("Same score for " + furniture.name + " : " + score);
+                        filteredCatalog.Add(furniture);
+                    }
+                }
+                foreach(Furniture furniture2 in filteredCatalog)
+                {
+                    Debug.Log("Name selected : " + furniture2.name);
+                }                
+                int randomItem = UnityEngine.Random.Range(0, MultipleObjectPlacement.instance.ModelsList.Count);
+               MultipleObjectPlacement.instance.spawnAtPosition(MultipleObjectPlacement.instance.ModelsList[randomItem],  filteredCatalog[0].id, Convert.ToInt32(filteredCatalog[0].price), filteredCatalog[0].colors, filteredCatalog[0].rooms, filteredCatalog[0].styles);
+
             }
             else
             {

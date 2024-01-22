@@ -92,11 +92,28 @@ public class SpawningObjectDetails : MonoBehaviour
 
     public List<Material> matPrincipal = new List<Material>();
 
+    public List<Sprite> matPrincipalTexture = new List<Sprite>();
+
     public List<Material> matSecondary = new List<Material>();
+
+    public List<Sprite> matSecondaryTexture = new List<Sprite>();
 
     public List<int> matPrincipalIndex = new List<int>();
 
     public List<int> matSecondaryIndex = new List<int>();
+
+
+    public int id = 0;
+    public int price = 0;
+
+    public string color = "no color";
+    public string style = "no style";
+
+    public string room = "no room";
+
+    public int indexMatPrincipal = 0;
+
+
 
 
     public bool enableTouchIndicator
