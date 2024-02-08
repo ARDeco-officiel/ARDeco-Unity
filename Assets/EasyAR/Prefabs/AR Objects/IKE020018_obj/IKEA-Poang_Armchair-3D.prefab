@@ -71,6 +71,22 @@ MonoBehaviour:
   _isRotateLock: 0
   _isMovingLock: 0
   name: Chaise Ikea
+  matPrincipal:
+  - {fileID: 2100000, guid: 70b3480a1bcdde947b06fd179880fa06, type: 2}
+  - {fileID: 2100000, guid: 89300b07461260b4aa631109164c4215, type: 2}
+  - {fileID: 2100000, guid: 238898ba43cd7bc409d7c5d380e0021c, type: 2}
+  matPrincipalTexture:
+  - {fileID: 21300000, guid: c008a74fd9cf0324d8118cded58edb21, type: 3}
+  - {fileID: 21300000, guid: 4acf0018545c9ce4389987e412a4d6dd, type: 3}
+  - {fileID: 21300000, guid: 4f6affa8d704b8940808e05eb04ceff7, type: 3}
+  matSecondary:
+  - {fileID: 2100000, guid: 055d209e64803324c9259533e99696d3, type: 2}
+  - {fileID: 2100000, guid: 5ad040e1eac41374596ae3ef44263e0f, type: 2}
+  matSecondaryTexture:
+  - {fileID: 21300000, guid: cec732e8f21958c4a98f1df5dfd22d57, type: 3}
+  - {fileID: 21300000, guid: b750d435ebd491b429ff1088cca38f28, type: 3}
+  matPrincipalIndex: 01000000
+  matSecondaryIndex: 00000000
 --- !u!65 &8611920763981310155
 BoxCollider:
   m_ObjectHideFlags: 0

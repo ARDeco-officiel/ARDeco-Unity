@@ -316,6 +316,7 @@ MonoBehaviour:
   _enbleDragFeature: 1
   _enableRotateFeature: 1
   _rotateFactor: 750
+  _speedFactor: 100
   _enableScaleFeature: 1
   _enableARQualityControl: 1
   _scaleFactor: 400
@@ -327,6 +328,27 @@ MonoBehaviour:
     type: 3}
   _scalePersentageIndicator: {fileID: 2779201514272753015, guid: 1e3e7c5fd35bf4f4b8a4fe246d38241c,
     type: 3}
+  priceValue: 0
+  deliveryPrice: 0
+  totalPrice: 0
+  dimensions: {x: 0, y: 0, z: 0}
+  brand: not branded
+  miniature: {fileID: 21300000, guid: 6ee2044d0a3722b4cb786fb6fadbda94, type: 3}
+  _isRotateLock: 0
+  _isMovingLock: 0
+  name: ikea chair
+  matPrincipal:
+  - {fileID: 2100000, guid: 4cba4dea1db61d04fab315d69063d82a, type: 2}
+  - {fileID: 2100000, guid: 07a3bfd8c2dd2ea45a19e3a9af514758, type: 2}
+  matPrincipalTexture:
+  - {fileID: 21300000, guid: 3ff27493b3d08e646b97e72c3e874f1a, type: 3}
+  - {fileID: 21300000, guid: d7666a763507319469090ea9d5e22724, type: 3}
+  matSecondary:
+  - {fileID: -2016719210156483284, guid: f2aca3f0ea9544e45bc48622dfd25a96, type: 3}
+  matSecondaryTexture:
+  - {fileID: 21300000, guid: 4f6affa8d704b8940808e05eb04ceff7, type: 3}
+  matPrincipalIndex: 00000000
+  matSecondaryIndex: 01000000020000000300000004000000
 --- !u!1 &3233569758214665174
 GameObject:
   m_ObjectHideFlags: 0

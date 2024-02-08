@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,10 +44,16 @@ public class CatalogueScript : MonoBehaviour
         {
             newItem = Instantiate(Prefab, listView);
             newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
+            newItem.GetComponent<CatalogueItemScript>().price = Convert.ToInt32(item.price);
+            newItem.GetComponent<CatalogueItemScript>().id = item.id;
+            newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
+            newItem.GetComponent<CatalogueItemScript>().style = item.styles;
+            newItem.GetComponent<CatalogueItemScript>().color = item.colors;
             Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
             newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString();
             newItem.GetComponent<CatalogueItemScript>().BrandName.text = item.company_name;
             newItem.GetComponent<CatalogueItemScript>().list = cartList;
+            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: Default";
         });
     }
 
@@ -63,8 +70,17 @@ public class CatalogueScript : MonoBehaviour
             Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
             newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString();
             newItem.GetComponent<CatalogueItemScript>().list = cartList;
+
+            newItem.GetComponent<CatalogueItemScript>().id = item.id;
+            newItem.GetComponent<CatalogueItemScript>().price = Convert.ToInt32(item.price);
+            newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
+            newItem.GetComponent<CatalogueItemScript>().style = item.styles;
+            newItem.GetComponent<CatalogueItemScript>().color = item.colors;
+            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: default";
+
+
             Transform thumbnailTransform = newItem.transform.Find("Thumbnail");
-            int randomItem = Random.Range(0, MultipleObjectPlacement.instance.TexturesList.Count);
+            int randomItem = UnityEngine.Random.Range(0, MultipleObjectPlacement.instance.TexturesList.Count);
             if (thumbnailTransform != null)
             {
                 RawImage thumbnailImage = thumbnailTransform.GetComponent<RawImage>();
@@ -78,7 +94,7 @@ public class CatalogueScript : MonoBehaviour
             TryARButton.onClick.AddListener(() => {
                 MultipleObjectPlacement.instance.mainButtons.SetActive(true);
                 MultipleObjectPlacement.instance.scanText.SetActive(true);
-                MultipleObjectPlacement.instance.spawnObject(MultipleObjectPlacement.instance.ModelsList[randomItem]);
+                MultipleObjectPlacement.instance.spawnObject(MultipleObjectPlacement.instance.ModelsList[randomItem], Convert.ToInt32(item.price), item.id, item.rooms, item.styles, item.colors);
             });
         });
     }

@@ -35,12 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AboutUsScene/AboutUs.unity
     guid: f591c9b5099aa2543a6a0afd533ccbef
-  - enabled: 0
-    path: Assets/EasyAR/Scenes/ARTilling.unity
-    guid: d108ae2f0ff58784e99c64fd8451a854
-  - enabled: 0
-    path: Assets/EasyAR/Scenes/ARConfigurator.unity
-    guid: 38d21acc7d8da4acd989f4a754957430
   - enabled: 1
     path: Assets/Scenes/Sounds/Sounds.unity
     guid: f933d9c0d919e254cb2ea0ef3aa7a7db
@@ -62,6 +56,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FAQ/FAQ.unity
     guid: c786db1773fe0114091f5c24d2dab50f
+  - enabled: 1
+    path: Assets/Scenes/SecurityScene/Security.unity
+    guid: 93f94e9360e2944478d568a9c49696d3
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
