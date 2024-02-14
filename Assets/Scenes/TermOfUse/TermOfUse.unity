@@ -201,67 +201,66 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Application Update - Version 1.1.0
 
-    
+
 
     Dear User,
 
-    
 
-    We
-    are excited to introduce the latest update to our mobile application. This version
-    brings enhanced features for an even better user experience. Here''s what''s
-    new:
 
-    
+    We are excited
+    to introduce the latest update to our mobile application. This version brings
+    enhanced features for an even better user experience. Here''s what''s new:
 
-    1. Profile Editing:
 
-    Now, you have complete control over
-    your profile. Customize your information, update your profile picture, and modify
-    your preferences with ease. Click on "Edit Profile" to get started.
 
-    
+    1.
+    Profile Editing:
 
-    2.
-    Profile Viewing:
+    Now, you have complete control over your profile. Customize
+    your information, update your profile picture, and modify your preferences with
+    ease. Click on "Edit Profile" to get started.
 
-    Want to see what your profile looks like to other users?
-    Discover your profile as it appears to others with a single click. Access "Profil"
-    to view it.
 
-    
 
-    3. Account Deletion:
+    2. Profile Viewing:
 
-    We understand that sometimes
-    you may decide to stop using our application. You can now delete your account
-    directly from the app. Go to the account settings and choose "Delete Account"
-    to follow the process.
+    Want
+    to see what your profile looks like to other users? Discover your profile as
+    it appears to others with a single click. Access "Profil" to view it.
 
-    
 
-    4. Easy Log Out:
 
-    You no longer need
-    to worry about staying logged in if you want to log out. Simply tap the button
-    "Log Out" in the main menu to exit your session in an instant.
+    3.
+    Account Deletion:
 
-    
+    We understand that sometimes you may decide to stop using
+    our application. You can now delete your account directly from the app. Go to
+    the account settings and choose "Delete Account" to follow the process.
 
-    We
-    hope these new features enhance your experience and give you more control over
-    your profile. If you have any feedback or questions, please feel free to contact
-    us through the "Contact Us" option in the settings.
 
-    
 
-    Thank you for
-    using our application, and stay tuned for more exciting updates in the future!
+    4.
+    Easy Log Out:
 
-    
+    You no longer need to worry about staying logged in if you
+    want to log out. Simply tap the button "Log Out" in the main menu to exit your
+    session in an instant.
 
-    Best
-    Regards,
+
+
+    We hope these new features enhance your experience
+    and give you more control over your profile. If you have any feedback or questions,
+    please feel free to contact us through the "Contact Us" option in the settings.
+
+
+
+    Thank
+    you for using our application, and stay tuned for more exciting updates in the
+    future!
+
+
+
+    Best Regards,
 
     The Application Team'
   m_isRightToLeft: 0
@@ -376,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 1600}
+  m_AnchoredPosition: {x: -180, y: 1800}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403805318
@@ -906,7 +905,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 471754278}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5189175
+  m_Size: 0.6023512
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
