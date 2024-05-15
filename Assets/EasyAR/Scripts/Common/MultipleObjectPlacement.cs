@@ -266,6 +266,8 @@ public class MultipleObjectPlacement : MonoBehaviour
     public GameObject mainButtons;
     public GameObject scanText;
     
+    
+    public GameObject objectToPlaceAutomaticly;
     public void Awake()
     {
         instance = this;
@@ -284,6 +286,7 @@ public class MultipleObjectPlacement : MonoBehaviour
   //      maxPriceText.text = maxPrice.ToString("F2");
         StartCoroutine(NetworkManager.instance.GetServerStatus());
     }
+
     void Update()
     {
         if (Time.time - lastping >= 5)
@@ -292,11 +295,13 @@ public class MultipleObjectPlacement : MonoBehaviour
             lastping = Time.time;
         }
         //status.reachable = true;
-        
+
         if (!TouchIndicatorHandler.isTouchedTheObject)
         {
-            if (_lastObjectTouched != null) {
-                if (infoButton.activeSelf == false) {
+            if (_lastObjectTouched != null)
+            {
+                if (infoButton.activeSelf == false)
+                {
                     infoButton.SetActive(true);
                     setInfoItemValues(_lastObjectTouched);
                 }
@@ -306,28 +311,41 @@ public class MultipleObjectPlacement : MonoBehaviour
 
             Vector3 rayEmitPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
             if (m_RaycastManager.Raycast(rayEmitPosition, s_Hits, TrackableType.PlaneWithinPolygon))
-            {             
+            {
                 var hitPose = s_Hits[0].pose;
-                if (_PointerIndicator == null) { _PointerIndicator = Instantiate(PointerIndicator); }
-                if (_PointerIndicator.activeSelf == false && !hideIndicator) { _PointerIndicator.SetActive(true); }
+                Console.WriteLine("Hit Pose: " + hitPose.position);
+                if (_PointerIndicator == null)
+                {
+                    _PointerIndicator = Instantiate(PointerIndicator);
+                }
+
+                if (_PointerIndicator.activeSelf == false && !hideIndicator)
+                {
+                    _PointerIndicator.SetActive(true);
+                }
+
                 _PointerIndicator.transform.position = hitPose.position;
                 _PointerIndicator.transform.rotation = hitPose.rotation;
                 scanSurface.SetActive(false);
-                if(Vector3.Distance(ArCamera.transform.position, hitPose.position) < 0.8f)
+                if (Vector3.Distance(ArCamera.transform.position, hitPose.position) < 0.8f)
                 {
                     _PointerIndicator.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 }
                 else
                 {
                     _PointerIndicator.transform.localScale = new Vector3(1, 1, 1);
-                }          
-                if (iscalledToSpawn && ((PlaneRecognizor(s_Hits[0].trackable.transform) == spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString()) ||
-                    spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() == "Everything"))
+                }
+
+                if (iscalledToSpawn && ((PlaneRecognizor(s_Hits[0].trackable.transform) ==
+                                         spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode
+                                             .ToString()) ||
+                                        spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode
+                                            .ToString() == "Everything"))
                 {
                     isObjectPlaced = true;
-                    spawnedObject.SetActive(true);                     
+                    spawnedObject.SetActive(true);
                     if (spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() == "Vertical")
-                    {   
+                    {
                         Quaternion orientation = Quaternion.identity;
                         Quaternion zUp = Quaternion.identity;
                         GetWallPlacement(s_Hits[0], out orientation, out zUp);
@@ -336,8 +354,10 @@ public class MultipleObjectPlacement : MonoBehaviour
                     else
                     {
                         spawnedObject.transform.rotation = hitPose.rotation;
-                    }                  
-                    spawnedObject.GetComponent<SpawningObjectDetails>().initialPlacedRotation = spawnedObject.transform.rotation;
+                    }
+
+                    spawnedObject.GetComponent<SpawningObjectDetails>().initialPlacedRotation =
+                        spawnedObject.transform.rotation;
                     //getObjectMaterials = EventSystem.current.currentSelectedGameObject.GetComponent<PrefabMaterialHandler>().ObjectMaterials;
                     //setObjectMaterials = getObjectMaterials;
                     //for (int i = 0; i < getObjectMaterials.Length; i++)
@@ -345,11 +365,17 @@ public class MultipleObjectPlacement : MonoBehaviour
                     //    getObjectMaterials[i].shader = (Shader)Resources.Load("StandradCustomShader", typeof(Shader));
                     //    getObjectMaterials[i].color = new Color32(255, 255, 255, 255);
                     //}
+
+
                     previousRotation = hitPose.rotation;
                     previousPosition = hitPose.position;
                     spawnedObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                    spawnedObject.transform.localPosition = previousPosition + new Vector3(0, spawnedObject.GetComponent<Collider>().bounds.size.y / 4, 0);
-                    startMarker = spawnedObject.transform.position + new Vector3(0, spawnedObject.GetComponent<Collider>().bounds.size.y / 4, 0);
+                    spawnedObject.transform.localPosition = previousPosition +
+                                                            new Vector3(0,
+                                                                spawnedObject.GetComponent<Collider>().bounds.size.y /
+                                                                4, 0);
+                    startMarker = spawnedObject.transform.position +
+                                  new Vector3(0, spawnedObject.GetComponent<Collider>().bounds.size.y / 4, 0);
                     endMarker = previousPosition;
                     journeyLength = Vector3.Distance(startMarker, endMarker);
                     startTime = Time.time;
@@ -358,9 +384,13 @@ public class MultipleObjectPlacement : MonoBehaviour
                     iscalledToSpawn = false;
 
                 }
-                if (iscalledToSpawn && (PlaneRecognizor(s_Hits[0].trackable.transform) != spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString()))
+
+                if (iscalledToSpawn && (PlaneRecognizor(s_Hits[0].trackable.transform) !=
+                                        spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode
+                                            .ToString()))
                 {
-                    notification.transform.GetChild(0).GetComponent<Text>().text = "Scan a " + spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode + " suface";
+                    notification.transform.GetChild(0).GetComponent<Text>().text = "Scan a " +
+                        spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode + " suface";
                     notification.GetComponent<Animator>().Play("notificationAnim");
                     iscalledToSpawn = false;
                     spawnedObject = null;
@@ -386,25 +416,32 @@ public class MultipleObjectPlacement : MonoBehaviour
                 {
                     var hitPose = s_Hits[0].pose;
                     if (TouchIndicatorHandler.hitObject != null &&
-                    (PlaneRecognizor(s_Hits[0].trackable.transform) == TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() ||
-                    spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() == "Everything") && spawnedObject.GetComponent<SpawningObjectDetails>()._speedFactor > 10)
+                        (PlaneRecognizor(s_Hits[0].trackable.transform) == TouchIndicatorHandler.hitObject
+                             .GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() ||
+                         spawnedObject.GetComponent<SpawningObjectDetails>().planeDetectionMode.ToString() ==
+                         "Everything") && spawnedObject.GetComponent<SpawningObjectDetails>()._speedFactor > 10)
                     {
-                        if(TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().enbleDragFeature)
+                        if (TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().enbleDragFeature)
                             TouchIndicatorHandler.hitObject.transform.position = hitPose.position;
                     }
+
                     previousPosition = hitPose.position;
                 }
             }
         }
+
         if (TouchIndicatorHandler.isTouchedTheObject)
         {
-            TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.rotation = Quaternion.Euler(ArCamera.transform.rotation.eulerAngles.x, ArCamera.transform.rotation.eulerAngles.y, 0);
+            TouchIndicatorHandler.hitObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform
+                .rotation = Quaternion.Euler(ArCamera.transform.rotation.eulerAngles.x,
+                ArCamera.transform.rotation.eulerAngles.y, 0);
         }
+
         MultipleTouchHandler();
         freezePositionWhenRotate();
         SendObjectToDetectedPosition();
     }
-
+    
     public void EditSpeedState()
     {
         Debug.Log("Touched button");
@@ -643,7 +680,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     /// Instabciate the choosed object to spawn
     /// </summary>
     /// <param name="go"></param>
-    public void spawnObject(GameObject go, int price, int id, string color, string style, string room)
+    public void spawnObject(GameObject go, int price = 0, int id = 0, string color = "", string style = "", string room = "")
     {
         Debug.Log("Spawn object");
         this.catalogue.SetActive(false);
@@ -692,7 +729,26 @@ public class MultipleObjectPlacement : MonoBehaviour
             _lastObjectTouched = newObject;
         }
     }
-
+    
+    // spawn a random number of objects from 1 to 5 not same position but first is on cursor position
+    public IEnumerator spawnRandomObjects(GameObject go) {
+        int number = UnityEngine.Random.Range(1, 6);
+        for (int i = 0; i < number; i++) {
+            GameObject newObject = Instantiate(go);
+            newObject.transform.position = _PointerIndicator.transform.position;
+            newObject.transform.rotation = newObject.transform.rotation;
+            newObject.transform.localScale = newObject.transform.localScale;
+            newObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.localScale = newObject.GetComponent<Collider>().bounds.size * 0.0015f;
+            newObject.GetComponent<SpawningObjectDetails>().scalePersentageIndicator.transform.position = new Vector3(0, newObject.GetComponent<Collider>().bounds.size.y * 1.2f, 0);
+            newObject.SetActive(true);
+            yield return new WaitForSeconds(1);
+        }
+    }
+    
+    public void callSpawnRandomObjects(GameObject go) {
+        StartCoroutine(spawnRandomObjects(go));
+    }
+    
     public void movePanel(GameObject panel)
     {
         Vector3 pos = panel.GetComponent<RectTransform>().position;
