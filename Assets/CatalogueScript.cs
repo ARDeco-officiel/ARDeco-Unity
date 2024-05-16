@@ -76,7 +76,7 @@ public class CatalogueScript : MonoBehaviour
             newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
             newItem.GetComponent<CatalogueItemScript>().style = item.styles;
             newItem.GetComponent<CatalogueItemScript>().color = item.colors;
-            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: default";
+//            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: default";
 
 
             Transform thumbnailTransform = newItem.transform.Find("Thumbnail");

@@ -908,8 +908,11 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 6ee2044d0a3722b4cb786fb6fadbda94, type: 3}
   mainButtons: {fileID: 1302485984}
   scanText: {fileID: 409764274}
-  objectToPlaceAutomaticly: {fileID: 4603629608157381920, guid: 0b6a1178c64a76248a896821f9aacabf,
-    type: 3}
+  objectToPlaceAutomaticly:
+  - {fileID: 1373516835604484882, guid: 68df6fe4e9bab8f47a077d272e84dc13, type: 3}
+  - {fileID: 4603629608157381920, guid: 0b6a1178c64a76248a896821f9aacabf, type: 3}
+  - {fileID: 5484533545563883567, guid: 8595c89cd9efad4488dd7c48a64cbca7, type: 3}
+  - {fileID: 2119218022713936866, guid: 45cccaf044aae2441b485c1f6fe24375, type: 3}
 --- !u!114 &97902989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13711,12 +13714,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 97902988}
         m_TargetAssemblyTypeName: MultipleObjectPlacement, Assembly-CSharp
-        m_MethodName: callSpawnRandomObjects
-        m_Mode: 2
+        m_MethodName: AutoSpawnWrapper
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1373516835604484882, guid: 68df6fe4e9bab8f47a077d272e84dc13,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

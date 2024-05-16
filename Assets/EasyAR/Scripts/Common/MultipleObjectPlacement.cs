@@ -267,7 +267,7 @@ public class MultipleObjectPlacement : MonoBehaviour
     public GameObject scanText;
     
     
-    public GameObject objectToPlaceAutomaticly;
+    public List <GameObject> objectToPlaceAutomaticly;
     public void Awake()
     {
         instance = this;
@@ -731,10 +731,19 @@ public class MultipleObjectPlacement : MonoBehaviour
     }
     
     // spawn a random number of objects from 1 to 5 not same position but first is on cursor position
-    public IEnumerator spawnRandomObjects(GameObject go) {
+    public IEnumerator spawnRandomObjects(List<GameObject> go) {
         int number = UnityEngine.Random.Range(1, 6);
         for (int i = 0; i < number; i++) {
-            GameObject newObject = Instantiate(go);
+            //getFilteredCatalogue
+            GameObject newObject = Instantiate(go[UnityEngine.Random.Range(0, go.Count)]);
+            NetworkManager.Furniture item = NetworkManager.instance.filteredCatalog[UnityEngine.Random.Range(0, NetworkManager.instance.filteredCatalog.Count)];
+            newObject.GetComponent<SpawningObjectDetails>().totalPrice = item.price;
+            newObject.GetComponent<SpawningObjectDetails>().id = item.id;
+            newObject.GetComponent<SpawningObjectDetails>().color = item.colors;
+            newObject.GetComponent<SpawningObjectDetails>().style = item.styles;
+            newObject.GetComponent<SpawningObjectDetails>().room = item.rooms;
+            
+            
             newObject.transform.position = _PointerIndicator.transform.position;
             newObject.transform.rotation = newObject.transform.rotation;
             newObject.transform.localScale = newObject.transform.localScale;
@@ -745,8 +754,8 @@ public class MultipleObjectPlacement : MonoBehaviour
         }
     }
     
-    public void callSpawnRandomObjects(GameObject go) {
-        StartCoroutine(spawnRandomObjects(go));
+    public void AutoSpawnWrapper() {
+        StartCoroutine(spawnRandomObjects(objectToPlaceAutomaticly));
     }
     
     public void movePanel(GameObject panel)
