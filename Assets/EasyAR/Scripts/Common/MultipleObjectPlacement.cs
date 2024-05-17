@@ -729,12 +729,9 @@ public class MultipleObjectPlacement : MonoBehaviour
             _lastObjectTouched = newObject;
         }
     }
-    
-    // spawn a random number of objects from 1 to 5 not same position but first is on cursor position
     public IEnumerator spawnRandomObjects(List<GameObject> go) {
         int number = UnityEngine.Random.Range(1, 6);
         for (int i = 0; i < number; i++) {
-            //getFilteredCatalogue
             GameObject newObject = Instantiate(go[UnityEngine.Random.Range(0, go.Count)]);
             NetworkManager.Furniture item = NetworkManager.instance.filteredCatalog[UnityEngine.Random.Range(0, NetworkManager.instance.filteredCatalog.Count)];
             newObject.GetComponent<SpawningObjectDetails>().totalPrice = item.price;
