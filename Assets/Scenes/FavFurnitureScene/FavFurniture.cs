@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI; 
 using TMPro;
+using System.Collections.Generic;
 
 public class FavFurniture : MonoBehaviour
 {
@@ -51,12 +52,12 @@ public class FavFurniture : MonoBehaviour
         }
     }
 
-    void DeleteFurniture(string furnitureId)
+void DeleteFurniture(string furnitureId)
     {
         StartCoroutine(DeleteFurnitureCoroutine(furnitureId));
     }
 
-    IEnumerator DeleteFurnitureCoroutine(string furnitureId)
+IEnumerator DeleteFurnitureCoroutine(string furnitureId)
     {
         string deleteUrl = "https://api.ardeco.app/favorite/furniture/" + furnitureId;
         UnityWebRequest request = UnityWebRequest.Delete(deleteUrl);
@@ -64,6 +65,22 @@ public class FavFurniture : MonoBehaviour
 
         if (request.result == UnityWebRequest.Result.Success)
         {
+            for (int i = 0; i < furnitureData.data.Length; i++)
+            {
+                if (furnitureData.data[i].furniture.id == furnitureId)
+                {
+                    // Supprimer l'élément de la liste de données
+                    List<DataItem> newDataList = new List<DataItem>(furnitureData.data);
+                    newDataList.RemoveAt(i);
+                    furnitureData.data = newDataList.ToArray();
+                    
+                    // Supprimer le bouton correspondant de l'interface utilisateur
+                    Destroy(buttonContainer.GetChild(i).gameObject);
+                    
+                    break;
+                }
+            }
+
             RefreshFurnitureList();
             Debug.Log("Meuble supprimé avec succès !");
         }
