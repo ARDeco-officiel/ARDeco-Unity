@@ -87,6 +87,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b750d435ebd491b429ff1088cca38f28, type: 3}
   matPrincipalIndex: 01000000
   matSecondaryIndex: 00000000
+  id: 0
+  price: 0
+  color: no color
+  style: no style
+  room: no room
+  indexMatPrincipal: 0
 --- !u!65 &8611920763981310155
 BoxCollider:
   m_ObjectHideFlags: 0

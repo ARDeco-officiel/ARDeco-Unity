@@ -38,8 +38,8 @@ public class ConfiguratorController : MonoBehaviour
 
     public void ChangeColor(Texture2D texture)
     {
-        Debug.Log(spawnedObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].GetTexture("_MainTex"));
-        Debug.Log(spawnedObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].shader.name);
+        //Debug.Log(spawnedObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].GetTexture("_MainTex"));
+        //Debug.Log(spawnedObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].shader.name);
         spawnedObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetTexture("_MainTex", texture);
     }
 }

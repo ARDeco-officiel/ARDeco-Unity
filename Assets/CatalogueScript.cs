@@ -49,7 +49,7 @@ public class CatalogueScript : MonoBehaviour
             newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
             newItem.GetComponent<CatalogueItemScript>().style = item.styles;
             newItem.GetComponent<CatalogueItemScript>().color = item.colors;
-            Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
+            //Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
             newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString();
             newItem.GetComponent<CatalogueItemScript>().BrandName.text = item.company_name;
             newItem.GetComponent<CatalogueItemScript>().list = cartList;
@@ -65,9 +65,9 @@ public class CatalogueScript : MonoBehaviour
         NetworkManager.instance.filteredCatalog.ForEach((item) =>
         {
             newItem = Instantiate(Prefab, listView);
-            Debug.Log(item.name + " test " + newItem.GetComponent<CatalogueItemScript>().Name.text);
+            //Debug.Log(item.name + " test " + newItem.GetComponent<CatalogueItemScript>().Name.text);
             newItem.GetComponent<CatalogueItemScript>().Name.text = item.name;
-            Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
+            //Debug.Log(item.price + " test du prix " + newItem.GetComponent<CatalogueItemScript>().Price.text);
             newItem.GetComponent<CatalogueItemScript>().Price.text = item.price.ToString();
             newItem.GetComponent<CatalogueItemScript>().list = cartList;
 
@@ -76,7 +76,7 @@ public class CatalogueScript : MonoBehaviour
             newItem.GetComponent<CatalogueItemScript>().room = item.rooms;
             newItem.GetComponent<CatalogueItemScript>().style = item.styles;
             newItem.GetComponent<CatalogueItemScript>().color = item.colors;
-            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: default";
+//            newItem.GetComponent<CatalogueItemScript>().Material.text = "Material: default";
 
 
             Transform thumbnailTransform = newItem.transform.Find("Thumbnail");
