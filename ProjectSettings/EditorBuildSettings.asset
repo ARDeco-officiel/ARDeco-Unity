@@ -48,8 +48,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TermOfUse/TermOfUse.unity
     guid: fa7ab99887420c744ace0c50a5831d6c
   - enabled: 1
+    path: Assets/Scenes/FavGalleryScene/FavGallery.unity
+    guid: 80c34ecd06ff5b147bf49d10e3ea8cf8
+  - enabled: 1
     path: Assets/Scenes/Updates/Updates.unity
     guid: 23ded75bc0ffb784f9c058c35c843e23
+  - enabled: 1
+    path: Assets/Scenes/FavFurnitureScene/FavFurniture.unity
+    guid: c43e24991cb946a4fb973f7fc0c60e0e
   - enabled: 1
     path: Assets/Scenes/Language/Language.unity
     guid: 5e4e0a154a124d24b8be680e7d24e0a2
